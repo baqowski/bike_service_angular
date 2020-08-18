@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../core/user/user.interface';
-import {UserService} from '../../core/user/user.service';
 import {AuthService} from '../../auth/auth.service';
-import {Router} from '@angular/router';
-import {ModalService} from '../modal/modal.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,23 +11,28 @@ import {ModalService} from '../modal/modal.service';
 export class HeaderComponent implements OnInit {
 
   user: User;
-  @Input() id: string;
-  bodyText: string;
+  products: string[] = [
+    "first", "second", "third"
+  ];
 
-  constructor(private userService: UserService, private auth: AuthService) {
-    /*if (localStorage.getItem('user')) {
-      this.user = this.userService.currentUserValue;
-    }*/
+
+  constructor(private router: Router, private auth: AuthService) {
+    this.user = this.auth.currentUserValue;
   }
 
   ngOnInit(): void {
-    this.user = this.userService.currentUserValue;
+    /*this.user = this.auth.currentUserValue;
+    console.log(this.user)*/
   }
 
   onLogout(): void {
     this.auth.logout().subscribe(() => {
       localStorage.removeItem('user');
-      window.location.reload();
+      this.auth.currentUserSubject.next(null);
+      this.router.navigate(['/#'])
+      location.reload();
+    }, error => {
+
     });
   }
 }

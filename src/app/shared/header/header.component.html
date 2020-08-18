@@ -1,103 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown" *ngIf="user">
-          <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            {{user.username}}
-            <svg-icon src="assets/icons/user.svg" [svgStyle]="{ 'width.px':50, 'height.px':50 }"></svg-icon>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item">Moje konto</a>
-            <a class="dropdown-item" href="#">Ustawienia</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="onLogout()">Wyloguj</a>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav" *ngIf="!user">
-        <li class="nav-item">
-        <a class="nav-link" routerLink="/login" data-toggle="modal" data-target="#loginModal">Zaloguj</a>
-        </li>
-        <li class="nav-item">
-
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
-      </ul>
-    </div>
-</nav>
-<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">asd</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h1>adasdasdasdad</h1>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>-->
-
-<!--<app-modal id="asd"></app-modal>-->
-<!--﻿<div>
-  <h1>Home</h1>
-  <p>{{bodyText}}</p>
-  <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
-</div> -->
-
-<!--<app-modal id="custom-modal-1">
-  <h1>A Custom Modal Window!</h1>
-  <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
-  <button (click)="closeModal('custom-modal-1');">Close</button>
-</app-modal>-->
-
-<!--<nav class="navbar navbar-expand-md">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToogler" aria-controls="navbarToogler" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarToogler">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link dropdown" href="#" id="dropdownNavbar" role="button" data-toggle="dropdownNavbar"
-           aria-expanded="false">
+      <li class="nav-item dropdown" *ngIf="user">
+        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          {{user.username}}
           <svg-icon src="assets/icons/user.svg" [svgStyle]="{ 'width.px':50, 'height.px':50 }"></svg-icon>
         </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownNavbara">
-          <a class="dropdown-item" href="#">Moje konto</a>
+        <div class="dropdown-menu" id="custom-dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Moje konto</a>
           <a class="dropdown-item" href="#">Ustawienia</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Wyloguj</a>
+          <a class="dropdown-item" (click)="onLogout()">Wyloguj</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link">Login</a>
+        <a class="nav-link" routerLink="/login" *ngIf="!user">Zaloguj</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">Register</a>
+        <a class="nav-link" routerLink="/register" *ngIf="!user">Register</a>
       </li>
+      <app-basket *ngIf="user">
+
+      </app-basket>
     </ul>
   </div>
-</nav>-->
+</nav>

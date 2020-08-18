@@ -1,11 +1,10 @@
-import {Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {UserService} from '../../core/user/user.service';
+import { Router} from '@angular/router';
 import {User} from '../../core/user/user.interface';
-import {BodyComponent} from '../../shared/modal/body/body.component';
+import {first} from "rxjs/operators";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -20,43 +19,39 @@ export class LoginComponent implements OnInit {
   error = '';
   user: User;
 
-  constructor(private authService: AuthService,
+  constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private toastr: ToastrService,
-              private userService: UserService) {
-   /* if (this.userService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
-    }*/
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.toastrService.success('teeeest')
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  // tslint:disable-next-line:typedef
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
-    this.loading = true;
-    this.userService.login(this.form.username.value, this.form.password.value)
+    this.auth.login(this.form.username.value, this.form.password.value)
+      .pipe(first())
       .subscribe(next  => {
+          location.reload();
           this.router.navigate(['/dashboard']);
         },
         error => {
           this.error = error;
           this.loading = false;
-          this.toastr.error('Error ' + error.toString());
+          this.toastrService.error('Error ' + error);
         });
   }
 
-  // tslint:disable-next-line:typedef
   get form() {
     return this.loginForm.controls;
   }
