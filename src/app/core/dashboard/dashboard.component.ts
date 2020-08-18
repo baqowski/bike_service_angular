@@ -11,11 +11,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-    console.log("ngOnInit " + this.auth.currentUserValue)
   }
 
   ngAfterViewInit(): void {
-    console.log("ngAfterViewInit " + this.auth.currentUserValue)
   }
 
 }

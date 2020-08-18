@@ -1,7 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthService} from "./auth/auth.service";
-import {ToastrService} from "ngx-toastr";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +7,9 @@ import {ToastrService} from "ngx-toastr";
 })
 export class AppComponent implements OnInit{
 
- constructor(private router: Router, private auth: AuthService, private  toastr: ToastrService) {
-   if (this.auth.currentUserValue) {
-     this.router.navigate(['/dashboard'])
-   }
+ constructor() {
  }
-
   ngOnInit(): void {
 
-  }
-
-  showToaster(){
-    this.toastr.success("Hello, I'm the toastr message.")
   }
 }

@@ -11,10 +11,12 @@ import {AuthModule} from "./auth/auth.module";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TestModule} from "./test/test.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,12 +24,15 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AuthModule,
-    CoreModule,
-    SharedModule,
+    RouterModule,
     BrowserAnimationsModule,
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
+
+    AuthModule,
+    CoreModule,
+    SharedModule,
+    TestModule,
   ],
   providers: [
     {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {User} from '../../core/user/user.interface';
 import {first} from "rxjs/operators";
 import {ToastrService} from "ngx-toastr";
@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toastrService.success('teeeest')
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.form.username.value, this.form.password.value)
       .pipe(first())
       .subscribe(next  => {
-          location.reload();
           this.router.navigate(['/dashboard']);
         },
         error => {

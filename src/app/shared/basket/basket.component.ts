@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../core/product/product";
 import {HttpClient} from "@angular/common/http";
 import {BasketService} from "./basket.service";
-import {Observable} from "rxjs";
-import {first, map} from "rxjs/operators";
+import {first} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-basket',
@@ -14,7 +14,7 @@ export class BasketComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private http: HttpClient, private basketService: BasketService) {
+  constructor(private http: HttpClient, private basketService: BasketService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -25,6 +25,10 @@ export class BasketComponent implements OnInit {
 
   removeProduct(product: Product) {
     this.products = this.products.filter(i => i !== product);
+  }
+
+  goToProduct(id: number) {
+    this.router(['test/' + id], {relativeTo: this.activatedRoute});
   }
 
 /*  public getProducts(): Observable<Product[]> {

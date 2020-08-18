@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from "../../../core/product/product";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-basket-product',
@@ -25,8 +25,9 @@ export class BasketProductComponent implements OnInit {
     this.onRemove.emit();
   }
 
-  goToProduct(product: Product) {
+  goToProduct(id: number) {
     //debugger
-    this.router.navigate(['product/' + product.id], {relativeTo: this.activatedRoute});
+    this.onGoToProduct.next(id);
+
   }
 }
