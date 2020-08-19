@@ -1,20 +1,22 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {LoginComponent} from './auth/login/login.component';
-import {RegisterComponent} from "./auth/register/register.component";
-import {DashboardComponent} from "./core/dashboard/dashboard.component";
-import {AuthGuard} from "./auth/guard";
-import {ProductComponent} from "./core/product/product.component";
+import {RegisterComponent} from './auth/register/register.component';
+import {AuthGuard} from './auth/guard';
+import {DashboardComponent} from './core/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {
+    path: 'dashboard',
+    component:
+    DashboardComponent,
+    canActivate: [AuthGuard]},
+
 
   {
     path: 'product',
-    component: ProductComponent,
     /*canActivate: [AuthGuard],*/
     loadChildren: './core/product/product.module#ProductModule'
   },

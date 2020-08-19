@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {User} from '../../core/user/user.interface';
-import {first} from "rxjs/operators";
-import {ToastrService} from "ngx-toastr";
+import {first} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
+import {User} from '../../core/user/user';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  get form() {
+  get form(): any {
     return this.loginForm.controls;
   }
 }

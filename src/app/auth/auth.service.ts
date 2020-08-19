@@ -1,9 +1,9 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {User} from '../core/user/user.interface';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
+import {User} from '../core/user/user';
 
 
 const httpOptions = {
@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this._currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-    console.log(this._currentUserSubject)
+    console.log(this._currentUserSubject);
   }
 
   login(username: string, password: string) {
@@ -35,10 +35,10 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/authorization/register', user, httpOptions).pipe(
       map(value => {
           if (value) {
-            return value
+            return value;
           }
         }, (error: any) => {
-          return error
+          return error;
         }
       )
     );

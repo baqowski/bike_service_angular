@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Product} from "../../../core/product/product";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -7,14 +7,13 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './basket-product.component.html',
   styleUrls: ['./basket-product.component.scss']
 })
-export class BasketProductComponent implements OnInit {
+export class BasketProductComponent implements OnInit, OnDestroy {
 
   @Input() product: Product;
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
   @Output() onGoToProduct: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -26,8 +25,12 @@ export class BasketProductComponent implements OnInit {
   }
 
   goToProduct(id: number) {
-    //debugger
+    debugger
     this.onGoToProduct.next(id);
 
+  }
+
+  ngOnDestroy(): void {
+    debugger
   }
 }

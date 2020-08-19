@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../../core/user/user.interface';
 import {AuthService} from '../../auth/auth.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {User} from '../../core/user/user';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   user: User;
   products: string[] = [
-    "first", "second", "third"
+    'first', 'second', 'third'
   ];
 
 
