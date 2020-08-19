@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+
 import {LoginComponent} from './auth/login/login.component';
-import {RegisterComponent} from './auth/register/register.component';
-import {AuthGuard} from './auth/guard';
-import {DashboardComponent} from './core/dashboard/dashboard.component';
+import {RegisterComponent} from "./auth/register/register.component";
+import {DashboardComponent} from "./core/dashboard/dashboard.component";
+import {AuthGuard} from "./auth/guard";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,12 +14,10 @@ const routes: Routes = [
     component:
     DashboardComponent,
     canActivate: [AuthGuard]},
-
-
   {
     path: 'product',
-    /*canActivate: [AuthGuard],*/
-    loadChildren: './core/product/product.module#ProductModule'
+    loadChildren: () => import('./core/product/product.module').then( module => module.ProductModule),
+    canActivate: [AuthGuard]
   },
 
   {

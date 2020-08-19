@@ -10,9 +10,6 @@ export class ProductResolver implements Resolve<Product>{
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    debugger
     return this.productService.getById(route.params.id);
   }
-
-
 }

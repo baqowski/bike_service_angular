@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ProductService} from "../product.service";
-import {Observable} from "rxjs";
-import {switchMap} from "rxjs/operators";
+import {mergeMap} from "rxjs/operators";
 import {Product} from "../product";
 
 @Component({
@@ -11,33 +10,16 @@ import {Product} from "../product";
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product$: Observable<any>;
 
   product: Product;
-  id: number;
-  name: string;
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
-
-  getProduct(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.productService.getById(id).subscribe(data => {
-      this.product = data;
-      debugger;
-    })
-
+  ngOnInit(): void {
+    this.route.paramMap.pipe(
+      mergeMap((params: ParamMap) => this.productService.getById(Number(params.get('id'))))
+    ).subscribe(value => {
+      this.product = value;
+    });
   }
-
-  ngOnInit() {
-    debugger
-    this.getProduct();
-    /*this.product$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        let id = params.get('id');
-        return this.productService.getById(+id)
-      })
-    ).subscribe()*/
-  }
-
 }

@@ -28,18 +28,18 @@ import {ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot} from '@angula
     BrowserAnimationsModule,
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
-
+    ProductModule,
     AuthModule,
     CoreModule,
     SharedModule,
-    TestModule,
+    TestModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
 
   ],
   bootstrap: [AppComponent]

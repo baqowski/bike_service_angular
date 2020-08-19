@@ -6,7 +6,7 @@ import {ProductResolver} from "./product.resolver";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'all',
     component: ProductComponent,
 
   },
@@ -20,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes,)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ProductRoutingModule {

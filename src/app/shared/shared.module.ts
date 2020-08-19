@@ -7,6 +7,7 @@ import {BasketComponent} from './basket/basket.component';
 import {BasketProductComponent} from './basket/basket-product/basket-product.component';
 import {BasketService} from "./basket/basket.service";
 import {SidebarComponent} from "./sidebar/sidebar.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -23,11 +24,12 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
     BasketProductComponent,
     BasketProductComponent
   ],
-  imports: [
-    CommonModule,
-    AngularSvgIconModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        AngularSvgIconModule,
+        RouterModule,
+        FormsModule
+    ],
   providers: [
     BasketService
   ]

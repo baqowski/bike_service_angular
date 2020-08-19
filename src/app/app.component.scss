@@ -1,17 +1,17 @@
-#custom-dropdown-menu {
-  width: 30%;
-  background-color: #b4b8e0;
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
 }
 
-.container {
-  background-color: #ade4ff;
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  perspective: 1500px;
 }
 
-.sidebar {
-  background-color: blanchedalmond;
+#body {
+  border-style: solid;
 }
-
-.justify-content-start {
-  background-color: #b4b8e0;
-}
-

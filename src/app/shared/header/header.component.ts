@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from '../../core/user/user.interface';
 import {AuthService} from '../../auth/auth.service';
-import {Router} from '@angular/router';
-import {User} from '../../core/user/user';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,19 +10,16 @@ import {User} from '../../core/user/user';
 })
 export class HeaderComponent implements OnInit {
 
-  user: User;
-  products: string[] = [
-    'first', 'second', 'third'
-  ];
+  @Input() toggle: boolean;
+  @Output() toggleChange: EventEmitter<any> = new EventEmitter();
 
+  user: User;
 
   constructor(private router: Router, private auth: AuthService) {
     this.user = this.auth.currentUserValue;
   }
 
   ngOnInit(): void {
-    /*this.user = this.auth.currentUserValue;
-    console.log(this.user)*/
   }
 
   onLogout(): void {
@@ -34,5 +31,9 @@ export class HeaderComponent implements OnInit {
     }, error => {
 
     });
+  }
+  clickToggle(status: boolean): void {
+    /*this.toggle = !this.toggle;*/
+    this.toggleChange.emit(!status)
   }
 }
