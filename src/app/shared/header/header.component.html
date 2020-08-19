@@ -1,34 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown" *ngIf="user">
-        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          {{user.username}}
-          <svg-icon src="assets/icons/user.svg" [svgStyle]="{ 'width.px':50, 'height.px':50 }"></svg-icon>
-        </a>
-        <div class="dropdown-menu" id="custom-dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">Moje konto</a>
-          <a class="dropdown-item" href="#">Ustawienia</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="onLogout()">Wyloguj</a>
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" *ngIf="!user">Zaloguj</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" *ngIf="!user">Register</a>
-      </li>
-      <app-basket *ngIf="user">
+  <div class="container-fluid">
+    <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="clickToggle(toggle)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!--<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-align-justify"></i>
+    </button>-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav ml-auto">
+        <!--<li class="nav-item dropdown" *ngIf="user">
+          &lt;!&ndash;<a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user fa-2x"></i>
+          </a>
+          <div class="dropdown-menu" id="custom-dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item">Moje konto</a>
+            <a class="dropdown-item" href="#">Ustawienia</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="onLogout()">Wyloguj</a>
+          </div>&ndash;&gt;
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link"> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!user">Zaloguj</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" *ngIf="!user">Register</a>
+        </li>
+       <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown" id="basketDropdown">
+            <div class="dropdown-menu" aria-labelledby="basketDropdown">
+              &lt;!&ndash;<app-basket *ngIf="user">
 
-      </app-basket>
-    </ul>
+              </app-basket>&ndash;&gt;
+            </div>
+
+          </a>
+        </li>-->
+      </ul>
+    </div>
   </div>
 </nav>

@@ -13,6 +13,8 @@ import {SharedModule} from "./shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TestModule} from "./test/test.module";
 import {RouterModule} from "@angular/router";
+import {ProductModule} from "./core/product/product.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -28,11 +30,12 @@ import {RouterModule} from "@angular/router";
     BrowserAnimationsModule,
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
-
+    ProductModule,
     AuthModule,
     CoreModule,
     SharedModule,
     TestModule,
+    FontAwesomeModule
   ],
   providers: [
     {

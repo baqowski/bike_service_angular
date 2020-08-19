@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../product.service";
 import {Product} from "../product";
-import {first, map} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 
 @Component({
@@ -23,13 +23,11 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    debugger
     this.productService.getAll().pipe(map((result: any) => {
       console.log(result);
       return result._embedded.products;
     }))
       .subscribe(value => {
-        debugger
         this.products = value;
       })
   }

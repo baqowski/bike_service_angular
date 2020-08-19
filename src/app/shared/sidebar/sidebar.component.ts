@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  @Input() toggle: boolean = true;
+  @Output() toggleChange: EventEmitter<any> = new EventEmitter();
+
+  constructor() {
+
+  }
 
   ngOnInit() {
+  }
+
+  receiveToggle(): void {
+    this.toggleChange.emit(this.toggle);
   }
 
 }

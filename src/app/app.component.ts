@@ -1,15 +1,23 @@
 import {Component, OnInit} from '@angular/core';
+import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
- constructor() {
- }
+  faCoffee = faCoffee;
+  toggle: boolean = false;
+
+  constructor() {
+  }
+
   ngOnInit(): void {
+  }
 
+  receiveToggle($event): void {
+    this.toggle = $event;
   }
 }

@@ -28,7 +28,7 @@ export class BasketComponent implements OnInit {
   }
 
   goToProduct(id: number) {
-    this.router(['test/' + id], {relativeTo: this.activatedRoute});
+    this.router.navigate(['test/' + id], {relativeTo: this.activatedRoute});
   }
 
 /*  public getProducts(): Observable<Product[]> {

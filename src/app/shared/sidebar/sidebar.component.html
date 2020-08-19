@@ -1,9 +1,10 @@
-<ul class="nav flex-column">
+<nav id="sidebar" [ngClass]="{'active': toggle}">
+  <ul class=" list-unstyled component">
   <li class="nav-item">
-    <a class="nav-link" routerLink="/product"><span>Produkty</span></a>
+    <a class="nav-link" routerLink="/product/all"><span>Produkty</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="/test-component">Link</a>
+    <a class="nav-link fa" routerLink="/test-component">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -12,5 +13,6 @@
     <a class="nav-link disabled" href="#">Disabled</a>
   </li>
 </ul>
+</nav>
 
 

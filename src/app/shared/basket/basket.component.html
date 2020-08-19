@@ -1,14 +1,6 @@
-<li class="nav-item dropdown" id="basketDropdown" data-toggle="dropdown">
-  <a class="nav-link dropdown" href="#">
-    Koszyk
-  </a>
-  <div class="dropdown-menu" aria-labelledby="basketDropdown">
-  <app-basket-product
-    *ngFor="let product of products"
-    [product]="product"
-    (onRemove)="removeProduct(product)"
-    (onGoToProduct)="product.id"
-    >
-  </app-basket-product>
-  </div>
-</li>
+<app-basket-product
+  *ngFor="let product of products"
+  [product]="product"
+  (onRemove)="removeProduct(product)"
+  (onGoToProduct)="product.id">
+</app-basket-product>
