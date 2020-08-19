@@ -8,8 +8,8 @@
 
 .navbar-btn {
   box-shadow: none;
-  outline: none !important;
   border: none;
+  background-color: transparent !important;
 }
 
 #sidebarCollapse {
@@ -45,6 +45,23 @@
   opacity: 1;
   margin: 5px auto;
 }
+
+/*ICONS*/
+/*.fas {
+  color: yellowgreen;
+}
+
+.fas[] {
+  color: #7386D5;
+}*/
+
+/*.far {
+  color: yellowgreen;
+}
+
+.fas {
+  color: #4fd5c3;
+}*/
 
 
 /* ---------------------------------------------------

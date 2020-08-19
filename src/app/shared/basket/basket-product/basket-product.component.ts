@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Product} from "../../../core/product/product";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Product} from '../../../core/product/product';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-basket-product',
@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BasketProductComponent implements OnInit, OnDestroy {
 
+  faCoffee = faCoffee;
   @Input() product: Product;
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
   @Output() onGoToProduct: EventEmitter<any> = new EventEmitter<any>();
@@ -20,17 +21,15 @@ export class BasketProductComponent implements OnInit, OnDestroy {
 
   }
 
-  remove() {
+  remove(): void {
     this.onRemove.emit();
   }
 
-  goToProduct(id: number) {
-    debugger
+  goToProduct(id: number): void {
     this.onGoToProduct.next(id);
 
   }
 
   ngOnDestroy(): void {
-    debugger
   }
 }

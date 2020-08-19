@@ -1,14 +1,15 @@
 <div class="container" *ngIf="product">
+  <span>
+    {{product.id}}
+  </span>
   <span >
     {{product.name}}
   </span>
   <span>
     {{product.price}}
   </span>
-  <div style="width: 100%; background-color: cornflowerblue">
-    <p>test</p>
-    <p>test</p>
-    <p>testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-  </div>
+  <button class="btn btn-success" (click)="addProductToShoppingBasket(product.id)">
+    Dodaj do koszyka
+  </button>
 </div>
 

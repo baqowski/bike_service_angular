@@ -12,13 +12,11 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getAll() {
-    debugger
+  getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(environment.apiUrl + '/api/products');
   }
 
   getById(userId: number) {
       return this.http.get<Product>(environment.apiUrl + '/api/products/' + userId);
   }
-
 }

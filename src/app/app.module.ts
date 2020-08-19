@@ -12,7 +12,8 @@ import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestModule} from './test/test.module';
-import {ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot} from '@angular/router';
+import {RouterModule} from '@angular/router';
+import {ProductModule} from './core/product/product.module';
 
 @NgModule({
   declarations: [

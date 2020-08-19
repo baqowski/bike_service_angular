@@ -8,6 +8,7 @@ import {BasketProductComponent} from './basket/basket-product/basket-product.com
 import {BasketService} from "./basket/basket.service";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {FormsModule} from "@angular/forms";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {FormsModule} from "@angular/forms";
         CommonModule,
         AngularSvgIconModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        FontAwesomeModule
     ],
   providers: [
     BasketService

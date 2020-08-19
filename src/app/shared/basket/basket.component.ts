@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../core/product/product";
-import {HttpClient} from "@angular/common/http";
-import {BasketService} from "./basket.service";
-import {first} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Product} from '../../core/product/product';
+import {HttpClient} from '@angular/common/http';
+import {BasketService} from './basket.service';
+import {first} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -14,8 +14,7 @@ export class BasketComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private http: HttpClient, private basketService: BasketService, private router: Router, private activatedRoute: ActivatedRoute) {
-  }
+  constructor(private http: HttpClient, private basketService: BasketService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.basketService.getProducts()
@@ -23,11 +22,11 @@ export class BasketComponent implements OnInit {
       .subscribe(value => this.products = value);
   }
 
-  removeProduct(product: Product) {
+  removeProduct(product: Product): void {
     this.products = this.products.filter(i => i !== product);
   }
 
-  goToProduct(id: number) {
+  goToProduct(id: number): void {
     this.router.navigate(['test/' + id], {relativeTo: this.activatedRoute});
   }
 

@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from '../../core/user/user.interface';
 import {AuthService} from '../../auth/auth.service';
-import {Router} from "@angular/router";
+
+import {User} from '../../core/user/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,14 +27,13 @@ export class HeaderComponent implements OnInit {
     this.auth.logout().subscribe(() => {
       localStorage.removeItem('user');
       this.auth.currentUserSubject.next(null);
-      this.router.navigate(['/#'])
+      this.router.navigate(['/']);
       location.reload();
     }, error => {
 
     });
   }
   clickToggle(status: boolean): void {
-    /*this.toggle = !this.toggle;*/
-    this.toggleChange.emit(!status)
+    this.toggleChange.emit(!status);
   }
 }
