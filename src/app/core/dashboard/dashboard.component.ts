@@ -8,7 +8,8 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {
+  }
 
   ngOnInit(): void {
   }

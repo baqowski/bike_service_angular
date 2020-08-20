@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {User} from '../core/user/user';
 
@@ -22,13 +22,12 @@ export class AuthService {
     console.log(this._currentUserSubject);
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<any> {
     return this.http.post(environment.apiUrl + '/authorization/login', {username, password})
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('user', JSON.stringify(user));
-      }));
+      .pipe(
+        tap(user =>  localStorage.setItem('user', JSON.stringify(user))),
+        tap(user => this.currentUserSubject.next(user))
+      );
   }
 
   register(user): Observable<any> {

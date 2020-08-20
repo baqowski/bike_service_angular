@@ -9,6 +9,7 @@ import {BasketService} from "./basket/basket.service";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {FormsModule} from "@angular/forms";
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {TableModule} from "./table/table.module";
 
 
 @NgModule({
@@ -23,15 +24,17 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     SidebarComponent,
     BasketComponent,
     BasketProductComponent,
-    BasketProductComponent
+    BasketProductComponent,
+    TableModule
   ],
-    imports: [
-        CommonModule,
-        AngularSvgIconModule,
-        RouterModule,
-        FormsModule,
-        FontAwesomeModule
-    ],
+  imports: [
+    CommonModule,
+    AngularSvgIconModule,
+    RouterModule,
+    FormsModule,
+    FontAwesomeModule,
+    TableModule
+  ],
   providers: [
     BasketService
   ]

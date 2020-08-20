@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -13,6 +12,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[];
   @Output() onAddToShoppingBasketEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onEditProductEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private productService: ProductService) { }
 
@@ -26,7 +26,12 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  onClickAddProductToShoppingBasket(row): void {
-    this.onAddToShoppingBasketEmitter.next(row);
+  onClickAddProductToShoppingBasket(data): void {
+    this.onAddToShoppingBasketEmitter.next(data);
   }
+
+  onClickEditProduct(data): void {
+    this.onEditProductEmitter.next(data);
+  }
+
 }

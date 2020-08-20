@@ -11,7 +11,6 @@ export class TestResolver implements Resolve<Product>{
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> | Promise<Product> | Product {
-    debugger
     return this.getObservable(route.params.id);
     /*return this.productService.getById(route.params.id);*/
   }

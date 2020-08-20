@@ -19,7 +19,9 @@ export class BasketComponent implements OnInit {
   ngOnInit(): void {
     this.basketService.getProducts()
       .pipe(first())
-      .subscribe(value => this.products = value);
+      .subscribe(value =>  {
+        this.products = value
+      });
   }
 
   removeProduct(product: Product): void {

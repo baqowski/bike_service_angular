@@ -20,10 +20,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
-  {
+ /* {
     path: 'test',
     loadChildren: () => import('./test/test.module').then( module => module.TestModule)
-  }
+  }*/
 
   /*{path: 'product/:id', component: ProductDetailComponent }*/
 

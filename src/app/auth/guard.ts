@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = localStorage.getItem('user');
+    const currentUser = this.auth.currentUserValue;
     if (currentUser) {
       /*this.router.navigate(['/dashboard']);*/
       // logged in so return true

@@ -1,3 +1,7 @@
 <a *ngFor="let product of products">
   {{product.name}}
 </a>
+
+<app-table *ngIf="products && products.length" [data]="products">
+
+</app-table>

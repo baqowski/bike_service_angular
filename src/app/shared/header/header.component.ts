@@ -3,6 +3,7 @@ import {AuthService} from '../../auth/auth.service';
 
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -21,14 +22,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.auth.currentUserSubject.asObservable().pipe(
+      tap(data => this.user = data)
+    ).subscribe()
   }
+
 
   onLogout(): void {
     this.auth.logout().subscribe(() => {
       localStorage.removeItem('user');
       this.auth.currentUserSubject.next(null);
       this.router.navigate(['/']);
-      location.reload();
+      /*location.reload();*/
     }, error => {
 
     });

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../../core/user/user';
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private toastrService: ToastrService) {
+              private route: ActivatedRoute,
+              private toasterService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         error => {
           this.error = error;
           this.loading = false;
-          this.toastrService.error('Error ' + error);
+          this.toasterService.error('Error ' + error);
         });
   }
 
