@@ -1,4 +1,6 @@
-<app-product-list>
-
-</app-product-list>
+<app-table *ngIf="products && products.length"
+           [data]="products"
+           (onDeleteEventEmitter)="onClickDeleteProduct($event.id)"
+           (onUpdatedEventEmitter)="onClickUpdateProduct($event)">
+</app-table>
 

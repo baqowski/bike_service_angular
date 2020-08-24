@@ -3,7 +3,9 @@ import {AuthService} from '../../auth/auth.service';
 
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
-import {tap} from "rxjs/operators";
+import {tap} from 'rxjs/operators';
+import {ShoppingCard} from '../../core/shopping-card/shopping-card';
+import {ShoppingCardService} from '../../core/shopping-card/shopping-card.service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +16,20 @@ export class HeaderComponent implements OnInit {
 
   @Input() toggle: boolean;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-
+  /*shoppingCard: ShoppingCard;*/
   user: User;
 
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(private router: Router,
+              private auth: AuthService,
+              private shoppingCardService: ShoppingCardService) {
     this.user = this.auth.currentUserValue;
   }
 
   ngOnInit(): void {
+    /*this.initShoppingCard();*/
     this.auth.currentUserSubject.asObservable().pipe(
       tap(data => this.user = data)
-    ).subscribe()
+    ).subscribe();
   }
 
 
@@ -41,4 +46,11 @@ export class HeaderComponent implements OnInit {
   clickToggle(status: boolean): void {
     this.toggleChange.emit(!status);
   }
+
+ /* private initShoppingCard(): void {
+    this.shoppingCardService.getProducts().subscribe(value => {
+      debugger
+      this.shoppingCard = value;
+    });
+  }*/
 }

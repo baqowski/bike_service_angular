@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+
 
 @Component({
   selector: 'app-table',
@@ -8,22 +9,39 @@ import {Component, Input, OnInit} from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input() data: any[];
+  @Output() onUpdatedEventEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDeleteEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   columns: string[];
-  isEditable: boolean = false;
+  isEditable: boolean[];
 
   ngOnInit(): void {
     this.columns = Object.keys(this.data[0])
       .filter(el => el != '_links')
-      .filter(el => el != 'id');
+      .filter(el => el != 'id')
+      .filter(el => el != 'isEditable');
   }
 
-  onClickDeleteButton(): void {
+  onClickDeleteButton(row): void {
     debugger
+    this.onDeleteEventEmitter.next(row);
   }
 
-  onClickEditable(): void {
-    this.isEditable = !this.isEditable;
+  onClickUpdateButton(row): void {
+    if (row.isEditable === true) {
+      this.onUpdatedEventEmitter.next(row);
+    }
   }
 
+  onChangeEditableStatus(index: number): void {
+    /*debugger
+    if (this.data[index].isEditable === true) {
+      this.onUpdate(this.data[index]);
+    }*/
+    this.data[index].isEditable = !this.data[index].isEditable;
+  }
+
+  onUpdate(element: any): void {
+
+  }
 
 }

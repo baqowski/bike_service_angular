@@ -16,7 +16,6 @@ export class ButtonComponent implements OnInit {
   }
 
   onEmitSomeAction(action): void {
-    debugger
     this.onSomeActionEmitter.next(action);
   }
 }

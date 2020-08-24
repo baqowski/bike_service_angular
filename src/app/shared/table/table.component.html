@@ -1,4 +1,4 @@
-<table class="table table-striped table-responsive">
+<table class="table table-striped">
   <thead>
   <tr>
     <th class="text-center">#</th>
@@ -10,13 +10,15 @@
   <tr *ngFor="let item of data; let i = index">
     <td class="text-center">{{i + 1}}</td>
     <td class="text-center" *ngFor="let column of columns">
-      <ng-container *ngIf="!isEditable"> {{item[column]}} </ng-container>
-      <input (keydown.enter)="onClickEditable()" [(ngModel)]="item[column]" *ngIf="isEditable">
+      <ng-container *ngIf="!item.isEditable"> {{item[column]}} </ng-container>
+      <input [(ngModel)]="item[column]" *ngIf="item.isEditable">
     </td>
     <td class="text-center">
-      <app-button (onSomeActionEmitter)="onClickDeleteButton()" icon="fas fa-trash-alt">
+      <app-button (onSomeActionEmitter)="onClickDeleteButton(item)" icon="fas fa-trash-alt">
       </app-button>
-      <app-button (onSomeActionEmitter)="onClickDeleteButton()" [icon]="isEditable ? 'far fa-edit text-success' : 'far fa-edit'" (click)="onClickEditable()">
+      <app-button (onSomeActionEmitter)="onClickUpdateButton(item)"
+                  [icon]="item.isEditable ? 'far fa-edit text-success' : 'far fa-edit'"
+                  (click)="onChangeEditableStatus(i)">
       </app-button>
     </td>
   </tr>

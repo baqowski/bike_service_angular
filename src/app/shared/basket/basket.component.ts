@@ -14,13 +14,16 @@ export class BasketComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private http: HttpClient, private basketService: BasketService, private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private http: HttpClient,
+              private basketService: BasketService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.basketService.getProducts()
       .pipe(first())
       .subscribe(value =>  {
-        this.products = value
+        this.products = value;
       });
   }
 

@@ -1,0 +1,19 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown" id="basketDropdown" role="button" data-toggle="dropdown">
+    <i class="fas fa-shopping-basket fa-2x"></i>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="basketDropdown">
+    <app-item
+      *ngFor="let product of products"
+      [product]="product"
+      (onRemove)="removeProduct(product)"
+      (onCountEmitter)="receiveChangeFromEmitter(product)"
+      (onGoToProduct)="product.id">
+    </app-item>
+    <div class="dropdown-divider"></div>
+    <p>Kwota {{total}}</p>
+    <div class="dropdown-divider"></div>
+    <button class="btn btn-success"> Kupuje</button>
+  </div>
+</li>
+

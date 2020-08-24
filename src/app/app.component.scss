@@ -6,9 +6,32 @@ body {
 }
 
 .wrapper {
+  background-color: #e3caca;
   display: flex;
   width: 100%;
   align-items: stretch;
   perspective: 1500px;
 }
 
+#content {
+  width: 100%;
+}
+
+#sidebar {
+  background-color: #999999;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+
+}
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    display: inline;
+  }
+  #sidebar {
+    marign: 0px
+  }
+}

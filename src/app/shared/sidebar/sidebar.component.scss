@@ -13,8 +13,9 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+/*  min-width: 250px;
+  max-width: 250px;*/
+  display: block;
   background: #4fd5c3;
   color: #fff;
   transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
@@ -54,4 +55,40 @@ a, a:hover, a:focus {
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
   background: #6d7fcc;
+}
+
+#sidebar ul {
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    /*margin-left: -250px;*/
+    transform: rotateY(90deg);
+    /*margin: 0px;*/
+  }
+  #sidebar.active {
+    display: none;
+    margin-left: 0px;
+    transform: none;
+  }
+  #sidebarCollapse span:first-of-type,
+  #sidebarCollapse span:nth-of-type(2),
+  #sidebarCollapse span:last-of-type {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+  }
+  #sidebarCollapse.active span {
+    margin: 0 auto;
+  }
+  #sidebarCollapse.active span:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+  }
+  #sidebarCollapse.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  #sidebarCollapse.active span:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
 }

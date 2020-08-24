@@ -10,14 +10,9 @@
             <i class="fas fa-caret-down fa-3x"></i>
           </button>
         </li>
-        <li class="nav-item dropdown" *ngIf="user">
-          <a class="nav-link dropdown" id="basketDropdown" role="button" data-toggle="dropdown">
-            <i class="fas fa-shopping-basket fa-2x"></i>
-          </a>
-            <div class="dropdown-menu" aria-labelledby="basketDropdown">
-              <app-basket></app-basket>
-            </div>
-        </li>
+
+        <app-shopping-card *ngIf="user"></app-shopping-card>
+
         <li class="nav-item dropdown" *ngIf="user">
           <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown">
             <i class="far fa-user fa-2x"></i>

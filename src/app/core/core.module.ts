@@ -6,6 +6,11 @@ import {AuthService} from '../auth/auth.service';
 import {ProductComponent} from './product/product.component';
 import {ProductModule} from './product/product.module';
 import {ProductResolver} from './product/product.resolver';
+import {SharedModule} from '../shared/shared.module';
+import {ShoppingCardComponent} from './shopping-card/shopping-card.component';
+import {ItemComponent} from './shopping-card/item/item.component';
+import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -13,17 +18,23 @@ import {ProductResolver} from './product/product.resolver';
     UserComponent,
     DashboardComponent,
     ProductComponent,
+    ShoppingCardComponent,
+    ItemComponent,
   ],
   exports: [
-    UserComponent
+    UserComponent,
+    ShoppingCardComponent
   ],
-  imports: [
-    CommonModule,
-    ProductModule
-  ],
+    imports: [
+        CommonModule,
+        ProductModule,
+        RouterModule,
+        FormsModule
+    ],
   providers: [
     AuthService,
     ProductResolver
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

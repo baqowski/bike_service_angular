@@ -10,19 +10,19 @@ import {map} from 'rxjs/operators';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
-  @Output() onAddToShoppingBasketEmitter: EventEmitter<any> = new EventEmitter<any>();
-  @Output() onEditProductEmitter: EventEmitter<any> = new EventEmitter<any>();
-
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+  }
+
+  /*ngOnInit(): void {
     this.productService.getAll().pipe(map((result: any) => {
       console.log(result);
       return result._embedded.products;
     }))
       .subscribe(value => {
         this.products = value;
+        this.products.forEach(product => product.isEditable = false);
       });
   }
 
@@ -32,6 +32,6 @@ export class ProductListComponent implements OnInit {
 
   onClickEditProduct(data): void {
     this.onEditProductEmitter.next(data);
-  }
+  }*/
 
 }
