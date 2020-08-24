@@ -46,8 +46,8 @@ export class ShoppingCardComponent implements OnInit {
     if (product.count === 0) {
       this.removeProduct(product);
     }
-    this.shoppingCardService.get().subscribe(response => {
-      debugger
+    this.shoppingCardService.getAmount().subscribe(response => {
+      this.total = response;
     });
   }
 

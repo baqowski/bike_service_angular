@@ -29,7 +29,7 @@ export class ShoppingCardService {
     return this.http.delete(environment.apiUrl + '/api/shoppingCard/delete/' + product.id);
   }
 
-  get(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/api/shoppingCard/');
+  getAmount(): Observable<any> {
+    return this.http.get(environment.apiUrl + '/api/shoppingCard/amount');
   }
 }
