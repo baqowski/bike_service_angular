@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../product/product';
-import {ShoppingCardService} from '../shopping-card.service';
-import {first, map} from 'rxjs/operators';
+import {ShoppingCartService} from '../services/shopping-cart.service';
+import {ProductShoppingCartService} from "../services/product-shopping-cart.service";
 
 @Component({
   selector: 'app-item',
@@ -15,7 +15,8 @@ export class ItemComponent implements OnInit {
   @Output() onCountEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onGoToProduct: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private shoppingCardService: ShoppingCardService) {
+  constructor(private shoppingCardService: ShoppingCartService,
+              private productShoppingCartService: ProductShoppingCartService) {
   }
 
   ngOnInit(): void {
@@ -31,9 +32,11 @@ export class ItemComponent implements OnInit {
   }
 
   onClickEmitIncrementCountProduct(product: Product): void {
+    debugger
     this.product.count = product.count + 1;
-    this.shoppingCardService.updateProduct(product)
+    this.productShoppingCartService.create(product)
       .subscribe(response => {
+        debugger
         this.onCountEmitter.emit(response);
       });
   }

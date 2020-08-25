@@ -1,11 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
-
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {ShoppingCard} from '../../core/shopping-card/shopping-card';
-import {ShoppingCardService} from '../../core/shopping-card/shopping-card.service';
+import {ShoppingCartService} from '../../core/shopping-cart/services/shopping-cart.service';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +14,12 @@ export class HeaderComponent implements OnInit {
 
   @Input() toggle: boolean;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-  /*shoppingCard: ShoppingCard;*/
+  /*shoppingCard: ShoppingCart;*/
   user: User;
 
   constructor(private router: Router,
               private auth: AuthService,
-              private shoppingCardService: ShoppingCardService) {
+              private shoppingCardService: ShoppingCartService) {
     this.user = this.auth.currentUserValue;
   }
 

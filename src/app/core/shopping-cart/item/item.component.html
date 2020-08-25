@@ -1,6 +1,6 @@
 <a class="dropdown-item"> <!--[routerLink]="['/product', product.id]"-->
   <div class="container-fluid">
-    <a [routerLink]="['/product', product.id]">{{product.name}} {{product.price}}</a>
+    <a [routerLink]="['/product', product.id]">{{product.id}} {{product.name}} {{product.price}}</a>
     <div style="display: contents">
       <input type="text" style="width: 15%; margin-left: 5px" [(ngModel)]="product.count" *ngIf="product.count > 0">
     </div>

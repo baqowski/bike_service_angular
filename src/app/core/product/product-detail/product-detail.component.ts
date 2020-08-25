@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
 import {Product} from '../product';
-import {BasketService} from '../../../shared/basket/basket.service';
 import {ToastrService} from 'ngx-toastr';
+import {ShoppingCartService} from "../../shopping-cart/services/shopping-cart.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -17,8 +17,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
-              private basketService: BasketService,
-              private toastr: ToastrService) {
+              private shoppingCardService: ShoppingCartService,
+              private toasterService: ToastrService) {
   }
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -28,11 +28,16 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  addProductToShoppingBasket(id: number): void {
-    this.basketService.addProduct(id).subscribe(value => {
-      this.toastr.success('Produkt został dodany do koszyka');
+  addProductToShoppingBasket(product: Product): void {
+    debugger
+    this.shoppingCardService.addProduct(product).subscribe(value => {
+      console.log(value)
+      debugger
     }, error => {
+      this.toasterService.info(error)
       // toDo
+    }, () => {
+      this.toasterService.success("Produkt został dodany do koszyka")
     });
   }
 }

@@ -6,9 +6,8 @@ import {AuthService} from '../auth/auth.service';
 import {ProductComponent} from './product/product.component';
 import {ProductModule} from './product/product.module';
 import {ProductResolver} from './product/product.resolver';
-import {SharedModule} from '../shared/shared.module';
-import {ShoppingCardComponent} from './shopping-card/shopping-card.component';
-import {ItemComponent} from './shopping-card/item/item.component';
+import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import {ItemComponent} from './shopping-cart/item/item.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
@@ -18,19 +17,19 @@ import {FormsModule} from '@angular/forms';
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ShoppingCardComponent,
+    ShoppingCartComponent,
     ItemComponent,
   ],
   exports: [
     UserComponent,
-    ShoppingCardComponent
+    ShoppingCartComponent
   ],
-    imports: [
-        CommonModule,
-        ProductModule,
-        RouterModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    ProductModule,
+    RouterModule,
+    FormsModule
+  ],
   providers: [
     AuthService,
     ProductResolver
