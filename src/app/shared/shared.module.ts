@@ -9,6 +9,7 @@ import {BasketService} from './basket/basket.service';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ShoppingCartModule} from "../core/shopping-cart/shopping-cart.module";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     AngularSvgIconModule,
     RouterModule,
     FormsModule,
+    ShoppingCartModule,
     FontAwesomeModule
   ],
   providers: [

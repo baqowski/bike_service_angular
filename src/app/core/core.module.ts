@@ -6,12 +6,11 @@ import {AuthService} from '../auth/auth.service';
 import {ProductComponent} from './product/product.component';
 import {ProductModule} from './product/product.module';
 import {ProductResolver} from './product/product.resolver';
-import {ItemComponent} from './shopping-cart/item/item.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {TableComponent} from "../shared/table/table.component";
 import {SharedModule} from "../shared/shared.module";
-import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
+import {ShoppingCartModule} from "./shopping-cart/shopping-cart.module";
 
 
 @NgModule({
@@ -19,16 +18,12 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ItemComponent,
-    ShoppingCartComponent,
     TableComponent
   ],
   exports: [
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ItemComponent,
-    ShoppingCartComponent,
     TableComponent
   ],
   imports: [
@@ -36,7 +31,8 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
     ProductModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ShoppingCartModule
   ],
   providers: [
     AuthService,
