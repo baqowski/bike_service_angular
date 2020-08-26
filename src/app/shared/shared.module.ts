@@ -9,8 +9,6 @@ import {BasketService} from './basket/basket.service';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {TableModule} from './table/table.module';
-import {CoreModule} from '../core/core.module';
 import {ShoppingCartComponent} from "../core/shopping-cart/shopping-cart.component";
 
 
@@ -27,17 +25,13 @@ import {ShoppingCartComponent} from "../core/shopping-cart/shopping-cart.compone
     SidebarComponent,
     BasketComponent,
     BasketProductComponent,
-    TableModule,
-    CoreModule
   ],
   imports: [
     CommonModule,
     AngularSvgIconModule,
     RouterModule,
     FormsModule,
-    FontAwesomeModule,
-    TableModule,
-    CoreModule
+    FontAwesomeModule
   ],
   providers: [
     BasketService

@@ -9,6 +9,9 @@ import {ProductResolver} from './product/product.resolver';
 import {ItemComponent} from './shopping-cart/item/item.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {TableComponent} from "../shared/table/table.component";
+import {SharedModule} from "../shared/shared.module";
+import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 
 
 @NgModule({
@@ -16,20 +19,24 @@ import {FormsModule} from '@angular/forms';
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ItemComponent
+    ItemComponent,
+    ShoppingCartComponent,
+    TableComponent
   ],
   exports: [
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ItemComponent
+    ItemComponent,
+    ShoppingCartComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
     ProductModule,
     RouterModule,
     FormsModule,
-    /*SharedModule*/
+    SharedModule
   ],
   providers: [
     AuthService,
