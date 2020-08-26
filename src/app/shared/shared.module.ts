@@ -33,8 +33,7 @@ import {CoreModule} from '../core/core.module';
     RouterModule,
     FormsModule,
     FontAwesomeModule,
-    TableModule,
-    CoreModule
+    TableModule
   ],
   providers: [
     BasketService

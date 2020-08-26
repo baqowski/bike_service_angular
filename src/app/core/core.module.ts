@@ -10,6 +10,7 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {ItemComponent} from './shopping-cart/item/item.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     ProductModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [
     AuthService,

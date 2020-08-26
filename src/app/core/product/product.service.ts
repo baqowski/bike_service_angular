@@ -13,7 +13,7 @@ export class ProductService {
   }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.apiUrl + '/api/product');
+    return this.http.get<Product[]>(environment.apiUrl + '/api/products');
   }
 
   getById(userId: number): Observable<Product> {

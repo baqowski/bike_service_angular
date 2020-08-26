@@ -1,6 +1,18 @@
-<app-table *ngIf="products && products.length"
-           [data]="products"
-           (onDeleteEventEmitter)="onClickDeleteProduct($event.id)"
-           (onUpdatedEventEmitter)="onClickUpdateProduct($event)">
-</app-table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <app-table *ngIf="products && products.length"
+                 [data]="products"
+                 (onDeleteEventEmitter)="onClickDeleteProduct($event.id)"
+                 (onUpdatedEventEmitter)="onClickUpdateProduct($event)">
+      </app-table>
+    </div>
+    <div class="col-sm">
+      <app-product-add>
+
+      </app-product-add>
+    </div>
+
+  </div>
+</div>
 

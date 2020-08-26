@@ -1,12 +1,12 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {ProductComponent} from "./product.component";
-import {ProductDetailComponent} from "./product-detail/product-detail.component";
-import {ProductResolver} from "./product.resolver";
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {ProductComponent} from './product.component';
+import {ProductDetailComponent} from './product-detail/product-detail.component';
+import {ProductResolver} from './product.resolver';
 
 const routes: Routes = [
   {
-    path: 'all',
+    path: '',
     component: ProductComponent,
 
   },
