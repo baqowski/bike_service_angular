@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ShoppingCartService} from './services/shopping-cart.service';
 import {ShoppingCart} from "./shopping-cart";
 import {AuthService} from "../../auth/auth.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-shopping-card',
@@ -25,11 +26,13 @@ export class ShoppingCartComponent implements OnInit {
   total: number;
 
   ngOnInit(): void {
-    this.shoppingCardService.getProducts()
+    this.shoppingCardService.getProducts().pipe(
+      tap(response => {
+        this.shoppingCart = response;
+        debugger
+      })
+    )
       .subscribe(value => {
-        this.products = value.products;
-        this.total = value.amount;
-        this.shoppingCart = value;
       });
   }
 
@@ -41,13 +44,9 @@ export class ShoppingCartComponent implements OnInit {
     this.router.navigate(['test/' + id], {relativeTo: this.activatedRoute});
   }
 
-  receiveChangeFromEmitter(product: Product): void {
-    if (product.count === 0) {
-      this.removeProduct(product);
-    }
-    this.shoppingCardService.getAmount().subscribe(response => {
-      this.total = response;
-    });
+  receiveChangeFromEmitter(amount: number): void {
+    debugger
+    this.total = amount;
   }
 
 

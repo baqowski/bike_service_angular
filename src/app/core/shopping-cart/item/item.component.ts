@@ -34,6 +34,11 @@ export class ItemComponent implements OnInit {
   onClickEmitIncrementCountProduct(product: Product): void {
     debugger
     this.product.count = product.count + 1;
+    this.emitProduct(product)
+
+  }
+
+  private emitProduct(product: Product) {
     this.productShoppingCartService.create(product)
       .subscribe(response => {
         debugger
@@ -44,11 +49,7 @@ export class ItemComponent implements OnInit {
   onClickEmitDecreaseCountProduct(product: Product): void {
     this.product.count = product.count - 1;
     if (this.product.count > 0) {
-      debugger
-      this.shoppingCardService.updateProduct(this.product)
-        .subscribe(response => {
-          this.onCountEmitter.emit(response);
-        });
+      this.emitProduct(product)
     }
     if (this.product.count === 0) {
       debugger

@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get<Product[]>(environment.apiUrl + '/api/products');
   }
 
+  add(product: Product): Observable<Product> {
+    return this.http.post<Product>(environment.apiUrl + '/api/products', product);
+  }
+
   getById(userId: number): Observable<Product> {
     return this.http.get<Product>(environment.apiUrl + '/api/product/' + userId);
   }

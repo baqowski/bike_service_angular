@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,12 +10,12 @@ export class SidebarComponent implements OnInit {
 
   @Input() toggle: boolean = true;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-
-  constructor() {
-
+  roleName: string;
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.roleName = this.authService.currentUserValue.roleName;
   }
 
   receiveToggle(): void {

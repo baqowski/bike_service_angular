@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   @Input() toggle: boolean;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-  /*shoppingCard: ShoppingCart;*/
   user: User;
 
   constructor(private router: Router,
@@ -24,7 +23,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*this.initShoppingCard();*/
     this.auth.currentUserSubject.asObservable().pipe(
       tap(data => this.user = data)
     ).subscribe();

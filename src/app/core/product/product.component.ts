@@ -12,9 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 export class ProductComponent implements OnInit {
 
   products: Product[];
-  @Output() onAddToShoppingBasketEmitter: EventEmitter<any> = new EventEmitter<any>();
-
-  /*@Output() onEditProductEmitter: EventEmitter<any> = new EventEmitter<any>();*/
+  @Output() onAddToShoppingCartEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private productService: ProductService,
               private toastrService: ToastrService) {
@@ -31,8 +29,13 @@ export class ProductComponent implements OnInit {
       });
   }
 
+  onReceiveValueFromChildren(data): void {
+    debugger
+    this.products.push(data);
+  }
+
   onClickAddProductToShoppingBasket(data): void {
-    this.onAddToShoppingBasketEmitter.next(data);
+    this.onAddToShoppingCartEmitter.next(data);
   }
 
   private existInBasket(id: number) {

@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {TableComponent} from "../shared/table/table.component";
 import {SharedModule} from "../shared/shared.module";
 import {ShoppingCartModule} from "./shopping-cart/shopping-cart.module";
+import {RoleComponent} from './role/role.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {ShoppingCartModule} from "./shopping-cart/shopping-cart.module";
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    TableComponent
+    TableComponent,
+    RoleComponent
   ],
   exports: [
     UserComponent,

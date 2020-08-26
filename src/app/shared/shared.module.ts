@@ -10,6 +10,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ShoppingCartModule} from "../core/shopping-cart/shopping-cart.module";
+import {ButtonComponent} from "./button/button.component";
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import {ShoppingCartModule} from "../core/shopping-cart/shopping-cart.module";
     HeaderComponent,
     BasketComponent,
     BasketProductComponent,
-    SidebarComponent
+    SidebarComponent,
+    ButtonComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     BasketComponent,
     BasketProductComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,

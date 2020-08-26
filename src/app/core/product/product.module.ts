@@ -4,6 +4,7 @@ import {ProductResolver} from './product.resolver';
 import {ProductRoutingModule} from './product-routing.module';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
 import {ProductAddComponent} from './product-add/product-add.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ProductAddComponent} from './product-add/product-add.component';
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductResolver

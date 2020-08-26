@@ -8,7 +8,7 @@
       </app-table>
     </div>
     <div class="col-sm">
-      <app-product-add>
+      <app-product-add (emitValueToParent)="onReceiveValueFromChildren($event)">
 
       </app-product-add>
     </div>

@@ -15,7 +15,7 @@
 
         <li class="nav-item dropdown" *ngIf="user">
           <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown">
-            <i class="far fa-user fa-2x"></i>
+            <i class="fas fa-user fa-2x"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item">Moje konto</a>
@@ -25,6 +25,11 @@
             <!--(click)="onLogout()-->
           </div>
         </li>
+        <li class="nav-item">
+          <i class="fas fa-tachometer-alt fa-2x" routerLink="/dashboard"></i>
+          <!--<a class="nav-link" routerLink="/login" routerLinkActive="active"></a>-->
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user">Zaloguj</a>
         </li>

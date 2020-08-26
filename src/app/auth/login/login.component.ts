@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
-import {User} from '../../core/user/user';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +16,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loading = false;
   error = '';
-  user: User;
 
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
@@ -39,9 +37,18 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+    debugger
     this.auth.login(this.form.username.value, this.form.password.value)
-      .pipe(first())
-      .subscribe(next  => {
+      .pipe(
+        tap(response => {
+          debugger
+        }),
+        catchError(err =>{
+          debugger
+          this.toasterService.error(err.error);
+          return err
+        } ))
+      .subscribe(next => {
           this.router.navigate(['/dashboard']);
         },
         error => {
