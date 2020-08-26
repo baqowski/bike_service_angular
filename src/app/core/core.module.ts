@@ -6,11 +6,9 @@ import {AuthService} from '../auth/auth.service';
 import {ProductComponent} from './product/product.component';
 import {ProductModule} from './product/product.module';
 import {ProductResolver} from './product/product.resolver';
-import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {ItemComponent} from './shopping-cart/item/item.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,19 +16,20 @@ import {SharedModule} from '../shared/shared.module';
     UserComponent,
     DashboardComponent,
     ProductComponent,
-    ShoppingCartComponent,
-    ItemComponent,
+    ItemComponent
   ],
   exports: [
     UserComponent,
-    ShoppingCartComponent
+    DashboardComponent,
+    ProductComponent,
+    ItemComponent
   ],
   imports: [
     CommonModule,
     ProductModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    /*SharedModule*/
   ],
   providers: [
     AuthService,

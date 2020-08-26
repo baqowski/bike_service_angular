@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TableModule} from './table/table.module';
 import {CoreModule} from '../core/core.module';
+import {ShoppingCartComponent} from "../core/shopping-cart/shopping-cart.component";
 
 
 @NgModule({
@@ -18,14 +19,16 @@ import {CoreModule} from '../core/core.module';
     HeaderComponent,
     BasketComponent,
     BasketProductComponent,
-    SidebarComponent
+    SidebarComponent,
+    ShoppingCartComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     BasketComponent,
     BasketProductComponent,
-    TableModule
+    TableModule,
+    CoreModule
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import {CoreModule} from '../core/core.module';
     RouterModule,
     FormsModule,
     FontAwesomeModule,
-    TableModule
+    TableModule,
+    CoreModule
   ],
   providers: [
     BasketService
