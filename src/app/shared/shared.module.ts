@@ -9,7 +9,6 @@ import {BasketService} from './basket/basket.service';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {ShoppingCartComponent} from "../core/shopping-cart/shopping-cart.component";
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import {ShoppingCartComponent} from "../core/shopping-cart/shopping-cart.compone
     HeaderComponent,
     BasketComponent,
     BasketProductComponent,
-    SidebarComponent,
-    ShoppingCartComponent
+    SidebarComponent
   ],
   exports: [
     HeaderComponent,
