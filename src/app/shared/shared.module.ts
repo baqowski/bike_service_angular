@@ -11,6 +11,8 @@ import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ShoppingCartModule} from "../core/shopping-cart/shopping-cart.module";
 import {ButtonComponent} from "./button/button.component";
+import {PayuWidgetComponent} from './payu-widget/payu-widget.component';
+import {TableComponent} from "./table/table.component";
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {ButtonComponent} from "./button/button.component";
     BasketComponent,
     BasketProductComponent,
     SidebarComponent,
-    ButtonComponent
+    ButtonComponent,
+    PayuWidgetComponent,
+    TableComponent
   ],
   exports: [
     HeaderComponent,
@@ -27,6 +31,8 @@ import {ButtonComponent} from "./button/button.component";
     BasketComponent,
     BasketProductComponent,
     ButtonComponent,
+    PayuWidgetComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,

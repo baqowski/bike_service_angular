@@ -4,7 +4,8 @@
       <app-table *ngIf="products && products.length"
                  [data]="products"
                  (onDeleteEventEmitter)="onClickDeleteProduct($event.id)"
-                 (onUpdatedEventEmitter)="onClickUpdateProduct($event)">
+                 (onUpdatedEventEmitter)="onClickUpdateProduct($event)"
+                 [showActionButtons]="true">
       </app-table>
     </div>
     <div class="col-sm">

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <p>Realizacja zamówienia </p>
+    </div>
+    <div class="card-body">
+      <app-product-summary [products]="shoppingCart.products" *ngIf="stepNumber === 1" [amount]="shoppingCart.amount"></app-product-summary>
+      <app-order-address *ngIf="stepNumber === 2"></app-order-address>
+      <app-payment *ngIf="stepNumber === 3"></app-payment>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-success float-right w-25"
+              (click)="onClickNextStep(stepNumber)"
+              [disabled]="stepNumber === 3">
+        Dalej
+      </button>
+      <button class="btn btn-dark float-left w-25"
+              (click)="onClickBackStep(stepNumber)"
+              [disabled]="stepNumber === 1">
+        Cofnij
+      </button>
+    </div>
+  </div>
+</div>

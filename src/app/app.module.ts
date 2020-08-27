@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestModule} from './test/test.module';
 import {RouterModule} from '@angular/router';
 import {ProductModule} from './core/product/product.module';
+import {OrderModule} from "./core/order/order.module";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {ProductModule} from './core/product/product.module';
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
     ProductModule,
+    OrderModule,
     AuthModule,
     CoreModule,
     SharedModule,

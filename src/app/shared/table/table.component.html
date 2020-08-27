@@ -3,7 +3,7 @@
   <tr>
     <th class="text-center">#</th>
     <th class="text-center" *ngFor="let column of columns"> {{column}} </th>
-    <th class="text-center">Akcje</th>
+    <th class="text-center" *ngIf="showActionButtons">Akcje</th>
   </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
       <ng-container *ngIf="!item.isEditable"> {{item[column]}} </ng-container>
       <input [(ngModel)]="item[column]" *ngIf="item.isEditable">
     </td>
-    <td class="text-center">
+    <td class="text-center" *ngIf="showActionButtons">
       <app-button (onSomeActionEmitter)="onClickDeleteButton(item)" icon="fas fa-trash-alt">
       </app-button>
       <app-button (onSomeActionEmitter)="onClickUpdateButton(item)"

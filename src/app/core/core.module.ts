@@ -8,25 +8,27 @@ import {ProductModule} from './product/product.module';
 import {ProductResolver} from './product/product.resolver';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {TableComponent} from "../shared/table/table.component";
 import {SharedModule} from "../shared/shared.module";
 import {ShoppingCartModule} from "./shopping-cart/shopping-cart.module";
 import {RoleComponent} from './role/role.component';
+import {OrderComponent} from './order/order.component';
+import {OrderModule} from "./order/order.module";
 
 
 @NgModule({
   declarations: [
-    UserComponent,
     DashboardComponent,
-    ProductComponent,
-    TableComponent,
-    RoleComponent
+    RoleComponent,
+    UserComponent,
+    OrderComponent,
+    ProductComponent
   ],
   exports: [
-    UserComponent,
     DashboardComponent,
-    ProductComponent,
-    TableComponent
+    RoleComponent,
+    UserComponent,
+    OrderComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import {RoleComponent} from './role/role.component';
     RouterModule,
     FormsModule,
     SharedModule,
-    ShoppingCartModule
+    ShoppingCartModule,
+    OrderModule
   ],
   providers: [
     AuthService,

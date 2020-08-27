@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 @Component({
@@ -9,6 +9,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 export class TableComponent implements OnInit {
 
   @Input() data: any[];
+  @Input() showActionButtons: boolean;
   @Output() onUpdatedEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDeleteEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   columns: string[];
