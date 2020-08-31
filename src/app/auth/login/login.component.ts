@@ -37,17 +37,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    debugger
     this.auth.login(this.form.username.value, this.form.password.value)
       .pipe(
         tap(response => {
-          debugger
         }),
-        catchError(err =>{
-          debugger
+        catchError(err => {
           this.toasterService.error(err.error);
-          return err
-        } ))
+          return err;
+        }))
       .subscribe(next => {
           this.router.navigate(['/dashboard']);
         },

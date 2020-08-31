@@ -13,12 +13,14 @@ import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestModule} from './test/test.module';
 import {RouterModule} from '@angular/router';
-import {ProductModule} from './core/product/product.module';
-import {OrderModule} from "./core/order/order.module";
+import {OrderModule} from './core/order/order.module';
+import {PublicModule} from './public/public.module';
+import {NotFoundComponent} from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +32,11 @@ import {OrderModule} from "./core/order/order.module";
     BrowserAnimationsModule,
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
-    ProductModule,
     OrderModule,
     AuthModule,
     CoreModule,
     SharedModule,
+    PublicModule,
     TestModule
   ],
   providers: [

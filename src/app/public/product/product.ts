@@ -3,6 +3,6 @@ export interface Product {
   name: string;
   price: number;
   filename: string;
-  count: number;
+  quantity: number;
   isEditable: boolean;
 }

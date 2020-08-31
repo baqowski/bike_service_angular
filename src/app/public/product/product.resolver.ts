@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {Product} from "./product";
-import {ProductService} from "./product.service";
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
+import {Product} from './product';
+import {ProductService} from './product.service';
 import {Observable} from 'rxjs';
 
 @Injectable()

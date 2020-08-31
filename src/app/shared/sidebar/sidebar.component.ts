@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {AuthService} from '../../auth/auth.service';
+import {UserService} from '../../core/user/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,14 +9,16 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class SidebarComponent implements OnInit {
 
-  @Input() toggle: boolean = true;
+  @Input() toggle = true;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
   roleName: string;
-  constructor(private authService: AuthService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.roleName = this.authService.currentUserValue.roleName;
+    if (this.userService.getUserValue) {
+    this.roleName = this.userService.getUserValue.roleName;
+    }
   }
 
   receiveToggle(): void {

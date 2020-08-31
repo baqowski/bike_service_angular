@@ -5,11 +5,19 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {DashboardComponent} from './core/dashboard/dashboard.component';
 import {AuthGuard} from './auth/guard';
-import {OrderComponent} from "./core/order/order.component";
+import {HomeComponent} from './public/home/home.component';
+import {SummaryComponent} from './core/order/summary/summary.component';
+import {NotFoundComponent} from './shared/not-found/not-found.component';
+import {AccessDeniedComponent} from './shared/access-denied/access-denied.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {
+    path: '404',
+    component: NotFoundComponent,
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -17,24 +25,24 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: () => import('./core/product/product.module').then(module => module.ProductModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./public/product/product.module').then(module => module.ProductModule),
   },
   {
-    path: "order",
-    component: OrderComponent,
-    canActivate: [AuthGuard]
+    path: 'orders',
+    loadChildren: () => import('./core/order/order.module').then(module => module.OrderModule),
+  },
+  {
+    path: 'summary',
+    component: SummaryComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/404'
+  },
+  {
+    path: 'access-denied',
+    component: AccessDeniedComponent
   }
-
-  /* {
-     path: 'test',
-     loadChildren: () => import('./test/test.module').then( module => module.TestModule)
-   }*/
-
-  /*{path: 'product/:id', component: ProductDetailComponent }*/
-
-  /*{path: '**', redirectTo: '#' }*/
-
 ];
 
 @NgModule({

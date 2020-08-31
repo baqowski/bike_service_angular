@@ -3,36 +3,36 @@ import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header/header.component';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {RouterModule} from '@angular/router';
-import {BasketComponent} from './basket/basket.component';
-import {BasketProductComponent} from './basket/basket-product/basket-product.component';
-import {BasketService} from './basket/basket.service';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {ShoppingCartModule} from "../core/shopping-cart/shopping-cart.module";
-import {ButtonComponent} from "./button/button.component";
+import {ShoppingCartModule} from '../public/shopping-cart/shopping-cart.module';
+import {ButtonComponent} from './button/button.component';
 import {PayuWidgetComponent} from './payu-widget/payu-widget.component';
-import {TableComponent} from "./table/table.component";
+import {TableComponent} from './table/table.component';
+import {SelectBoxComponent} from './select-box/select-box.component';
+import {NotFoundService} from './not-found/not-found.service';
+import {AccessDeniedComponent} from './access-denied/access-denied.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    BasketComponent,
-    BasketProductComponent,
     SidebarComponent,
     ButtonComponent,
     PayuWidgetComponent,
-    TableComponent
+    TableComponent,
+    SelectBoxComponent,
+    AccessDeniedComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
-    BasketComponent,
-    BasketProductComponent,
     ButtonComponent,
     PayuWidgetComponent,
-    TableComponent
+    TableComponent,
+    SelectBoxComponent,
+    AccessDeniedComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +43,7 @@ import {TableComponent} from "./table/table.component";
     FontAwesomeModule
   ],
   providers: [
-    BasketService
+    NotFoundService
   ]
 })
 export class SharedModule {

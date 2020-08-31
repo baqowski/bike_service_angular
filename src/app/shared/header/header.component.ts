@@ -3,7 +3,8 @@ import {AuthService} from '../../auth/auth.service';
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {ShoppingCartService} from '../../core/shopping-cart/services/shopping-cart.service';
+import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
+import {UserService} from '../../core/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -17,24 +18,21 @@ export class HeaderComponent implements OnInit {
   user: User;
 
   constructor(private router: Router,
-              private auth: AuthService,
-              private shoppingCardService: ShoppingCartService) {
-    this.user = this.auth.currentUserValue;
+              private userService: UserService,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
-    this.auth.currentUserSubject.asObservable().pipe(
+    this.userService.getUserSubject.asObservable().pipe(
       tap(data => this.user = data)
     ).subscribe();
   }
 
-
   onLogout(): void {
     this.auth.logout().subscribe(() => {
       localStorage.removeItem('user');
-      this.auth.currentUserSubject.next(null);
+      this.userService.getUserSubject.next(null);
       this.router.navigate(['/']);
-      /*location.reload();*/
     }, error => {
 
     });

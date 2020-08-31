@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {ProductService} from '../../core/product/product.service';
-import {Product} from '../../core/product/product';
 import {mergeMap} from 'rxjs/operators';
+import {ProductService} from '../../public/product/product.service';
+import {Product} from '../../public/product/product';
 
 @Component({
   selector: 'app-test-child',

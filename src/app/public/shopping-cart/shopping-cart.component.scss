@@ -1,6 +1,9 @@
 .dropdown-menu {
-  background-color: #619ccd;
-  /*width: 300px;*/
+  /*background-color: #619ccd;*/
+  /*width: 100%;*/
+  min-width: 250px;
+  max-width: 300px;
+  text-align: center;
 }
 
 a.dropdown-item {

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Product} from './product';
 import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,11 @@ export class ProductService {
   }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.apiUrl + '/api/products');
+    return this.http.get<Product[]>(environment.apiUrl + '/ext/products');
   }
 
-  add(product: Product): Observable<Product> {
-    return this.http.post<Product>(environment.apiUrl + '/api/products', product);
-  }
-
-  getById(userId: number): Observable<Product> {
-    return this.http.get<Product>(environment.apiUrl + '/api/product/' + userId);
+  getById(id: number): Observable<Product> {
+    return this.http.get<Product>(environment.apiUrl + '/ext/products/' + id);
   }
 
   update(product: Product) {

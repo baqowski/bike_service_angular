@@ -23,7 +23,6 @@ export class TableComponent implements OnInit {
   }
 
   onClickDeleteButton(row): void {
-    debugger
     this.onDeleteEventEmitter.next(row);
   }
 
@@ -34,10 +33,6 @@ export class TableComponent implements OnInit {
   }
 
   onChangeEditableStatus(index: number): void {
-    /*debugger
-    if (this.data[index].isEditable === true) {
-      this.onUpdate(this.data[index]);
-    }*/
     this.data[index].isEditable = !this.data[index].isEditable;
   }
 

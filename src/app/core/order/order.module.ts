@@ -1,25 +1,32 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ProductSummaryComponent} from "./product-summary/product-summary.component";
-import {OrderAddressComponent} from './order-address/order-address.component';
-import {SharedModule} from "../../shared/shared.module";
-import {PaymentComponent} from './payment/payment.component';
+import {SharedModule} from '../../shared/shared.module';
+import { SummaryComponent } from './summary/summary.component';
+import {OrderRoutingModule} from './order-routing.module';
+import { AddressComponent } from './address/address.component';
+import {OrderResolver} from './order.resolver';
+import { OrderComponent } from './order.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import {PaymentModule} from '../payment/payment.module';
 
 
 @NgModule({
   declarations: [
-    ProductSummaryComponent,
-    OrderAddressComponent,
-    PaymentComponent
+    SummaryComponent,
+    AddressComponent,
+    OrderComponent,
+    OrderDetailComponent
   ],
   exports: [
-    ProductSummaryComponent,
-    OrderAddressComponent,
-    PaymentComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    OrderRoutingModule,
+    PaymentModule
+  ],
+  providers: [
+    OrderResolver
   ]
 })
 export class OrderModule {

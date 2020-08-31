@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <p>Realizacja zamówienia </p>
+    </div>
+    <div class="card-body">
+      <ng-container *ngIf="stepNumber === 1">
+        <div class="card">
+          <div class="card-header">
+            Podsumowanie
+          </div>
+          <app-table *ngIf="order.products && order.products.length"
+                     [data]="order.products"
+                     [showActionButtons]="false">
+          </app-table>
+          <p>Kwota zamówienia {{order.amount}}</p>
+        </div>
+        <br>
+       <app-address>
+       </app-address>
+
+      </ng-container>
+
+      <app-payment *ngIf="stepNumber === 3"></app-payment>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-success w-100" (click)="create()"> Płatność</button>
+    </div>
+  </div>
+</div>

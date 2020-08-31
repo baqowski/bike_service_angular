@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">
+    <span>Forma płatności</span>
+  </div>
+  <div class="card-body">
+    <app-select-box
+      [data]="paymentTypes"
+      (valueEmitter)="getSelectedValue($event)">
+    </app-select-box>
+    {{paymentType}}
+  </div>
+</div>
+<app-payu-widget></app-payu-widget>

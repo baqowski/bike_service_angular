@@ -1,0 +1,34 @@
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Order} from '../order/order';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {User} from './user';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  userSubject: BehaviorSubject<User>;
+
+  constructor(private http: HttpClient) {
+    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+  }
+
+  getUserOrders(id): Observable<Order[]> {
+    return this.http.get<Order[]>(environment.apiUrl + '/api/users/' + id + '/orders');
+  }
+
+  getUserByUsername(username): Observable<User> {
+    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUsername?username=' + username);
+  }
+
+  public get getUserSubject(): BehaviorSubject<User> {
+    return this.userSubject;
+  }
+
+  public  getUserValue(): User {
+    return this.getUserSubject.value;
+  }
+}
