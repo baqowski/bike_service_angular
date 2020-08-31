@@ -1,0 +1,31 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown" id="basketDropdown" role="button" data-toggle="dropdown">
+    <i class="fas fa-shopping-bag fa-2x" *ngIf="products"> {{products.length}}
+    </i>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="basketDropdown">
+    <ng-container *ngIf="products">
+      <app-item
+        *ngFor="let product of products"
+        [product]="product"
+        (onRemove)="removeProduct(product)"
+        (onGoToProduct)="product.id">
+      </app-item>
+    </ng-container>
+    <ng-container *ngIf="products.length === 0">
+      <p> Brak produktów</p>
+    </ng-container>
+
+    <div class="dropdown-divider"></div>
+    <div class="container-fluid flex-column">
+      <p>Kwota {{this.total | number: '00.00' }} zł</p>
+      <div class="dropdown-divider"></div>
+      <button class="btn btn-success"
+              [routerLink]="['/summary']"
+              [disabled]="products.length === 0">
+        Zamawiam
+      </button>
+    </div>
+  </div>
+</li>
+

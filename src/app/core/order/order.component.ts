@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ShoppingCartService} from "../shopping-cart/services/shopping-cart.service";
-import {ShoppingCart} from "../shopping-cart/shopping-cart";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-order',
@@ -9,24 +7,9 @@ import {ShoppingCart} from "../shopping-cart/shopping-cart";
 })
 export class OrderComponent implements OnInit {
 
-  shoppingCart: ShoppingCart;
-  stepNumber: number = 1;
-
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.shoppingCartService.getProducts().subscribe(response =>{
-      this.shoppingCart = response;
-    })
   }
 
-  onClickNextStep(step: number) {
-    debugger
-    this.stepNumber = step + 1;
-  }
-
-  onClickBackStep(step: number) {
-    debugger
-    this.stepNumber = step - 1;
-  }
 }

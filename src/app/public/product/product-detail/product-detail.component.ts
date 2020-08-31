@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
 import {Product} from '../product';
 import {ToastrService} from 'ngx-toastr';
-import {ShoppingCartService} from "../../shopping-cart/services/shopping-cart.service";
+import {ProductResolver} from '../product.resolver';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,13 +13,14 @@ import {ShoppingCartService} from "../../shopping-cart/services/shopping-cart.se
 })
 export class ProductDetailComponent implements OnInit {
 
+  @Output() productEmitter: EventEmitter<Product> = new EventEmitter<Product>();
   product: Product;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
-              private shoppingCardService: ShoppingCartService,
               private toasterService: ToastrService) {
   }
+
   ngOnInit(): void {
     this.route.paramMap.pipe(
       mergeMap((params: ParamMap) => this.productService.getById(Number(params.get('id'))))
@@ -28,16 +29,7 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  addProductToShoppingBasket(product: Product): void {
-    debugger
-    this.shoppingCardService.addProduct(product).subscribe(value => {
-      console.log(value)
-      debugger
-    }, error => {
-      this.toasterService.info(error)
-      // toDo
-    }, () => {
-      this.toasterService.success("Produkt został dodany do koszyka")
-    });
+  addProductToShoppingCard(product: Product): void {
+    this.productEmitter.emit(product);
   }
 }

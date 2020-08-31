@@ -1,0 +1,29 @@
+<ng-container *ngIf="order">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <span>Zamówienie id: {{order.id}} <i [routerLink]="['/order'+ order.id]"></i> </span>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <span>Produkty</span>
+          </div>
+          <div class="card-body">
+            <app-table *ngIf="order.products.length > 0"
+                       [data]="order.products"
+                       [showActionButtons]="false">
+            </app-table>
+          </div>
+        </div>
+        <br>
+        <app-payment>
+
+        </app-payment>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+

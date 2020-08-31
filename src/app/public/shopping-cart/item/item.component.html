@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <a [routerLink]="['/products', product.id]">{{product.name}} {{product.price}}</a>
+  <div style="display: contents">
+    <input type="text" style="width: 15%; margin-left: 5px" [(ngModel)]="product.quantity" *ngIf="product.quantity > 0">
+  </div>
+  <button class="btn">
+    <i class="fas fa-plus" (click)="onClickEmitIncrementCountProduct(product)"></i>
+  </button>
+  <button class="btn" *ngIf="product.quantity != 1">
+    <i class="fas fa-minus" (click)="onClickEmitDecrementCountProduct(product)"></i>
+  </button>
+  <button class="btn">
+    <i class='far fa-trash-alt' (click)="remove()">
+    </i>
+  </button>
+</div>
+
+
