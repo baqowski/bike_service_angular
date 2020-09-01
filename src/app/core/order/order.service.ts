@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Product} from '../../public/product/product';
-import {Order, OrderImpl} from './order';
-import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'

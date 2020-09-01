@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'summary',
-    component: SummaryComponent,
+    component: SummaryComponent
   },
   {
     path: '**',

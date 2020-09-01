@@ -27,7 +27,8 @@ export class ItemComponent implements OnInit {
     this.onGoToProduct.next(id);
   }
 
-  onClickEmitIncrementCountProduct(product): void {
+  onClickEmitIncrementCountProduct(product, event): void {
+    event.stopPropagation();
     this.shoppingCardService.increaseCount(product);
   }
 

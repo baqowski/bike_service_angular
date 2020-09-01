@@ -10,4 +10,4 @@
     {{paymentType}}
   </div>
 </div>
-<app-payu-widget></app-payu-widget>
+<app-payu-widget *ngIf="paymentType === 'PAYU'"></app-payu-widget>

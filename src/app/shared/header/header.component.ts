@@ -3,7 +3,6 @@ import {AuthService} from '../../auth/auth.service';
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
 import {UserService} from '../../core/user/user.service';
 
 @Component({
@@ -29,7 +28,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void {
+    debugger
     this.auth.logout().subscribe(() => {
+      debugger
       localStorage.removeItem('user');
       this.userService.getUserSubject.next(null);
       this.router.navigate(['/']);

@@ -1,9 +1,8 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {User} from '../core/user/user';
 import {UserService} from '../core/user/user.service';
 
 
@@ -41,6 +40,10 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(environment.apiUrl + '/user/logout', null);
+    debugger
+    return this.http.post(environment.apiUrl + '/api/users/logout', null);
   }
+
+
+
 }

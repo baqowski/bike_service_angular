@@ -24,11 +24,20 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUsername?username=' + username);
   }
 
+  findUserOrder(userId, orderId): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + '/api/users/' + userId + '/orders/' + orderId);
+  }
+
+  findUserByUuid(uuid): Observable<User> {
+    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid);
+  }
+
   public get getUserSubject(): BehaviorSubject<User> {
     return this.userSubject;
   }
 
-  public  getUserValue(): User {
+
+  public getUserValue(): User {
     return this.getUserSubject.value;
   }
 }

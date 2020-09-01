@@ -13,7 +13,7 @@ import {Product} from '../../../public/product/product';
 })
 export class OrderDetailComponent implements OnInit {
 
-  order: Order = new OrderImpl();
+  order: OrderImpl;
   products: Product[] = [];
 
   constructor(private orderService: OrderService,
@@ -23,8 +23,8 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.pipe(
       mergeMap((params: ParamMap) => this.orderService.getOrderProducts(Number(params.get('id'))))
-    ).subscribe(value => {
-      this.order = value;
+    ).subscribe((order: Order) => {
+      this.order = order;
     });
   }
 

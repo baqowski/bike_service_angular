@@ -1,3 +1,5 @@
+import {User} from "../../core/user/user";
+
 export interface Product {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export interface Product {
   filename: string;
   quantity: number;
   isEditable: boolean;
+  user: User;
 }

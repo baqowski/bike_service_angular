@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   error = '';
 
   constructor(private formBuilder: FormBuilder,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
     }
     this.loading = true;
     this.auth.register(data).subscribe(value => {
+      this.router.navigate(['/dashboard']);
     })
   }
 

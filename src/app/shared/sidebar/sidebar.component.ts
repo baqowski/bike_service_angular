@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
 import {UserService} from '../../core/user/user.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     if (this.userService.getUserValue) {
-    this.roleName = this.userService.getUserValue.roleName;
+    this.roleName = this.userService.getUserValue().roleName;
     }
   }
 

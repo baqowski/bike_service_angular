@@ -3,7 +3,7 @@ import {Order, OrderImpl} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
-import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterLink, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-summary',
@@ -24,12 +24,14 @@ export class SummaryComponent implements OnInit {
   create(): void {
     this.orderService.create(this.shoppingCartService.getProductsValue)
       .subscribe(response => {
-        this.router.navigate(['/orders', response.id]);
+        this.router.navigate(['/orders/' + response]);
       });
   }
 
   ngOnInit(): void {
-    this.shoppingCartService.behaviorProducts.pipe(tap(value => {
+    debugger
+    this.shoppingCartService.behaviorProducts.pipe(
+      tap(value => {
       this.order.products = value;
       this.order.amount = this.shoppingCartService.getTotalAmount;
     })).subscribe(value => {

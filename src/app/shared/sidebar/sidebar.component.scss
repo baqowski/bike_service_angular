@@ -61,6 +61,17 @@ a, a:hover, a:focus {
   margin: auto;
 }
 
+@media (min-width: 769px) {
+  .hamburger{
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .hamburger{
+    background-color: red;
+  }
+}
+
 @media (max-width: 768px) {
   #sidebar {
     /*margin-left: -250px;*/
@@ -68,7 +79,6 @@ a, a:hover, a:focus {
     /*margin: 0px;*/
   }
   #sidebar.active {
-    display: none;
     margin-left: 0px;
     transform: none;
   }
