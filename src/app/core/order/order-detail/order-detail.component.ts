@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../order.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {mergeMap, tap} from 'rxjs/operators';
-import {Order, OrderImpl} from '../order';
+import {Order, OrderInterface} from '../order';
 import {Product} from '../../../public/product/product';
 
 
@@ -13,7 +13,7 @@ import {Product} from '../../../public/product/product';
 })
 export class OrderDetailComponent implements OnInit {
 
-  order: OrderImpl;
+  order: OrderInterface;
   products: Product[] = [];
 
   constructor(private orderService: OrderService,

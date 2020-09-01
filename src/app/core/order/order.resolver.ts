@@ -24,7 +24,7 @@ export class OrderResolver implements Resolve<Order> {
     return this.userService.findUserOrder(this.userService.getUserValue().uuid, route.params.id).pipe(
       catchError(err => {
         this.toastrService.error(err.message, err.status);
-        return err
+        return err;
       })
     );
   /*  return this.orderService.getById(route.params.id).pipe(

@@ -8,6 +8,7 @@ import {OrderResolver} from './order.resolver';
 import { OrderComponent } from './order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {PaymentModule} from '../payment/payment.module';
+import { DeliveryComponent } from './delivery/delivery.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {PaymentModule} from '../payment/payment.module';
     SummaryComponent,
     AddressComponent,
     OrderComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    DeliveryComponent
   ],
   exports: [
   ],

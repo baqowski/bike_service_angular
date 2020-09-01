@@ -15,16 +15,23 @@
           </app-table>
           <p>Kwota zamówienia {{order.amount}}</p>
         </div>
-        <br>
-       <app-address>
-       </app-address>
+        <app-delivery (emitValue)="onGetDelivery($event)">
+        </app-delivery>
+ <!--       {{order.delivery.type}}-->
 
+        <app-address>
+        </app-address>
+
+        <app-payment>
+        </app-payment>
       </ng-container>
+
+
 
       <app-payment *ngIf="stepNumber === 3"></app-payment>
     </div>
     <div class="card-footer">
-      <button class="btn btn-success w-100" (click)="create()"> Płatność</button>
+      <button class="btn btn-success w-100" (click)="create()"> Kupuję</button>
     </div>
   </div>
 </div>

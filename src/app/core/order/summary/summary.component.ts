@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Order, OrderImpl} from '../order';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Order, OrderInterface} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SummaryComponent implements OnInit {
 
-  order: Order = new OrderImpl();
+  order: OrderInterface = new Order();
   stepNumber = 1;
 
   constructor(private shoppingCartService: ShoppingCartService,
@@ -24,12 +24,13 @@ export class SummaryComponent implements OnInit {
   create(): void {
     this.orderService.create(this.shoppingCartService.getProductsValue)
       .subscribe(response => {
+        debugger;
         this.router.navigate(['/orders/' + response]);
       });
   }
 
   ngOnInit(): void {
-    debugger
+    debugger;
     this.shoppingCartService.behaviorProducts.pipe(
       tap(value => {
       this.order.products = value;
@@ -45,5 +46,10 @@ export class SummaryComponent implements OnInit {
 
   onClickBackStep(step: number): void {
     this.stepNumber = step - 1;
+  }
+
+  onGetDelivery(value): void {
+    debugger
+    this.order.delivery = value;
   }
 }

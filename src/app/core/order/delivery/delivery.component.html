@@ -1,0 +1,12 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <p>Forma dostawy</p>
+  </div>
+  <div class="card-body">
+    <app-select-box [data]="deliveries"
+                    (valueEmitter)="getSelectedValue($event)">
+    </app-select-box>
+  </div>
+</div>
+
+
