@@ -1,7 +1,6 @@
 import {Product} from '../../public/product/product';
-import {User} from '../user/user';
 import {DeliveryInterface} from './summary/delivery/delivery';
-import {AddressInterface} from "./summary/address/address";
+import {AddressInterface} from './summary/address/address';
 
 export class Order implements OrderInterface {
   constructor() {
@@ -12,9 +11,8 @@ export class Order implements OrderInterface {
   amount: number;
   products: Product[];
   id: number;
-  user: User;
   delivery: DeliveryInterface;
-  address: AddressInterface
+  deliveryAddress: AddressInterface;
 }
 
 export interface OrderInterface {
@@ -22,6 +20,5 @@ export interface OrderInterface {
   products: Product[];
   amount: number;
   delivery: DeliveryInterface;
-  user: User;
-  address: AddressInterface
+  deliveryAddress: AddressInterface;
 }

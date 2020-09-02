@@ -6,7 +6,7 @@ import {tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DeliveryInterface} from './delivery/delivery';
-import {DeliveryComponent} from "./delivery/delivery.component";
+import {DeliveryComponent} from './delivery/delivery.component';
 
 @Component({
   selector: 'app-summary',
@@ -41,24 +41,16 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   create(): void {
+    this.setOrder();
     this.orderService.create(this.order)
       .subscribe(id => {
         this.router.navigate(['/orders/' + id]);
       });
   }
 
-  onGetClientAddress(address): void {
+ /* onGetClientAddress(address): void {
     this.order.address = address;
-  }
-
-  goToPayment(step) {
-    this.stepNumber = step + 1;
-    this.initSummary();
-  }
-
-  backToSummary(step) {
-    this.stepNumber = step - 1;
-  }
+  }*/
 
   onGetDeliveryCost(): void {
     this.total = this.order.amount + this.deliveryRef.selectedPrice;
@@ -69,14 +61,15 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
       tap(value => {
         this.order.products = value;
         this.order.amount = this.shoppingCartService.getTotalAmount;
-        if (this.deliveryRef)
+        if (this.deliveryRef) {
           this.total = this.order.amount + this.deliveryRef.selectedPrice;
+        }
       })).subscribe();
   }
 
-  private initSummary(): void {
-    this.order.delivery = this.orderForm.value.delivery;
-    this.order.address = this.orderForm.value.address;
+  private setOrder(): void {
+    this.order.delivery = this.orderForm.value.deliveryType.delivery;
+    this.order.delivery.deliveryAddress = this.orderForm.value.address;
   }
 
   ngOnDestroy(): void {
