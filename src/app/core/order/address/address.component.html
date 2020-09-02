@@ -4,35 +4,53 @@
   </div>
   <div class="card-body">
     <form [formGroup]="addressForm">
-      <div class="row">
-        <div class="input-group mb-3">
-          <select class="custom-select">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+      <div [formGroupName]="'address'">
+        <div class="row">
+          <div class="input-group mb-3">
+            <select class="custom-select">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="street">Ulica</label>
-        <input type="text" class="form-control" id="street" aria-describedby="emailHelp" formControlName="street">
-      </div>
-      <div class="form-group">
-        <label for="houseNumber">Nr domu / mieszkania</label>
-        <input type="text" class="form-control" id="houseNumber" formControlName="houseNumber">
-      </div>
-      <div class="form-group">
-        <label for="postalCode">Kod pocztowy</label>
-        <input type="text" class="form-control" id="postalCode" formControlName="postalCode">
-      </div>
-      <div class="form-group">
-        <label for="city">Miejscowość</label>
-        <input type="text" class="form-control" id="city" formControlName="city">
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="save" formControl="saveToClient">
-        <label class="form-check-label" for="save">Zapisz adres</label>
+        <div class="form-group">
+          <label for="street">Ulica</label>
+          <input type="text"
+                 class="form-control"
+                 id="street"
+                 [formControlName]="'street'">
+        </div>
+        <div class="form-group">
+          <label for="houseNumber">Nr domu / mieszkania</label>
+          <input type="text"
+                 class="form-control"
+                 id="houseNumber"
+                 [formControlName]="'houseNumber'">
+        </div>
+        <div class="form-group">
+          <label for="postalCode">Kod pocztowy</label>
+          <input type="text"
+                 class="form-control"
+                 id="postalCode"
+                 [formControlName]="'postalCode'">
+        </div>
+        <div class="form-group">
+          <label for="city">Miejscowość</label>
+          <input type="text"
+                 class="form-control"
+                 id="city"
+                 [formControlName]="'city'">
+        </div>
+        <div class="form-check">
+          <input type="checkbox"
+                 class="form-check-input"
+                 id="save"
+                 formControl="saveToClient"
+                 [formControlName]="'saveToClient'">
+          <label class="form-check-label" for="save">Zapisz adres</label>
+        </div>
       </div>
     </form>
   </div>

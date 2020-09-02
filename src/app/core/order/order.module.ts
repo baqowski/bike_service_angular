@@ -11,6 +11,7 @@ import {PaymentModule} from '../payment/payment.module';
 import {DeliveryComponent} from './delivery/delivery.component';
 import {AddressService} from "./address/address.service";
 import {ReactiveFormsModule} from "@angular/forms";
+import {DeliveryResolver} from './delivery/delivery.resolver';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   providers: [
     OrderResolver,
-    AddressService
+    AddressService,
+    DeliveryResolver
   ]
 })
 export class OrderModule {

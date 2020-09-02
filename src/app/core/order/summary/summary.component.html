@@ -15,10 +15,7 @@
           </app-table>
           <p>Kwota zamówienia {{order.amount}}</p>
         </div>
-        <app-delivery (emitValue)="onGetDelivery($event)">
-        </app-delivery>
- <!--       {{order.delivery.type}}-->
-
+        <app-delivery [deliveries]="deliverySelectData" (emitValue)="onGetDelivery($event)"></app-delivery>
         <app-address (emitClientAddress)="onGetClientAddress($event)" [(addressForm)]="addressForm"></app-address>
 
         {{addressForm}}

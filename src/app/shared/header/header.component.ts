@@ -28,9 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void {
-    debugger
     this.auth.logout().subscribe(() => {
-      debugger
       localStorage.removeItem('user');
       this.userService.getUserSubject.next(null);
       this.router.navigate(['/']);

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AddressInterface} from "./address";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AddressInterface} from './address';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -14,17 +14,18 @@ export class AddressComponent implements OnInit {
   @Input() addressForm: FormGroup;
   @Output() addressFormChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
-    debugger
-    this.addressForm = this.formBuilder.group({
-      street: ['asdas', Validators.required],
-      houseNumber: ['asdas', Validators.required],
-      postalCode: ['asdas', Validators.required],
-      city: ['asd', Validators.required],
-      saveToClient: [true, ""]
-    });
+    this.addressForm.addControl('address', new FormGroup({
+      street: new FormControl('', Validators.required),
+      houseNumber: new FormControl('', Validators.required),
+      postalCode: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      savedAddress: new FormControl('', Validators.required),
+      saveToClient: new FormControl('', Validators.required)
+    }));
   }
 
   get form(): any {
@@ -32,13 +33,11 @@ export class AddressComponent implements OnInit {
   }
 
 
-
   onEmitClientAddress(address) {
-    this.emitClientAddress.emit(address)
+    this.emitClientAddress.emit(address);
   }
 
   onSubmit(data) {
-    debugger
 
   }
 }

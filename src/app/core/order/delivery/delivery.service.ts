@@ -11,7 +11,7 @@ export class DeliveryService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<DeliveryInterface[]>{
+  getDeliveryData(): Observable<DeliveryInterface[]>{
     return this.http.get<DeliveryInterface[]>(environment.apiUrl + '/api/deliveries');
   }
 }

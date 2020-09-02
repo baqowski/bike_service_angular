@@ -1,6 +1,6 @@
 <div class="input-group mb-3">
-  <select class="custom-select" [(ngModel)]="data" (ngModelChange)="emitAnyValue($event)">
+  <select class="custom-select">
     <option selected>Wybierz</option>
-    <option *ngFor="let item of data; let value of indexes" (change)="emitAnyValue(item)" [value]="item">{{item}}</option>
+    <option *ngFor="let item of selectData" (change)="emitAnyValue(item)" [value]="item">{{item[properties]}}</option>
   </select>
 </div>

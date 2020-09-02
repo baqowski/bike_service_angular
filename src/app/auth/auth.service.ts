@@ -40,7 +40,6 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    debugger
     return this.http.post(environment.apiUrl + '/api/users/logout', null);
   }
 

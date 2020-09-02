@@ -7,7 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class SelectBoxComponent implements OnInit {
 
-  @Input() data: any[];
+  @Input() selectData: any[];
+  @Input() properties: string;
   @Output() valueEmitter: EventEmitter<any> = new EventEmitter<any>();
   indexes: number[];
 
@@ -15,7 +16,7 @@ export class SelectBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
+
   }
 
 

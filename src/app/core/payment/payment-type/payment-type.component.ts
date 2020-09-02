@@ -13,7 +13,7 @@ export class PaymentTypeComponent implements OnInit {
 
   paymentType: PaymentType;
   paymentTypes = [
-    PaymentType.PAYU, PaymentType.BANK_TRANSFER, PaymentType.ON_DELIVERY
+    {type: PaymentType.PAYU}, {type: PaymentType.BANK_TRANSFER}, {type: PaymentType.ON_DELIVERY}
   ];
 
   constructor(private route: ActivatedRoute) { }

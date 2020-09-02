@@ -3,8 +3,9 @@
     <p>Forma dostawy</p>
   </div>
   <div class="card-body">
-    <app-select-box [data]="deliveries"
-                    (valueEmitter)="getSelectedValue($event)">
+    <app-select-box (valueEmitter)="getSelectedValue($event)"
+                    [selectData]="deliveries"
+                    [properties]="'type'">
     </app-select-box>
   </div>
 </div>

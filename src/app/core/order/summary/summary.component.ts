@@ -4,7 +4,9 @@ import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.s
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {DeliveryService} from '../delivery/delivery.service';
+import {DeliveryInterface} from '../delivery/delivery';
 
 @Component({
   selector: 'app-summary',
@@ -16,31 +18,37 @@ export class SummaryComponent implements OnInit {
   order: OrderInterface = new Order();
   stepNumber = 1;
   addressForm: FormGroup;
+  deliverySelectData: DeliveryInterface[];
 
   constructor(private shoppingCartService: ShoppingCartService,
               private orderService: OrderService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private deliveryService: DeliveryService) {
+    this.addressForm = this.formBuilder.group({});
+    this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;
   }
 
   create(): void {
     this.orderService.create(this.shoppingCartService.getProductsValue)
       .subscribe(response => {
-        debugger;
         this.router.navigate(['/orders/' + response]);
       });
   }
 
   ngOnInit(): void {
-    debugger;
+    this.deliveryService.getDeliveryData()
+      .subscribe((response) => {
+        this.deliverySelectData = response;
+      });
 
     this.shoppingCartService.behaviorProducts.pipe(
       tap(value => {
-      this.order.products = value;
-      this.order.amount = this.shoppingCartService.getTotalAmount;
-    })).subscribe(value => {
+        this.order.products = value;
+        this.order.amount = this.shoppingCartService.getTotalAmount;
+      })).subscribe(value => {
     });
-
   }
 
   onClickNextStep(step: number): void {
@@ -52,12 +60,10 @@ export class SummaryComponent implements OnInit {
   }
 
   onGetDelivery(value): void {
-    debugger
     this.order.delivery = value;
   }
 
   onGetClientAddress(address): void {
-    debugger
     this.order.address = address;
   }
 }

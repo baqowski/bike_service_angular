@@ -4,10 +4,10 @@
   </div>
   <div class="card-body">
     <app-select-box
-      [data]="paymentTypes"
+      [selectData]="paymentTypes"
+      [properties]="'type'"
       (valueEmitter)="getSelectedValue($event)">
     </app-select-box>
-    {{paymentType}}
   </div>
 </div>
 <app-payu-widget *ngIf="paymentType === 'PAYU'"></app-payu-widget>
