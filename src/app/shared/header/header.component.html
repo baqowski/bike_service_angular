@@ -1,20 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-caret-down fa-3x"></i>
+
+    <button class="btn btn-dark d-inline-block d-lg-none ml-auto"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <button type="button" class="navbar-btn" data-toggle="collapse" (click)="clickToggle(toggle)">
-            <i class="fas fa-caret-down fa-3x"></i>
-          </button>
+          <a class="nav-link dropdown"
+             data-toggle="collapse"
+             (click)="clickToggle(toggle)">
+            <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
 
-        <app-shopping-card></app-shopping-card>
-
         <li class="nav-item dropdown" *ngIf="user">
-          <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown">
+          <a class="nav-link dropdown"
+             id="navbarDropdown"
+             role="button"
+             data-toggle="dropdown">
             <i class="fas fa-user fa-2x"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -22,13 +33,16 @@
             <a class="dropdown-item">Ustawienia</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="onLogout()">Wyloguj</a>
-            <!--(click)="onLogout()-->
           </div>
         </li>
+
         <li class="nav-item">
-          <i class="fas fa-tachometer-alt fa-2x" routerLink="/dashboard"></i>
-          <!--<a class="nav-link" routerLink="/login" routerLinkActive="active"></a>-->
+          <a class="nav-link dropdown" role="button" data-toggle="dropdown">
+            <i class="fas fa-tachometer-alt fa-2x" routerLink="/dashboard"></i>
+          </a>
         </li>
+
+        <app-shopping-card></app-shopping-card>
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user">Zaloguj</a>
@@ -36,7 +50,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/register" *ngIf="!user" routerLinkActive="active">Register</a>
         </li>
-
       </ul>
     </div>
   </div>

@@ -1,15 +1,30 @@
 <div class="container" *ngIf="product">
-  <span>
-    {{product.id}}
-  </span>
-  <span >
-    {{product.name}}
-  </span>
-  <span>
-    {{product.price}}
-  </span>
-  <button class="btn btn-success" (click)="addProductToShoppingCard(product)">
-    Dodaj do koszyka
-  </button>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <img class="card-img-top"
+             src="https://www.rmdbike.com/userdata/public/gfx/5857/rower-mtb-ctm-christine-1.0-fahrrad-bike-turkus-mat-min.jpg"
+             alt="Produkt">
+        <!--          <img class="card-img-top" src="{{product.sourceImage}}" alt="Produkt">-->
+        <div class="card-body">
+          <h5 class="card-title">Id: {{product.id}} {{product.name}}</h5>
+          <!--            <p class="card-text">{{product.description }}</p>-->
+          <p class="card-text">Rower damka ma zamontowany amortyzator firmy Suntour. Firma Suntour specjalizuje się w
+            produkcji amortyzatorów rowerowych. Dzięki temu mamy pewność, że zainstalowane części są dobrej jakości i
+            działają płynnie. Amortyzator rowerowy ułatwi jazdę po nierównej drodze. Również dzięki amortyzatorowi
+            ręce mniej się meczą podczas jazdy. Dłuższe trasy w nieznanym ternie będą przyjemnością.</p>
+        </div>
+        <div class="card-footer">
+          <span>
+            <label>Cena: </label>
+            {{product.price}}
+          </span>
+          <button class="btn btn-primary pull-right" (click)="addProductToShoppingCard(product)">
+            Dodaj do koszyka
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
