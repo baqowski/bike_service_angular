@@ -19,8 +19,9 @@
         </app-delivery>
  <!--       {{order.delivery.type}}-->
 
-        <app-address>
-        </app-address>
+        <app-address (emitClientAddress)="onGetClientAddress($event)" [(addressForm)]="addressForm"></app-address>
+
+        {{addressForm}}
 
         <app-payment>
         </app-payment>

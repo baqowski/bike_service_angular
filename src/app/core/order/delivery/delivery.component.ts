@@ -1,8 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DeliveryInterface} from './delivery';
-import {PaymentType} from '../../payment/payment-type/payment-type';
 import {DeliveryService} from './delivery.service';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-delivery',
@@ -14,9 +13,12 @@ export class DeliveryComponent implements OnInit {
   @Output() emitValue: EventEmitter<DeliveryInterface> = new EventEmitter<DeliveryInterface>();
   deliveries: DeliveryInterface[] = [];
 
-  constructor(private deliveryService: DeliveryService) { }
+  constructor(private deliveryService: DeliveryService) {
+
+  }
 
   ngOnInit(): void {
+    debugger
     this.deliveryService.getAll().pipe(
       map((value: any) => {
         debugger;
@@ -33,11 +35,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   getSelectedValue(value): any {
+    debugger
     this.emitValue.emit(value);
   }
-
-  /*onEmitDeliver(delivery): void {
-    debugger
-    this.emitValue.emit(delivery);
-  }*/
 }

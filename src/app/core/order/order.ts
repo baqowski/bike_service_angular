@@ -1,6 +1,7 @@
 import {Product} from '../../public/product/product';
 import {User} from '../user/user';
 import {DeliveryInterface} from './delivery/delivery';
+import {AddressInterface} from "./address/address";
 
 export class Order implements OrderInterface {
   constructor() {
@@ -13,6 +14,7 @@ export class Order implements OrderInterface {
   id: number;
   user: User;
   delivery: DeliveryInterface;
+  address: AddressInterface
 }
 
 export interface OrderInterface {
@@ -21,4 +23,5 @@ export interface OrderInterface {
   amount: number;
   delivery: DeliveryInterface;
   user: User;
+  address: AddressInterface
 }
