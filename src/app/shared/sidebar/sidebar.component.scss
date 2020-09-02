@@ -13,10 +13,12 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-/*  min-width: 250px;
-  max-width: 250px;*/
+///*  min-width: 250px;
+  max-width: 218px;
+  height: calc(100vh - 79px);
+  min-height: 100%;
+  overflow: hidden;
   display: block;
-  height: 100%;
   background: #343a40;
   color: #fff;
   transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);

@@ -1,27 +1,30 @@
-<nav class="w-100" id="sidebar" [ngClass]="{'active': toggle}">
-  <div *ngIf="roleName === 'ROLE_ADMIN' || roleName === 'ROLE_WORKER'">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/products"><span>Produkty</span></a>
+<nav class="w-100"
+     id="sidebar"
+     [ngClass]="{'active': toggle}">
+  <ul class="list-unstyled component"
+      *ngFor="let element of listOfSidebarData">
+    <li class="nav-item"
+        *ngIf="!element.subLinks">
+      <a class="nav-link"
+         routerLink="{{element.routerLink}}">
+        {{element.name}}</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link fa" routerLink="/test-component">Użytkownicy</a>
-    </li>
-  </div>
-  <ul class="list-unstyled component">
-    <li class="nav-item">
-      <a class="nav-link">Usługi</a>
-    </li>
-    <li class="nav-item">
-      <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-      <ul class="collapse list-unstyled" id="productSubmenu">
-        <li>
-          <a routerLink="/products">Rowery</a>
-        </li>
-        <li>
-          <a>Części i akcesoria</a>
+    <li class="nav-item"
+        *ngIf="element.subLinks">
+      <a class="dropdown-toggle"
+         data-toggle="collapse"
+         aria-expanded="false"
+         href="{{element.href}}">
+        {{element.name}}
+      </a>
+      <ul class="collapse list-unstyled"
+          id="{{element.hrefId}}">
+        <li class="nav-item"
+            *ngFor="let sub of element.subLinks">
+          <a routerLink="{{sub.routerLink}}">
+            {{sub.name}}</a>
         </li>
       </ul>
-    <li>
     </li>
   </ul>
 </nav>

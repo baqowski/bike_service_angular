@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {Product} from '../product/product';
-import {Order} from '../../core/order/order';
-import {map} from 'rxjs/operators';
-import validate = WebAssembly.validate;
 
 @Injectable({
   providedIn: 'root'

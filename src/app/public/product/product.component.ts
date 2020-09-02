@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
     this.productService.getAll().pipe(
       map(value => value.map(
         (product: Product) => {
-          product.quantity = 0;
+          product.quantity = 1;
           return product;
         }
       )),

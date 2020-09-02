@@ -13,6 +13,7 @@ import {TableComponent} from './table/table.component';
 import {SelectBoxComponent} from './select-box/select-box.component';
 import {NotFoundService} from './not-found/not-found.service';
 import {AccessDeniedComponent} from './access-denied/access-denied.component';
+import {SidebarService} from './sidebar/sidebar.service';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {AccessDeniedComponent} from './access-denied/access-denied.component';
     FontAwesomeModule
   ],
   providers: [
-    NotFoundService
+    NotFoundService,
+    SidebarService
   ]
 })
 export class SharedModule {

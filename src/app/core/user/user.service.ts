@@ -32,6 +32,10 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid);
   }
 
+  onGetUserRoleByUuid(uuid): Observable<User> {
+    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid + '&projection=role');
+  }
+
   public get getUserSubject(): BehaviorSubject<User> {
     return this.userSubject;
   }

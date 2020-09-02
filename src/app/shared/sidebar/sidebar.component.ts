@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../core/user/user.service';
+import {SidebarService} from './sidebar.service';
+import {SidebarInterface} from './sidebar.interface';
+import {map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,18 +13,19 @@ export class SidebarComponent implements OnInit {
 
   @Input() toggle = true;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-  roleName: string;
-  constructor(private userService: UserService) {
+  listOfSidebarData: SidebarInterface[];
+
+  constructor(private userService: UserService,
+              private sidebarService: SidebarService) {
   }
 
-  ngOnInit() {
-    if (this.userService.getUserValue) {
-    this.roleName = this.userService.getUserValue().roleName;
-    }
+  ngOnInit(): void {
+    this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
+      .pipe(
+        map(user => user.authorities),
+        tap(role => {
+          this.listOfSidebarData = this.sidebarService.onGetUserRole(role.shift());
+        })
+      ).subscribe();
   }
-
-  receiveToggle(): void {
-    this.toggleChange.emit(this.toggle);
-  }
-
 }

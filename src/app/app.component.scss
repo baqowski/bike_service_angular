@@ -4,8 +4,7 @@
 html, body {
   font-family: 'Poppins', sans-serif;
   background: #fafafa;
-  height: 100%;
-  width: 100%;
+  overflow-y: hidden;
 }
 
 .wrapper {
@@ -17,6 +16,7 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #content {
