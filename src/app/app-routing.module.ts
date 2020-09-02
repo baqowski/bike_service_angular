@@ -9,7 +9,7 @@ import {HomeComponent} from './public/home/home.component';
 import {SummaryComponent} from './core/order/summary/summary.component';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {AccessDeniedComponent} from './shared/access-denied/access-denied.component';
-import {DeliveryResolver} from './core/order/delivery/delivery.resolver';
+import {DeliveryResolver} from './core/order/summary/delivery/delivery.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

@@ -10,7 +10,6 @@ export class SelectBoxComponent implements OnInit {
   @Input() selectData: any[];
   @Input() properties: string;
   @Output() valueEmitter: EventEmitter<any> = new EventEmitter<any>();
-  indexes: number[];
 
   constructor() {
   }
@@ -18,7 +17,6 @@ export class SelectBoxComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
 
   emitAnyValue(value): any {
     return this.valueEmitter.emit(value);

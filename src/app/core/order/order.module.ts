@@ -3,15 +3,15 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from '../../shared/shared.module';
 import {SummaryComponent} from './summary/summary.component';
 import {OrderRoutingModule} from './order-routing.module';
-import {AddressComponent} from './address/address.component';
+import {AddressComponent} from './summary/address/address.component';
 import {OrderResolver} from './order.resolver';
 import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
-import {PaymentModule} from '../payment/payment.module';
-import {DeliveryComponent} from './delivery/delivery.component';
-import {AddressService} from "./address/address.service";
+import {PaymentModule} from './payment/payment.module';
+import {DeliveryComponent} from './summary/delivery/delivery.component';
+import {AddressService} from "./summary/address/address.service";
 import {ReactiveFormsModule} from "@angular/forms";
-import {DeliveryResolver} from './delivery/delivery.resolver';
+import {DeliveryResolver} from './summary/delivery/delivery.resolver';
 
 
 @NgModule({

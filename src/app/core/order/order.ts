@@ -1,7 +1,7 @@
 import {Product} from '../../public/product/product';
 import {User} from '../user/user';
-import {DeliveryInterface} from './delivery/delivery';
-import {AddressInterface} from "./address/address";
+import {DeliveryInterface} from './summary/delivery/delivery';
+import {AddressInterface} from "./summary/address/address";
 
 export class Order implements OrderInterface {
   constructor() {

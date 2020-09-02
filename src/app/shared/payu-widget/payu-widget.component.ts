@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {PaymentService} from "../../core/order/payment/payment.service";
+import {OrderInterface} from "../../core/order/order";
 
 @Component({
   selector: 'app-payu-widget',
@@ -8,14 +10,19 @@ import {Router} from '@angular/router';
 })
 export class PayuWidgetComponent implements OnInit {
 
-  @Input() redirectUri;
-  constructor(private router: Router) { }
+  @Input() order: OrderInterface;
+
+  constructor(private router: Router, private paymentService: PaymentService) {
+  }
 
   ngOnInit(): void {
   }
 
-  onClickPayu() {
-    this.router.navigateByUrl('https://stackoverflow.com/');
+  onClickPayu(order) {
+    debugger
+    this.paymentService.create(order).subscribe(payment => {
+      debugger
+      this.router.navigateByUrl("/");
+    })
   }
-
 }

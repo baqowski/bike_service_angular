@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {OrderResolver} from './order.resolver';
 import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {PaymentComponent} from "./payment/payment.component";
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
     resolve: {
       order: OrderResolver
     }
+  },
+  {
+    path: ':id/payments',
+    component: PaymentComponent
   }
+
 ];
 
 @NgModule({

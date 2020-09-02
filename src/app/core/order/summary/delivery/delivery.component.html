@@ -1,0 +1,18 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <p>Forma dostawy</p>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="deliveryForm">
+      <div class="input-group mb-3" [formGroupName]="'deliveryType'">
+        <select class="custom-select" (ngModelChange)="onProductCostChange($event)" [formControlName]="'delivery'">
+          <option *ngFor="let item of deliveries" [ngValue]="item">
+            {{item.type + ', ' + item.cost + ' zł'}}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+
+

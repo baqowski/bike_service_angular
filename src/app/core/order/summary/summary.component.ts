@@ -1,69 +1,85 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Order, OrderInterface} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {DeliveryService} from '../delivery/delivery.service';
-import {DeliveryInterface} from '../delivery/delivery';
+import {DeliveryInterface} from './delivery/delivery';
+import {DeliveryComponent} from "./delivery/delivery.component";
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
-export class SummaryComponent implements OnInit {
+export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  @ViewChild(DeliveryComponent) deliveryRef: DeliveryComponent;
+
+  total: number;
   order: OrderInterface = new Order();
   stepNumber = 1;
-  addressForm: FormGroup;
+  orderForm: FormGroup;
   deliverySelectData: DeliveryInterface[];
 
   constructor(private shoppingCartService: ShoppingCartService,
               private orderService: OrderService,
               private router: Router,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private deliveryService: DeliveryService) {
-    this.addressForm = this.formBuilder.group({});
+              private formBuilder: FormBuilder) {
+    this.orderForm = this.formBuilder.group({});
     this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;
   }
 
-  create(): void {
-    this.orderService.create(this.shoppingCartService.getProductsValue)
-      .subscribe(response => {
-        this.router.navigate(['/orders/' + response]);
-      });
-  }
-
   ngOnInit(): void {
-    this.deliveryService.getDeliveryData()
-      .subscribe((response) => {
-        this.deliverySelectData = response;
+    this.total = this.shoppingCartService.getTotalAmount;
+    this.initShoppingProducts();
+  }
+
+  ngAfterViewInit(): void {
+  }
+
+  create(): void {
+    this.orderService.create(this.order)
+      .subscribe(id => {
+        this.router.navigate(['/orders/' + id]);
       });
-
-    this.shoppingCartService.behaviorProducts.pipe(
-      tap(value => {
-        this.order.products = value;
-        this.order.amount = this.shoppingCartService.getTotalAmount;
-      })).subscribe(value => {
-    });
-  }
-
-  onClickNextStep(step: number): void {
-    this.stepNumber = step + 1;
-  }
-
-  onClickBackStep(step: number): void {
-    this.stepNumber = step - 1;
-  }
-
-  onGetDelivery(value): void {
-    this.order.delivery = value;
   }
 
   onGetClientAddress(address): void {
     this.order.address = address;
   }
+
+  goToPayment(step) {
+    this.stepNumber = step + 1;
+    this.initSummary();
+  }
+
+  backToSummary(step) {
+    this.stepNumber = step - 1;
+  }
+
+  onGetDeliveryCost(): void {
+    this.total = this.order.amount + this.deliveryRef.selectedPrice;
+  }
+
+  initShoppingProducts(): void {
+    this.shoppingCartService.behaviorProducts.pipe(
+      tap(value => {
+        this.order.products = value;
+        this.order.amount = this.shoppingCartService.getTotalAmount;
+        if (this.deliveryRef)
+          this.total = this.order.amount + this.deliveryRef.selectedPrice;
+      })).subscribe();
+  }
+
+  private initSummary(): void {
+    this.order.delivery = this.orderForm.value.delivery;
+    this.order.address = this.orderForm.value.address;
+  }
+
+  ngOnDestroy(): void {
+  }
 }
+

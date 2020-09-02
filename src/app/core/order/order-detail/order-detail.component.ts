@@ -13,7 +13,7 @@ import {Product} from '../../../public/product/product';
 })
 export class OrderDetailComponent implements OnInit {
 
-  order: OrderInterface;
+   order: OrderInterface;
   products: Product[] = [];
 
   constructor(private orderService: OrderService,

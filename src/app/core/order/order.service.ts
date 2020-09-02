@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {Product} from '../../public/product/product';
+import {Order} from "./order";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  create(products: Product[]): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/orders/', products);
+  create(order: Order): Observable<any> {
+    return this.http.post(environment.apiUrl + '/api/orders/', order);
   }
 
   getById(id): Observable<any> {
