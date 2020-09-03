@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../core/user/user.service';
 import {SidebarService} from './sidebar.service';
 import {SidebarInterface} from './sidebar.interface';
-import {map, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,9 +22,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
       .pipe(
-        map(user => user.authorities),
         tap(role => {
-          this.listOfSidebarData = this.sidebarService.onGetUserRole(role.shift());
+          this.listOfSidebarData = this.sidebarService.onGetUserRole(role.name);
         })
       ).subscribe();
   }

@@ -7,6 +7,15 @@ a.dropdown-item {
   text-align: center;
 }
 
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.main div i {
+  flex: 1 ;
+}
+
 /*i:active {
   cursor: move;
 }*/

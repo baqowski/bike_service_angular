@@ -31,6 +31,7 @@
                 </button>
                 <div class="col-sm">
                   <button class="btn btn-sm btn-primary pull-right"
+                          [disabled]="product.quantity === 0"
                           (click)="addProductToShoppingCart(product)">
                     Dodaj do koszyka
                   </button>

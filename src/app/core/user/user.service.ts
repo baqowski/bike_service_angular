@@ -4,6 +4,7 @@ import {Order} from '../order/order';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {User} from './user';
+import {Role} from '../role/role';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid);
   }
 
-  onGetUserRoleByUuid(uuid): Observable<User> {
-    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid + '&projection=role');
+  onGetUserRoleByUuid(uuid): Observable<Role> {
+    return this.http.get<Role>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid + '&projection=role');
   }
 
   public get getUserSubject(): BehaviorSubject<User> {

@@ -20,7 +20,7 @@ export class SidebarService {
     return [
       {name: 'Usługi', routerLink: ''},
       {
-        name: 'Home', routerLink: '', href: '#home', hrefId: 'home', subLinks: [
+        name: 'Produkty', routerLink: '', href: '#home', hrefId: 'home', subLinks: [
           {name: 'Rowery', routerLink: '/products'},
           {name: 'Części i akcesoria', routerLink: ''}]
       },

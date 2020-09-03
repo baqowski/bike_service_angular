@@ -11,8 +11,7 @@ import {FormsModule} from '@angular/forms';
     ItemComponent
   ],
   exports: [
-    ShoppingCartComponent,
-    ItemComponent
+    ShoppingCartComponent
   ],
   providers: [],
   imports: [

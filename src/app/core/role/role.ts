@@ -1,3 +1,4 @@
 export interface Role {
-  name: String;
+  name: string;
+  authority: string;
 }

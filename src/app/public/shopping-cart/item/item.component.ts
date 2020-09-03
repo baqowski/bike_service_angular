@@ -7,7 +7,7 @@ import {Product} from '../../product/product';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
 
   @Input() product: Product;
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
@@ -16,23 +16,22 @@ export class ItemComponent implements OnInit {
   constructor(private shoppingCardService: ShoppingCartService) {
   }
 
-  ngOnInit(): void {
-  }
-
   remove(): void {
     this.onRemove.emit();
   }
 
-  goToProduct(id: number): void {
-    this.onGoToProduct.next(id);
-  }
-
   onClickEmitIncrementCountProduct(product, event): void {
+    event.preventDefault();
     event.stopPropagation();
     this.shoppingCardService.increaseCount(product);
   }
 
-  onClickEmitDecrementCountProduct(product): void {
+  onClickEmitDecrementCountProduct(product, event): void {
+    event.preventDefault();
+    event.stopPropagation();
     this.shoppingCardService.decreaseCount(product);
+    if (product.quantity === 0) {
+      this.remove();
+    }
   }
 }
