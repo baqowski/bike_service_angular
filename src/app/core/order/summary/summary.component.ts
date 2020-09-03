@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Order, OrderInterface} from '../order';
+import {Order, OrderInterface, OrderServiceType} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
@@ -22,6 +22,9 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   stepNumber = 1;
   orderForm: FormGroup;
   deliverySelectData: DeliveryInterface[];
+  orderServiceTypes: OrderServiceType[] = [
+    OrderServiceType.SHOPPING, OrderServiceType.RENT,
+  ];
 
   constructor(private shoppingCartService: ShoppingCartService,
               private orderService: OrderService,

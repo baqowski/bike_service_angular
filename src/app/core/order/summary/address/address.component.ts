@@ -8,8 +8,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AddressComponent implements OnInit {
 
-/*  @Output() emitClientAddress: EventEmitter<AddressInterface> = new EventEmitter<AddressInterface>();
-  selectedAddress: AddressInterface;*/
   @Input() addressForm: FormGroup;
   @Output() addressFormChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
@@ -27,16 +25,7 @@ export class AddressComponent implements OnInit {
     }));
   }
 
-  get form(): any {
-    return this.addressForm.controls;
-  }
-
-
-  onEmitClientAddress(address) {
+  onEmitClientAddress(address): void {
     this.addressFormChange.emit(address);
-  }
-
-  onSubmit(data) {
-
   }
 }

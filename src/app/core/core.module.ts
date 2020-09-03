@@ -11,13 +11,15 @@ import {RoleComponent} from './role/role.component';
 import {OrderModule} from './order/order.module';
 import {ProductResolver} from '../public/product/product.resolver';
 import {ManagementModule} from './management/management.module';
+import {UserShoppingComponent} from './dashboard/user-shopping/user-shopping.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     RoleComponent,
-    UserComponent
+    UserComponent,
+    UserShoppingComponent
   ],
   exports: [
     DashboardComponent,

@@ -4,11 +4,12 @@
       <p>Realizacja zamówienia </p>
     </div>
     <div class="card-body">
-      <ng-container *ngIf="stepNumber === 1">
+
         <div class="card">
           <div class="card-header">
             Podsumowanie
           </div>
+
           <app-table *ngIf="order.products && order.products.length"
                      [data]="order.products"
                      [showActionButtons]="false">
@@ -20,10 +21,8 @@
                       (deliveryFormChange)="onGetDeliveryCost()">
         </app-delivery>
 
-        <app-address [(addressForm)]="orderForm"
-                     >
+        <app-address [(addressForm)]="orderForm">
         </app-address>
-      </ng-container>
     </div>
     <div class="card-footer">
       <div class="">

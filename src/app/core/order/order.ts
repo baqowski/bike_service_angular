@@ -13,6 +13,7 @@ export class Order implements OrderInterface {
   id: number;
   delivery: DeliveryInterface;
   deliveryAddress: AddressInterface;
+  orderServiceType: OrderServiceType;
 }
 
 export interface OrderInterface {
@@ -21,4 +22,12 @@ export interface OrderInterface {
   amount: number;
   delivery: DeliveryInterface;
   deliveryAddress: AddressInterface;
+  orderServiceType: OrderServiceType;
 }
+
+export enum OrderServiceType {
+  SHOPPING = 'SHOPPING',
+  RENT = 'RENT',
+  REPAIR = 'REAPIR'
+}
+

@@ -9,8 +9,8 @@ import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
 import {PaymentModule} from './payment/payment.module';
 import {DeliveryComponent} from './summary/delivery/delivery.component';
-import {AddressService} from "./summary/address/address.service";
-import {ReactiveFormsModule} from "@angular/forms";
+import {AddressService} from './summary/address/address.service';
+import {ReactiveFormsModule} from '@angular/forms';
 import {DeliveryResolver} from './summary/delivery/delivery.resolver';
 
 
