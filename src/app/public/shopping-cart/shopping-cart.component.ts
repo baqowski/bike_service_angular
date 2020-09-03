@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../product/product';
 import {ShoppingCartService} from './shopping-cart.service';
-import {map, tap} from 'rxjs/operators';
-import {ActivatedRoute, ActivatedRouteSnapshot, Router} from '@angular/router';
+import {tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {User} from '../../core/user/user';
 
 @Component({
   selector: 'app-shopping-card',
@@ -14,6 +14,7 @@ export class ShoppingCartComponent implements OnInit {
 
   products: Product[] = [];
   total = 0;
+  @Input() user: User;
 
   constructor(private shoppingCardService: ShoppingCartService, private router: Router) {
   }

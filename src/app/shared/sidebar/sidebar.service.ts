@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class SidebarService {
 
-  onGetUserRole(role: any): any {
+  onGetUserRole(role: any): void {
     switch (role) {
       case 'ROLE_ADMIN' || 'ROLE_WORKER':
         return this.onGetAdminSidebar;

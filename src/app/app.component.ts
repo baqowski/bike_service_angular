@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NotFoundComponent} from './shared/not-found/not-found.component';
+import {tap} from 'rxjs/operators';
+import {UserService} from './core/user/user.service';
+import {User} from './core/user/user';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   notFoundValue = false;
   toggle = false;
+  user: User;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private userService: UserService,
+              private router: Router) {
 
   }
 
   ngOnInit(): void {
+    this.userService.getUserSubject.asObservable().pipe(
+      tap(data => this.user = data),
+      tap(console.log)
+    ).subscribe();
+
     this.route.data.subscribe(data => {
       this.notFoundValue = data.status;
     });

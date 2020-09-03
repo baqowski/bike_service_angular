@@ -23,8 +23,7 @@ export class DeliveryComponent implements OnInit {
     }));
   }
 
-  onProductCostChange(value: any) {
-    debugger
+  onProductCostChange(value: any): void {
     this.selectedPrice = value.cost;
     this.deliveryFormChange.emit(this.deliveryForm);
   }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loading = false;
   error = '';
+  @Output() isLoggedUser: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
           return err;
         }))
       .subscribe(next => {
+          this.isLoggedUser.emit();
           this.router.navigate(['/dashboard']);
         },
         error => {

@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   @Input() toggle = true;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
-  listOfSidebarData: SidebarInterface[];
+  listOfSidebarData: any;
 
   constructor(private userService: UserService,
               private sidebarService: SidebarService) {
