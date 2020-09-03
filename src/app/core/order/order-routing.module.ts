@@ -3,7 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {OrderResolver} from './order.resolver';
 import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './order-detail/order-detail.component';
-import {PaymentComponent} from "./payment/payment.component";
+import {PaymentDetailComponent} from "./payment/payment-detail/payment-detail.component";
+import {PaymentResolver} from "./payment/payment.resolver";
 
 const routes: Routes = [
   {
@@ -22,10 +23,12 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/payments',
-    component: PaymentComponent
-  }
-
+    path: ':id/payment',
+    component: PaymentDetailComponent,
+    resolve: {
+      payment: PaymentResolver
+    }
+  },
 ];
 
 @NgModule({

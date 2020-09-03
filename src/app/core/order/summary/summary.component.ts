@@ -44,7 +44,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setOrder();
     this.orderService.create(this.order)
       .subscribe(id => {
-        this.router.navigate(['/orders/' + id]);
+        this.router.navigate(['/orders/' + id + '/payments']);
       });
   }
 

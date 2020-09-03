@@ -3,20 +3,18 @@
     <span>Forma płatności</span>
   </div>
   <div class="card-body">
-    <select class="custom-select" (change)="onSelectPayment($event)">
-      <option *ngFor="let item of paymentTypes" (change)="item">
+    <select class="custom-select" [ngModel]="selected" (ngModelChange)="onChange($event)">
+      <option *ngFor="let item of paymentTypes" [ngValue]="item.type">
         {{item.type}}
       </option>
     </select>
   </div>
-  <div class="card-text">
-    {{payment}}
+  <div class="card-text m-2">
+    <ng-container *ngIf="selected.paymentType">
+      <div class="container-fluid">
+        <div class="mb-2">Wybrana forma płatności {{selected.paymentType}}</div>
+        <button class="btn btn-success w-100" *ngIf="selected.paymentType !== 'PAYU'">Potwierdź</button>
+        <app-payu-widget [payment]="selected" *ngIf="selected.paymentType === 'PAYU'"></app-payu-widget>
+      </div>
+    </ng-container>
   </div>
-  <ng-container *ngIf="payment !== null">
-    <div class="card-footer" *ngIf="payment.paymentType !== 'PAYU'">
-      <button class="btn btn-success w-100">Potwierdź</button>
-    </div>
-    <app-payu-widget *ngIf="payment.paymentType === 'PAYU'"></app-payu-widget>
-  </ng-container>
-</div>
-

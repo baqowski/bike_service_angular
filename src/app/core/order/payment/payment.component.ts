@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
-import {PaymentInterface, PaymentType} from "./payment";
+import {Payment, PaymentInterface, PaymentType} from "./payment";
 
 @Component({
   selector: 'app-payment',
@@ -10,20 +9,19 @@ import {PaymentInterface, PaymentType} from "./payment";
 })
 export class PaymentComponent implements OnInit {
 
-  payment: PaymentInterface;
+  selected: PaymentInterface = new Payment();
   paymentTypes = [
     {type: PaymentType.PAYU}, {type: PaymentType.BANK_TRANSFER}, {type: PaymentType.ON_DELIVERY}
   ];
 
-  constructor(private route: ActivatedRoute) {
-    debugger
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  onSelectPayment(payment) {
-    debugger
-
+  onChange(value) {
+    this.selected.paymentType = value;
+    console.log(value);
   }
 }
