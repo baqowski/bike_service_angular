@@ -21,8 +21,16 @@ export class SidebarService {
       {name: 'Usługi', routerLink: ''},
       {
         name: 'Produkty', routerLink: '', href: '#home', hrefId: 'home', subLinks: [
-          {name: 'Rowery', routerLink: '/products'},
-          {name: 'Części i akcesoria', routerLink: ''}]
+          {
+            name: 'Rowery', routerLink: '/products', subLinks: [
+              {name: 'Męskie', routerLink: '', href: '', hrefIf: ''},
+              {name: 'Damskie', routerLink: '', href: '', hrefIf: ''},
+              {name: 'Dziecięce', routerLink: '', href: '', hrefIf: ''},
+            ]
+          },
+          {name: 'Części', routerLink: ''},
+          {name: 'Akcesoria', routerLink: ''}
+        ]
       },
     ];
   }

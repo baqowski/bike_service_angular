@@ -11,7 +11,6 @@ import {AuthModule} from './auth/auth.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TestModule} from './test/test.module';
 import {RouterModule} from '@angular/router';
 import {OrderModule} from './core/order/order.module';
 import {PublicModule} from './public/public.module';
@@ -36,8 +35,7 @@ import {NotFoundComponent} from './shared/not-found/not-found.component';
     AuthModule,
     CoreModule,
     SharedModule,
-    PublicModule,
-    TestModule
+    PublicModule
   ],
   providers: [
     {
