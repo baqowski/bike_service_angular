@@ -13,9 +13,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-///*  min-width: 250px;
+  ///*  min-width: 250px;
   max-width: 290px;
-  height: calc(100vh - 79px);
   min-height: 100%;
   padding-right: 0;
   overflow: hidden;
@@ -51,6 +50,7 @@ a, a:hover, a:focus {
   font-size: 1.1em;
   display: block;
 }
+
 #sidebar ul li a:hover {
   color: #7386D5;
   background: #fff;
@@ -66,12 +66,13 @@ a, a:hover, a:focus {
 }
 
 @media (min-width: 769px) {
-  .hamburger{
+  .hamburger {
     display: none;
   }
 }
+
 @media (min-width: 769px) {
-  .hamburger{
+  .hamburger {
     background-color: red;
   }
 }
@@ -105,4 +106,22 @@ a, a:hover, a:focus {
   #sidebarCollapse.active span:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px);
   }
+}
+
+.alignleft {
+  float: left;
+  text-align: left;
+  width: 33.33333%;
+}
+
+.aligncenter {
+  float: left;
+  text-align: center;
+  width: 33.33333%;
+}
+
+.alignright {
+  float: left;
+  text-align: right;
+  width: 33.33333%;
 }

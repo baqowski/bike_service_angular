@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./core/order/order.module').then(module => module.OrderModule),
   },
   {
+    path: 'account',
+    loadChildren: () => import('./public/account/account.module').then(module => module.AccountModule),
+  },
+  {
     path: 'summary',
     component: SummaryComponent,
     resolve: {

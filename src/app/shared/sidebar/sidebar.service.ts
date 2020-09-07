@@ -11,32 +11,35 @@ export class SidebarService {
   constructor(private userService: UserService) {
   }
 
-
-  onGetUserRole(role: Role): void {
-
+  onGetUserRole(role: Role): SidebarInterface[] {
     switch (role.name) {
       case 'ROLE_ADMIN' || 'ROLE_WORKER':
-        this.sidebarInterface = this.onGetAdminSidebar;
-      // tslint:disable-next-line:no-switch-case-fall-through
+        return this.onGetAdminSidebar;
       default:
-        this.sidebarInterface = this.onGetNavigationUser;
+        return this.onGetNavigationUser;
     }
   }
 
+  get onGetGuestSidebar(): SidebarInterface[] {
+    return [
+      {name: 'Produkty', routerLink: '/products', subLinks: null, href: '', hrefId: ''}
+    ];
+  }
+
   get onGetAdminSidebar(): SidebarInterface[] {
-    debugger
     return this.onGetNavigationUser.concat(this.onGetListNavigationAdmin);
   }
 
   get onGetNavigationUser(): SidebarInterface[] {
     return [
       {name: 'Usługi', routerLink: '', href: '#home', hrefId: 'home'},
-      {name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
+      {
+        name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
           {
-            name: 'Rowery', routerLink: '/products', href: '#bike', hrefId: 'bike', subLinks: [
-              {name: 'Męskie', routerLink: '', href: '#bike', hrefId: '#bike'},
-              {name: 'Damskie', routerLink: '', href: '', hrefId: ''},
-              {name: 'Dziecięce', routerLink: '', href: '', hrefId: ''},
+            name: 'Rowery', routerLink: '', href: '#bike', hrefId: 'bike', subLinks: [
+              {name: 'Męskie', routerLink: '/products', subLinks: null, href: '', hrefId: ''},
+              {name: 'Damskie', routerLink: '', subLinks: null, href: '', hrefId: ''},
+              {name: 'Dziecięce', routerLink: '', subLinks: null, href: '', hrefId: ''},
             ]
           },
           {name: 'Części', routerLink: '', href: '', hrefId: ''},
@@ -49,11 +52,11 @@ export class SidebarService {
     ];
   }
 
-  get onGetListNavigationAdmin(): any {
+  get onGetListNavigationAdmin(): SidebarInterface[] {
     return [
-      {name: 'Produkty', routerLinK: '/products'},
-      {name: 'Użytkownicy', routerLinK: '/test-component'},
-      {name: 'Zarządzanie', routerLinK: '/management'}
+      {name: 'Produkty', routerLink: '/products', subLinks: null, href: '', hrefId: ''},
+      {name: 'Użytkownicy', routerLink: '/test-component', subLinks: null, href: '', hrefId: ''},
+      {name: 'Zarządzanie', routerLink: '/management', subLinks: null, href: '', hrefId: ''}
     ];
   }
 }

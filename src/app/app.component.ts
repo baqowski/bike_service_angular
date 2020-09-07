@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {tap} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import {UserService} from './core/user/user.service';
 import {User} from './core/user/user';
 import {HttpClient} from '@angular/common/http';
+import {SidebarService} from './shared/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   notFoundValue = false;
   toggle = false;
+  sidebarNavigation: any;
   user: User;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private router: Router,
-              private http: HttpClient) {
+              private sidebarService: SidebarService) {
 
   }
 
@@ -35,6 +36,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.route.paramMap.pipe().subscribe(value => {
       console.log(value);
     });
+    const user = this.userService.getUserValue();
+    if (user) {
+      this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
+        .pipe(
+          tap(role => {
+            this.sidebarNavigation = this.sidebarService.onGetUserRole(role);
+          })
+        ).subscribe();
+    } else {
+      this.sidebarNavigation = this.sidebarService.onGetGuestSidebar();
+    }
   }
 
   receiveToggle($event): void {
