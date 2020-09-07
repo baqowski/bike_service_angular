@@ -12,6 +12,6 @@ export class ProductCategoryResolver implements Resolve<ProductInterface>{
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductInterface> {
     debugger
-    return this.productService.findAllByProductCategory(route.params.name);
+    return this.productService.findAllByProductCategory(route.params.category);
   }
 }
