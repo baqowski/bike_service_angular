@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Nr zamówienia </th>
+    <th scope="col">Status</th>
+    <th scope="col">Kwota</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of orders; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td>
+      <a [routerLink]="['/orders/' + item.id]">{{item.id}}</a>
+    </td>
+    <td>{{item.orderStatus}}</td>
+    <td>{{item.amount}}</td>
+  </tr>
+
+  </tbody>
+</table>
