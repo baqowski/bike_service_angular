@@ -2,14 +2,16 @@
   <thead>
   <tr>
     <th class="text-center" *ngFor="let column of columns"> {{column.header}} </th>
-    <th class="text-center" *ngIf="showActionButtons">Akcje</th>
+    <th class="text-center" *ngIf="isEnabledAction">Akcje</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let item of data; let i = index">
     <ng-container *ngFor="let column of columns">
       <td class="text-center">{{ column.cell(item) }}</td>
-      <td class="text-center" *ngIf="showActionButtons">
+    </ng-container>
+    <ng-container *ngIf="isEnabledAction">
+      <td class="text-center">
         <app-button icon="fas fa-trash-alt"
                     (onSomeActionEmitter)="onClickDeleteButton(item)">
         </app-button>

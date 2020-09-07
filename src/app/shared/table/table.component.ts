@@ -10,7 +10,7 @@ import {TableStructureInterface} from './table-structure.interface';
 export class TableComponent implements OnInit {
 
   @Input() data: any[];
-  @Input() showActionButtons: boolean;
+  @Input() isEnabledAction: boolean;
   @Input() property: string;
   @Input() columns: TableStructureInterface[];
   @Output() onUpdatedEventEmitter: EventEmitter<any> = new EventEmitter<any>();
