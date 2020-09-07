@@ -4,6 +4,8 @@ import {ProductResolver} from './product.resolver';
 import {DetailComponent} from './detail/detail.component';
 import {ProductComponent} from './product.component';
 import {ProductAddComponent} from './product-add/product-add.component';
+import {ProductCategoryComponent} from './product-category/product-category.component';
+import {ProductCategoryResolver} from './product-category/product-category.resolver';
 
 
 const routes: Routes = [
@@ -21,6 +23,13 @@ const routes: Routes = [
     component: DetailComponent,
     resolve: {
       product : ProductResolver
+    }
+  },
+  {
+    path: 'search/:category',
+    component: ProductCategoryComponent,
+    resolve: {
+      category: ProductCategoryResolver
     }
   }
 ];

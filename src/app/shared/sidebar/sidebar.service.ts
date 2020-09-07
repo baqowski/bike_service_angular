@@ -34,7 +34,7 @@ export class SidebarService {
         name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
           {
             name: 'Rowery', routerLink: '/products', href: '#bike', hrefId: 'bike', subLinks: [
-              {name: 'Męskie', routerLink: '', href: '#bike', hrefId: '#bike'},
+              {name: 'Męskie', routerLink: '/products/search/' + name, href: '#bike', hrefId: '#bike'},
               {name: 'Damskie', routerLink: '', href: '', hrefId: ''},
               {name: 'Dziecięce', routerLink: '', href: '', hrefId: ''},
             ]
@@ -61,7 +61,10 @@ export class SidebarService {
 
   get onGetListNavigationAdmin(): any {
     return [
-      {name: 'Produkty', routerLinK: '/products'},
+      {name: 'Ustawienia', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
+          {name: 'Produkty', routerLink: '/products', href: '#bike', hrefId: 'bike'},
+          {name: 'Użytkownicy', routerLink: '/products', href: '#bike', hrefId: 'bike'},
+        ]},
       {name: 'Użytkownicy', routerLinK: '/test-component'},
       {name: 'Zarządzanie', routerLinK: '/management'}
     ].concat(this.onGetListNavigationWorker);
