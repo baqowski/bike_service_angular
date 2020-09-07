@@ -25,6 +25,7 @@ export class TableComponent implements OnInit {
   }
 
   onClickUpdateButton(row): void {
+    row.active = !row.active;
     if (row.isEditable === true) {
       this.onUpdatedEventEmitter.next(row);
     }

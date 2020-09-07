@@ -11,6 +11,7 @@ export interface ProductInterface {
   producer: string;
   isEditable: boolean;
   user: User;
+  active?: boolean;
 }
 
 export const productDetailTableStructure: Array<TableStructureInterface> = [
