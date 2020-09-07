@@ -24,6 +24,7 @@
           <div class="card-body">
             <app-table *ngIf="order.products && order.products.length"
                        [data]="order.products"
+                       [columns]="productDetailTableStructureColumns"
                        [showActionButtons]="false">
             </app-table>
           </div>
