@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {UserService} from '../../core/user/user.service';
+import {Role} from '../../core/role/role';
 
 @Injectable()
 export class SidebarService {
@@ -7,8 +8,8 @@ export class SidebarService {
   constructor(private userService: UserService) {
   }
 
-  onGetUserRole(role: any): void {
-    switch (role) {
+  onGetUserRole(role: Role): void {
+    switch (role.name) {
       case 'ROLE_ADMIN' || 'ROLE_WORKER':
         return this.onGetAdminSidebar;
       default:
@@ -46,7 +47,7 @@ export class SidebarService {
     return [
       {name: 'Produkty', routerLinK: '/products'},
       {name: 'Użytkownicy', routerLinK: '/test-component'},
-
+      {name: 'Zarządzanie', routerLinK: '/management'}
     ];
   }
 }

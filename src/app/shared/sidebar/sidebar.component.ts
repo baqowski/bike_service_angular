@@ -21,8 +21,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
       .pipe(
-        tap(role => {
-          this.listOfSidebarData = this.sidebarService.onGetUserRole(role.name);
+        tap((role: any) => {
+          this.listOfSidebarData = this.sidebarService.onGetUserRole(role.role);
         })
       ).subscribe();
   }
