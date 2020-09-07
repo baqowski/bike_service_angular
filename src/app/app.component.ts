@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {catchError, tap} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
+import {tap} from 'rxjs/operators';
 import {UserService} from './core/user/user.service';
 import {User} from './core/user/user';
-import {HttpClient} from '@angular/common/http';
 import {SidebarService} from './shared/sidebar/sidebar.service';
 import {SidebarInterface} from './shared/sidebar/sidebar.interface';
+import {Role} from './core/role/role';
 
 @Component({
   selector: 'app-root',
@@ -41,12 +41,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (user) {
       this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
         .pipe(
-          tap(role => {
+          tap((role: Role) => {
             this.sidebarNavigation = this.sidebarService.onGetUserRole(role);
           })
         ).subscribe();
     } else {
-      this.sidebarNavigation = this.sidebarService.onGetGuestSidebar;
+      this.sidebarNavigation = this.sidebarService.OnGetDefaultNavigation;
     }
   }
 
