@@ -13,7 +13,7 @@
           <app-table *ngIf="products && products.length"
                      [data]="products"
                      [columns]="summaryStructureTableColumns"
-                     [showActionButtons]="false">
+                     [isEnabledAction]="false">
           </app-table>
           <p class="ml-2">Koszt: {{productSummaryPrice}}</p>
         </div>
