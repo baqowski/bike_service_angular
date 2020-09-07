@@ -1,28 +1,24 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th class="text-center">#</th>
-    <th class="text-center" *ngFor="let column of columns"> {{column}} </th>
+    <th class="text-center" *ngFor="let column of columns"> {{column.header}} </th>
     <th class="text-center" *ngIf="showActionButtons">Akcje</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let item of data; let i = index">
-    <td class="text-center">{{i + 1}}</td>
-    <td class="text-center" *ngFor="let column of columns">
-      <ng-container *ngIf="!item.isEditable"> {{item[column]}} </ng-container>
-      <input [(ngModel)]="item[column]" *ngIf="item.isEditable">
-    </td>
-    <td class="text-center" *ngIf="showActionButtons">
-      <app-button (onSomeActionEmitter)="onClickDeleteButton(item)" icon="fas fa-trash-alt">
-      </app-button>
-      <app-button (onSomeActionEmitter)="onClickUpdateButton(item)"
-                  [icon]="item.isEditable ? 'far fa-edit text-success' : 'far fa-edit'"
-                  (click)="onChangeEditableStatus(i)">
-      </app-button>
-    </td>
+    <ng-container *ngFor="let column of columns">
+      <td class="text-center">{{ column.cell(item) }}</td>
+      <td class="text-center" *ngIf="showActionButtons">
+        <app-button icon="fas fa-trash-alt"
+                    (onSomeActionEmitter)="onClickDeleteButton(item)">
+        </app-button>
+        <app-button (onSomeActionEmitter)="onClickUpdateButton(item)"
+                    [icon]="item.isEditable ? 'far fa-edit text-success' : 'far fa-edit'"
+                    (click)="onChangeEditableStatus(i)">
+        </app-button>
+      </td>
+    </ng-container>
   </tr>
   </tbody>
 </table>
-
-

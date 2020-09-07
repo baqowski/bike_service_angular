@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../order.service';
 import {ActivatedRoute} from '@angular/router';
 import {OrderInterface} from '../order';
-import {ToastrService} from 'ngx-toastr';
+import {TableStructureInterface} from '../../../shared/table/table-structure.interface';
+import {productDetailTableStructure} from '../../product/product';
 
 
 @Component({
@@ -13,12 +14,13 @@ import {ToastrService} from 'ngx-toastr';
 export class OrderDetailComponent implements OnInit {
 
   order: OrderInterface;
+  productDetailTableStructureColumns: Array<TableStructureInterface> = productDetailTableStructure;
 
   constructor(private orderService: OrderService,
-              private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private route: ActivatedRoute) {
 
   }
+
   ngOnInit(): void {
     this.order = this.route.snapshot.data.order;
   }

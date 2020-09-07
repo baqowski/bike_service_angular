@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {DeliveryInterface, DeliveryOrder, DeliveryOrderInterface} from './delivery/delivery';
 import {DeliveryComponent} from './delivery/delivery.component';
 import {ProductInterface} from '../../product/product';
+import {TableStructureInterface} from '../../../shared/table/table-structure.interface';
+import {summaryTableStructure} from './summary-structure.interface';
 
 @Component({
   selector: 'app-summary',
@@ -19,7 +21,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(DeliveryComponent) deliveryRef: DeliveryComponent;
 
   products: ProductInterface[] = [];
-
+  summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
   orderSummaryPrice = 0;
   productSummaryPrice: number;
   order: OrderInterface;

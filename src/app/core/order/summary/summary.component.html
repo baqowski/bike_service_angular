@@ -5,24 +5,26 @@
     </div>
     <div class="card-body">
 
-        <div class="card">
-          <div class="card-header">
-            Podsumowanie
-          </div>
-
+      <div class="card">
+        <div class="card-header">
+          Podsumowanie
+        </div>
+        <div class="card-body">
           <app-table *ngIf="products && products.length"
                      [data]="products"
+                     [columns]="summaryStructureTableColumns"
                      [showActionButtons]="false">
           </app-table>
           <p class="ml-2">Koszt: {{productSummaryPrice}}</p>
         </div>
-        <app-delivery [deliveries]="deliverySelectData"
-                      [(deliveryForm)]="orderForm"
-                      (deliveryFormChange)="onGetDeliveryCost()">
-        </app-delivery>
+      </div>
+      <app-delivery [deliveries]="deliverySelectData"
+                    [(deliveryForm)]="orderForm"
+                    (deliveryFormChange)="onGetDeliveryCost()">
+      </app-delivery>
 
-        <app-address [(addressForm)]="orderForm">
-        </app-address>
+      <app-address [(addressForm)]="orderForm">
+      </app-address>
     </div>
     <div class="card-footer">
       <div class="">
@@ -30,9 +32,9 @@
           {{'Całkowity koszt: ' + orderSummaryPrice}}</ng-container>
       </div>
       <div class="dropdown-divider"></div>
-        <button class="btn btn-success w-100 mt-2" (click)="create()">
-          <span>Potwierdzam</span>
-        </button>
+      <button class="btn btn-success w-100 mt-2" (click)="create()">
+        <span>Potwierdzam</span>
+      </button>
     </div>
   </div>
 </div>
