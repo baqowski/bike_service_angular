@@ -7,7 +7,6 @@ import {ProductAddComponent} from './product-add/product-add.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
 import {ProductCategoryResolver} from './product-category/product-category.resolver';
 
-
 const routes: Routes = [
   {
     path: '',

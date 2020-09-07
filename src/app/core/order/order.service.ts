@@ -21,6 +21,9 @@ export class OrderService {
     return this.http.post(environment.apiUrl + '/api/orders/', order);
   }
 
+  findUserOrders(uuid): Observable<any> {
+    return this.http.get(environment.apiUrl + '/api/orders/search/findAllByUser_Uuid?uuid=', uuid );
+  }
 
   getOrderProducts(id): Observable<any> {
     return this.http.get<any>(environment.apiUrl + '/api/orders/' + id + '/products');

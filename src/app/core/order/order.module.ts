@@ -13,6 +13,7 @@ import {AddressService} from './summary/address/address.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DeliveryResolver} from './summary/delivery/delivery.resolver';
 import {OrderDetailResolver} from './detail/order.detail.resolver';
+import {LoanComponent} from './loan/loan.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {OrderDetailResolver} from './detail/order.detail.resolver';
     AddressComponent,
     OrderComponent,
     OrderDetailComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    LoanComponent
   ],
   exports: [
   ],

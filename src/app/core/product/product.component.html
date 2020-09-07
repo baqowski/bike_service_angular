@@ -4,8 +4,14 @@
       <p>Produkty</p>
     </div>
     <div class=card-body>
-      <div class="row" *ngFor="let product of products">
-        <ng-container>
+        <app-table
+          [isEnabledAction]="true"
+          [columns]="summaryStructureTableColumns"
+          (onUpdatedEventEmitter)="onClickUpdate($event)"
+          (onDeleteEventEmitter)="onClickDelete($event)"
+          [data]="products">
+        </app-table>
+        <!--<ng-container>
           <div class="col-sm">
             <a [routerLink]="['/products', product.id]"> {{product.name}}</a>
           </div>
@@ -38,8 +44,7 @@
               </div>
             </div>
           </div>
-        </ng-container>
-      </div>
+        </ng-container>-->
       <div class="card-footer">
         <div class="btn btn-success w-100 h-50" [routerLink]="['/products/add']">Dodaj produkt</div>
       </div>

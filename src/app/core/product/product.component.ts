@@ -3,6 +3,9 @@ import {ProductInterface} from './product';
 import {map, tap} from 'rxjs/operators';
 import {ProductService} from './product.service';
 import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
+import {TableStructureInterface} from '../../shared/table/table-structure.interface';
+import {summaryTableStructure} from '../order/summary/summary-structure.interface';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -12,8 +15,10 @@ import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.serv
 export class ProductComponent implements OnInit {
 
   products: ProductInterface[];
+  summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
 
-  constructor(private productService: ProductService, private shoppingCartService: ShoppingCartService) {
+  constructor(private productService: ProductService, private shoppingCartService: ShoppingCartService,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -37,16 +42,6 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onClickIncrement(product: ProductInterface): void {
-    product.quantity = product.quantity + 1;
-    /*this.shoppingCartService.increaseCount(product);*/
-  }
-
-  onClickDecrement(product: ProductInterface): void {
-    this.shoppingCartService.decreaseCount(product);
-  }
-
-
   private productExistInShoppingCard(product: ProductInterface): boolean {
     let status = false;
     this.shoppingCartService.getProductsValue.forEach(value => {
@@ -55,5 +50,18 @@ export class ProductComponent implements OnInit {
       }
     });
     return status;
+  }
+
+  onClickDelete(element): void {
+    debugger
+    this.productService.delete(element.id).pipe(
+      tap((value: any) => {
+        this.toastrService.success('Produkt ' + value.name + 'został usunięty');
+      })
+    ).subscribe();
+  }
+
+  onClickUpdate(element): void {
+    debugger
   }
 }

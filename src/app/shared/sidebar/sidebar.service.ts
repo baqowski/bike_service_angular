@@ -48,10 +48,7 @@ export class SidebarService {
 
   get onGetListNavigationUser(): SidebarInterface[] {
     return [
-      {name: 'Usługi', routerLink: '', href: '#home', hrefId: 'home'},
       {name: 'Moje zamówienia', routerLink: '/orders', href: '', hrefId: ''},
-      {name: 'Wypożyczenia', routerLink: '', href: '', hrefId: ''},
-      {name: 'Naprawy', routerLink: '', href: '', hrefId: ''}
     ].concat(this.OnGetDefaultNavigation);
   }
 
@@ -61,12 +58,11 @@ export class SidebarService {
 
   get onGetListNavigationAdmin(): any {
     return [
-      {name: 'Ustawienia', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
+      {name: 'Administrator', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
           {name: 'Produkty', routerLink: '/products', href: '#bike', hrefId: 'bike'},
           {name: 'Użytkownicy', routerLink: '/products', href: '#bike', hrefId: 'bike'},
+          {name: 'Zamówienia', routerLink: '/products', href: '#bike', hrefId: 'bike'},
         ]},
-      {name: 'Użytkownicy', routerLinK: '/test-component'},
-      {name: 'Zarządzanie', routerLinK: '/management'}
     ].concat(this.onGetListNavigationWorker);
   }
 

@@ -15,6 +15,7 @@ export class Order implements OrderInterface {
   id: number;
   orderStatus: string;
   deliveryOrder: DeliveryOrderInterface;
+  orderServiceType: OrderServiceType;
   payment: PaymentInterface;
 }
 
@@ -24,6 +25,7 @@ export interface OrderInterface {
   amount: number;
   orderStatus: string;
   deliveryOrder: DeliveryOrderInterface;
+  orderServiceType: OrderServiceType;
   payment: PaymentInterface;
 }
 

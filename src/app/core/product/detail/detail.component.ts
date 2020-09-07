@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
 import {ProductInterface} from '../product';
-import {ToastrService} from 'ngx-toastr';
+import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,8 +16,9 @@ export class DetailComponent implements OnInit {
   product: ProductInterface;
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
-              private toasterService: ToastrService) {
+              private shoppingCartService: ShoppingCartService,
+              private router: Router,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -25,10 +26,16 @@ export class DetailComponent implements OnInit {
       mergeMap((params: ParamMap) => this.productService.getById(Number(params.get('id'))))
     ).subscribe(value => {
       this.product = value;
+      this.product.quantity = 1;
     });
   }
 
   addProductToShoppingCard(product: ProductInterface): void {
-    this.productEmitter.emit(product);
+    this.shoppingCartService.addProduct(product);
+    this.shoppingCartService.behaviorProducts.next(this.shoppingCartService.getProductsValue);
+  }
+
+  onGoToLoan(): void {
+    this.router.navigate(['/loan']);
   }
 }

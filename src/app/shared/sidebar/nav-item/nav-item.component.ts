@@ -9,9 +9,6 @@ import {SidebarInterface} from '../sidebar.interface';
 export class NavItemComponent implements OnInit {
 
   @Input() sidebarInterface: SidebarInterface;
-
-  constructor() { }
-
   ngOnInit(): void {
   }
 }

@@ -9,6 +9,8 @@ import {HomeComponent} from './public/home/home.component';
 import {SummaryComponent} from './core/order/summary/summary.component';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {DeliveryResolver} from './core/order/summary/delivery/delivery.resolver';
+import {OrderResolver} from './core/order/order.resolver';
+import {LoanComponent} from './core/order/loan/loan.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +23,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    resolve: {
+      order: OrderResolver
+    }
+  },
+  {
+    path: 'loan',
+    component: LoanComponent
   },
   {
     path: 'products',

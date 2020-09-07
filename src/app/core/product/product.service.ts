@@ -24,12 +24,12 @@ export class ProductService {
     return this.http.get<ProductInterface>(environment.apiUrl + '/ext/products/' + id);
   }
 
-  update(product: ProductInterface) {
+  update(product: ProductInterface): any {
     return this.http.put<ProductInterface>(environment.apiUrl + '/api/product/' + product.id, product);
   }
 
-  delete(id: number) {
-    return this.http.delete(environment.apiUrl + '/api/product/' + id);
+  delete(id: number): Observable<ProductInterface> {
+    return this.http.delete<ProductInterface>(environment.apiUrl + '/api/product/' + id);
   }
 
   create(product: ProductService): any {

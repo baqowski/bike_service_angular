@@ -11,6 +11,7 @@ import {OrderModule} from './order/order.module';
 import {ProductResolver} from './product/product.resolver';
 import {ManagementModule} from './management/management.module';
 import {ProductModule} from './product/product.module';
+import {DashboardModule} from './dashboard/dashboard.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ProductModule} from './product/product.module';
     ShoppingCartModule,
     ManagementModule,
     OrderModule,
-    ProductModule
+    ProductModule,
+    DashboardModule
   ],
   providers: [
     AuthService,
