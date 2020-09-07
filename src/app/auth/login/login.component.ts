@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, tap} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
-              private toasterService: ToastrService) {
+              private toasterService: ToastrService,
+              private loginService: LoginService) {
   }
 
   ngOnInit(): void {
@@ -40,14 +42,13 @@ export class LoginComponent implements OnInit {
     }
     this.auth.login(this.form.username.value, this.form.password.value)
       .pipe(
-        tap(response => {
-        }),
         catchError(err => {
           this.toasterService.error(err.error);
           return err;
         }))
       .subscribe(next => {
           this.isLoggedUser.emit();
+          this.loginService.isLogged.next();
           this.router.navigate(['/dashboard']);
         },
         error => {

@@ -15,6 +15,7 @@ import {RouterModule} from '@angular/router';
 import {OrderModule} from './core/order/order.module';
 import {PublicModule} from './public/public.module';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
+import {LoginService} from './auth/login/login.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {NotFoundComponent} from './shared/not-found/not-found.component';
     PublicModule
   ],
   providers: [
+    LoginService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

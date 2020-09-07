@@ -30,7 +30,6 @@ export class ProductAddComponent implements OnInit {
   }
 
   onSubmit(data: any): void {
-    debugger;
     this.newProduct = data;
     this.productService.create(data).pipe(
       tap( (product: ProductInterface) => {

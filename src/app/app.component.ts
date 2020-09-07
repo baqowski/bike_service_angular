@@ -6,6 +6,7 @@ import {User} from './core/user/user';
 import {SidebarService} from './shared/sidebar/sidebar.service';
 import {SidebarInterface} from './shared/sidebar/sidebar.interface';
 import {Role} from './core/role/role';
+import {LoginService} from './auth/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +22,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private sidebarService: SidebarService) {
+              private sidebarService: SidebarService,
+              private loginService: LoginService) {
 
   }
 
   ngOnInit(): void {
+    this.loginService.isLogged.subscribe(() => this.onSetSidebarForUser());
+
     this.userService.getUserSubject.asObservable().pipe(
       tap(data => this.user = data),
       tap(console.log)
@@ -37,6 +41,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.route.paramMap.pipe().subscribe(value => {
       console.log(value);
     });
+    this.onSetSidebarForUser();
+  }
+
+  onSetSidebarForUser(): void {
     const user = this.userService.getUserValue();
     if (user) {
       this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)

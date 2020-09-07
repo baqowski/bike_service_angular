@@ -13,7 +13,5 @@ export class NavItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    debugger
   }
-
 }

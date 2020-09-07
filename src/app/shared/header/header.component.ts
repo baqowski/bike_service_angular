@@ -3,6 +3,8 @@ import {AuthService} from '../../auth/auth.service';
 import {User} from '../../core/user/user';
 import {Router} from '@angular/router';
 import {UserService} from '../../core/user/user.service';
+import {tap} from 'rxjs/operators';
+import {LoginService} from '../../auth/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -17,20 +19,24 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private loginService: LoginService) {
   }
 
   ngOnInit(): void {
   }
 
   onLogout(): void {
-    this.auth.logout().subscribe(() => {
-      localStorage.removeItem('user');
-      this.userService.getUserSubject.next(null);
-      this.router.navigate(['/']);
-    }, error => {
-
-    });
+    this.auth.logout().pipe(
+      tap(() => {
+        localStorage.removeItem('user');
+        this.userService.getUserSubject.next(null);
+        this.loginService.isLogged.next();
+      }),
+      tap(() => {
+        this.router.navigate(['/']);
+      })
+    ).subscribe();
   }
 
   clickToggle(status: boolean): void {
@@ -39,7 +45,6 @@ export class HeaderComponent implements OnInit {
 
   /* private initShoppingCard(): void {
      this.shoppingCardService.getProducts().subscribe(value => {
-       debugger
        this.shoppingCard = value;
      });
    }*/
