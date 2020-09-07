@@ -5,6 +5,7 @@ import {UserService} from './core/user/user.service';
 import {User} from './core/user/user';
 import {HttpClient} from '@angular/common/http';
 import {SidebarService} from './shared/sidebar/sidebar.service';
+import {SidebarInterface} from './shared/sidebar/sidebar.interface';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   notFoundValue = false;
   toggle = false;
-  sidebarNavigation: any;
+  sidebarNavigation: SidebarInterface[];
   user: User;
 
   constructor(private route: ActivatedRoute,
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           })
         ).subscribe();
     } else {
-      this.sidebarNavigation = this.sidebarService.onGetGuestSidebar();
+      this.sidebarNavigation = this.sidebarService.onGetGuestSidebar;
     }
   }
 
