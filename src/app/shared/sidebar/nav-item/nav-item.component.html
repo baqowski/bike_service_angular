@@ -1,0 +1,23 @@
+<li class="nav-item"
+    *ngIf="!sidebarInterface.subLinks">
+  <a class="nav-link"
+     routerLink="{{sidebarInterface.routerLink}}">
+    {{sidebarInterface.name}}</a>
+</li>
+<li class="nav-item"
+    *ngIf="sidebarInterface.subLinks">
+  <a class="dropdown-toggle"
+     data-toggle="collapse"
+     aria-expanded="false"
+     href="{{sidebarInterface.href}}">
+    {{sidebarInterface.name}}
+  </a>
+  <ul class="collapse list-unstyled"
+      id="{{sidebarInterface.hrefId}}" *ngFor="let dupa of sidebarInterface.subLinks">
+      <app-nav-item [sidebarInterface]="dupa">
+
+      </app-nav-item>
+  </ul>
+</li>
+
+

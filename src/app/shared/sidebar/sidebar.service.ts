@@ -1,44 +1,50 @@
 import {Injectable} from '@angular/core';
 import {UserService} from '../../core/user/user.service';
 import {Role} from '../../core/role/role';
+import {SidebarInterface} from './sidebar.interface';
 
 @Injectable()
 export class SidebarService {
 
+  sidebarInterface: SidebarInterface[];
+
   constructor(private userService: UserService) {
   }
 
+
   onGetUserRole(role: Role): void {
+
     switch (role.name) {
       case 'ROLE_ADMIN' || 'ROLE_WORKER':
-        return this.onGetAdminSidebar;
+        this.sidebarInterface = this.onGetAdminSidebar;
+      // tslint:disable-next-line:no-switch-case-fall-through
       default:
-        return this.onGetNavigationUser;
+        this.sidebarInterface = this.onGetNavigationUser;
     }
   }
 
-  get onGetAdminSidebar(): any {
+  get onGetAdminSidebar(): SidebarInterface[] {
+    debugger
     return this.onGetNavigationUser.concat(this.onGetListNavigationAdmin);
   }
 
-  get onGetNavigationUser(): any {
+  get onGetNavigationUser(): SidebarInterface[] {
     return [
-      {name: 'Usługi', routerLink: ''},
-      {
-        name: 'Produkty', routerLink: '', href: '#home', hrefId: 'home', subLinks: [
+      {name: 'Usługi', routerLink: '', href: '#home', hrefId: 'home'},
+      {name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
           {
-            name: 'Rowery', routerLink: '/products', subLinks: [
-              {name: 'Męskie', routerLink: '', href: '', hrefIf: ''},
-              {name: 'Damskie', routerLink: '', href: '', hrefIf: ''},
-              {name: 'Dziecięce', routerLink: '', href: '', hrefIf: ''},
+            name: 'Rowery', routerLink: '/products', href: '#bike', hrefId: 'bike', subLinks: [
+              {name: 'Męskie', routerLink: '', href: '#bike', hrefId: '#bike'},
+              {name: 'Damskie', routerLink: '', href: '', hrefId: ''},
+              {name: 'Dziecięce', routerLink: '', href: '', hrefId: ''},
             ]
           },
-          {name: 'Części', routerLink: ''},
-          {name: 'Akcesoria', routerLink: ''}
+          {name: 'Części', routerLink: '', href: '', hrefId: ''},
+          {name: 'Akcesoria', routerLink: '', href: '', hrefId: ''}
         ]
       },
-      {name: 'Moje zamówienia', routerLink: '/orders', href: '', hrefId: '' },
-      {name: 'Wypożyczenia', routerLink: '', href: '', hrefId: '' },
+      {name: 'Moje zamówienia', routerLink: '/orders', href: '', hrefId: ''},
+      {name: 'Wypożyczenia', routerLink: '', href: '', hrefId: ''},
       {name: 'Naprawy', routerLink: '', href: '', hrefId: ''}
     ];
   }

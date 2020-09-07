@@ -2,29 +2,9 @@
      id="sidebar"
      [ngClass]="{'active': toggle}">
   <ul class="list-unstyled component"
-      *ngFor="let element of listOfSidebarData">
-    <li class="nav-item"
-        *ngIf="!element.subLinks">
-      <a class="nav-link"
-         routerLink="{{element.routerLink}}">
-        {{element.name}}</a>
-    </li>
-    <li class="nav-item"
-        *ngIf="element.subLinks">
-      <a class="dropdown-toggle"
-         data-toggle="collapse"
-         aria-expanded="false"
-         href="{{element.href}}">
-        {{element.name}}
-      </a>
-      <ul class="collapse list-unstyled"
-          id="{{element.hrefId}}">
-        <li class="nav-item"
-            *ngFor="let sub of element.subLinks">
-          <a routerLink="{{sub.routerLink}}">
-            {{sub.name}}</a>
-        </li>
-      </ul>
-    </li>
+      *ngFor="let element of navigationData">
+      <app-nav-item [sidebarInterface]="element">
+
+      </app-nav-item>
   </ul>
 </nav>

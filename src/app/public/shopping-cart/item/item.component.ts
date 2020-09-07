@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ShoppingCartService} from '../shopping-cart.service';
-import {ProductInterface} from '../../product/product';
+import {ProductInterface} from '../../../core/product/product';
 
 @Component({
   selector: 'app-item',

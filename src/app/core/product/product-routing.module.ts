@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {ProductResolver} from './product.resolver';
 import {DetailComponent} from './detail/detail.component';
 import {ProductComponent} from './product.component';
+import {ProductAddComponent} from './product-add/product-add.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,10 @@ const routes: Routes = [
     path: '',
     component: ProductComponent,
 
+  },
+  {
+    path: 'add',
+    component: ProductAddComponent
   },
   {
     path: ':id',

@@ -8,8 +8,9 @@ import {SharedModule} from '../shared/shared.module';
 import {ShoppingCartModule} from '../public/shopping-cart/shopping-cart.module';
 import {RoleComponent} from './role/role.component';
 import {OrderModule} from './order/order.module';
-import {ProductResolver} from '../public/product/product.resolver';
+import {ProductResolver} from './product/product.resolver';
 import {ManagementModule} from './management/management.module';
+import {ProductModule} from './product/product.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {ManagementModule} from './management/management.module';
     SharedModule,
     ShoppingCartModule,
     ManagementModule,
-    OrderModule
+    OrderModule,
+    ProductModule
   ],
   providers: [
     AuthService,

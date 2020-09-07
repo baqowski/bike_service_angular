@@ -1,4 +1,4 @@
-import {ProductInterface} from '../../public/product/product';
+import {ProductInterface} from '../product/product';
 import {DeliveryOrderInterface} from './summary/delivery/delivery';
 import {PaymentInterface} from '../payment/payment';
 

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductInterface} from './product';
 import {map, tap} from 'rxjs/operators';
 import {ProductService} from './product.service';
-import {ShoppingCartService} from '../shopping-cart/shopping-cart.service';
+import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-product',

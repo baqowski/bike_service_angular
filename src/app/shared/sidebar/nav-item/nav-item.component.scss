@@ -1,0 +1,18 @@
+li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+li a:hover {
+  color: #7386D5;
+  background: #fff;
+}
+
+ li.active > a, a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+ul {
+  margin: auto;
+}

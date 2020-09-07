@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DeliveryInterface, DeliveryOrder, DeliveryOrderInterface} from './delivery/delivery';
 import {DeliveryComponent} from './delivery/delivery.component';
-import {ProductInterface} from '../../../public/product/product';
+import {ProductInterface} from '../../product/product';
 
 @Component({
   selector: 'app-summary',

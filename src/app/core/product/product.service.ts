@@ -27,4 +27,9 @@ export class ProductService {
   delete(id: number) {
     return this.http.delete(environment.apiUrl + '/api/product/' + id);
   }
+
+  create(product: ProductService): any {
+    debugger
+    return this.http.post<ProductInterface>(environment.apiUrl + '/api/products', product);
+  }
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductInterface} from '../product/product';
+import {ProductInterface} from '../../core/product/product';
 import {ShoppingCartService} from './shopping-cart.service';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';

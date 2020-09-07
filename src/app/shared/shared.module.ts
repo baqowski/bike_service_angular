@@ -14,6 +14,7 @@ import {SelectBoxComponent} from './select-box/select-box.component';
 import {NotFoundService} from './not-found/not-found.service';
 import {AccessDeniedComponent} from './access-denied/access-denied.component';
 import {SidebarService} from './sidebar/sidebar.service';
+import {NavItemComponent} from './sidebar/nav-item/nav-item.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {SidebarService} from './sidebar/sidebar.service';
     PayuWidgetComponent,
     TableComponent,
     SelectBoxComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    NavItemComponent
   ],
   exports: [
     HeaderComponent,

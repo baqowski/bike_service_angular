@@ -3,5 +3,5 @@ export interface SidebarInterface {
   routerLink: string;
   hrefId: string;
   href: string;
-  subLinks: SidebarInterface[];
+  subLinks?: SidebarInterface[];
 }
