@@ -6,12 +6,13 @@ import {OrderRoutingModule} from './order-routing.module';
 import {AddressComponent} from './summary/address/address.component';
 import {OrderResolver} from './order.resolver';
 import {OrderComponent} from './order.component';
-import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {OrderDetailComponent} from './detail/order.detail.component';
 import {PaymentModule} from './payment/payment.module';
 import {DeliveryComponent} from './summary/delivery/delivery.component';
 import {AddressService} from './summary/address/address.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DeliveryResolver} from './summary/delivery/delivery.resolver';
+import {OrderDetailResolver} from './detail/order.detail.resolver';
 
 
 @NgModule({
@@ -28,11 +29,12 @@ import {DeliveryResolver} from './summary/delivery/delivery.resolver';
     CommonModule,
     SharedModule,
     OrderRoutingModule,
-    PaymentModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaymentModule
   ],
   providers: [
     OrderResolver,
+    OrderDetailResolver,
     AddressService,
     DeliveryResolver
   ]

@@ -2,26 +2,33 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SharedModule} from '../../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PaymentService} from "./payment.service";
+import {PaymentService} from '../../payment/payment.service';
+import {PaymentDetailComponent} from './detail/payment.detail.component';
+import {PaymentResolver} from './payment.resolver';
+import {RouterModule} from '@angular/router';
 import {PaymentComponent} from './payment.component';
-import {PaymentDetailComponent} from './payment-detail/payment-detail.component';
-import {PaymentResolver} from "./payment.resolver";
+import {PaymentRoutingModule} from './payment-routing.module';
+import {TypeComponent} from './type/type.component';
 
 
 @NgModule({
   declarations: [
     PaymentComponent,
-    PaymentDetailComponent
+    PaymentDetailComponent,
+    TypeComponent
   ],
   exports: [
     PaymentComponent,
-    PaymentDetailComponent
+    PaymentDetailComponent,
+    TypeComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    PaymentRoutingModule
   ],
   providers: [
     PaymentService,

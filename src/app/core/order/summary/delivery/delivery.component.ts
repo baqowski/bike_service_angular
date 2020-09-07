@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-delivery',
@@ -9,7 +9,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class DeliveryComponent implements OnInit {
 
   @Input() deliveries;
-
   @Input() deliveryForm: FormGroup;
   @Output() deliveryFormChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   selectedPrice = 0;

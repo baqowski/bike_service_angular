@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {UserService} from './core/user/user.service';
 import {User} from './core/user/user';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private http: HttpClient) {
 
   }
 

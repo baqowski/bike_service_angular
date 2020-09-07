@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PaymentService} from "../../core/order/payment/payment.service";
-import {PaymentInterface} from "../../core/order/payment/payment";
-import {tap} from "rxjs/operators";
+import {PaymentService} from '../../core/payment/payment.service';
+import {PaymentInterface, PaymentType} from '../../core/payment/payment';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-payu-widget',
@@ -22,19 +22,17 @@ export class PayuWidgetComponent implements OnInit {
 
   }
 
-  onClickPayu(payment: PaymentInterface) {
-    debugger
-    this.setOrderId(payment)
-    this.paymentService.create(payment).subscribe(payment => {
-      debugger
-      window.location.href = payment.redirectUri;
-    })
+  onClickPayu(paymentType: PaymentType): void {
+    /*this.setOrderId(payment);*/
+/*    this.paymentService.createByPaymentType(this.route.snapshot.params.id, paymentType).subscribe(payu => {
+      window.location.href = payu.redirectUri;
+    });*/
   }
 
   private setOrderId(payment: PaymentInterface): void {
     this.route.paramMap.pipe(
       tap(id => {
-       payment.orderId = Number(id.get('id'));
+       payment.order.id = Number(id.get('id'));
       })
     ).subscribe();
   }

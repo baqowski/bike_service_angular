@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Order} from '../order/order';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {User} from './user';
@@ -17,20 +16,12 @@ export class UserService {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
   }
 
-  getUserOrders(id): Observable<Order[]> {
-    return this.http.get<Order[]>(environment.apiUrl + '/api/users/' + id + '/orders');
+  findUserOrders(uuid): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + '/api/orders/search/findAllByUser_Uuid?uuid=' + uuid + '&projection=full');
   }
 
-  getUserByUsername(username): Observable<User> {
-    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUsername?username=' + username);
-  }
-
-  findUserOrder(userId, orderId): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + '/api/users/' + userId + '/orders/' + orderId);
-  }
-
-  findUserByUuid(uuid): Observable<User> {
-    return this.http.get<User>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid);
+  getUserOrderById(uuid, orderId): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + '/api/users/' + uuid + '/orders/' + orderId);
   }
 
   onGetUserRoleByUuid(uuid): Observable<Role> {

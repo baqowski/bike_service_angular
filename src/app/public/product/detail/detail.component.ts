@@ -2,19 +2,18 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
-import {Product} from '../product';
+import {ProductInterface} from '../product';
 import {ToastrService} from 'ngx-toastr';
-import {ProductResolver} from '../product.resolver';
 
 @Component({
   selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class DetailComponent implements OnInit {
 
-  @Output() productEmitter: EventEmitter<Product> = new EventEmitter<Product>();
-  product: Product;
+  @Output() productEmitter: EventEmitter<ProductInterface> = new EventEmitter<ProductInterface>();
+  product: ProductInterface;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
@@ -29,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  addProductToShoppingCard(product: Product): void {
+  addProductToShoppingCard(product: ProductInterface): void {
     this.productEmitter.emit(product);
   }
 }

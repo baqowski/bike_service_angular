@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {Product} from './product';
+import {ProductInterface} from './product';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 
@@ -12,16 +12,16 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.apiUrl + '/ext/products');
+  getAll(): Observable<ProductInterface[]> {
+    return this.http.get<ProductInterface[]>(environment.apiUrl + '/ext/products');
   }
 
-  getById(id: number): Observable<Product> {
-    return this.http.get<Product>(environment.apiUrl + '/ext/products/' + id);
+  getById(id: number): Observable<ProductInterface> {
+    return this.http.get<ProductInterface>(environment.apiUrl + '/ext/products/' + id);
   }
 
-  update(product: Product) {
-    return this.http.put<Product>(environment.apiUrl + '/api/product/' + product.id, product);
+  update(product: ProductInterface) {
+    return this.http.put<ProductInterface>(environment.apiUrl + '/api/product/' + product.id, product);
   }
 
   delete(id: number) {

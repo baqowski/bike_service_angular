@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {ProductResolver} from './product.resolver';
-import {ProductDetailComponent} from './product-detail/product-detail.component';
+import {DetailComponent} from './detail/detail.component';
 import {ProductComponent} from './product.component';
 
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: ProductDetailComponent,
+    component: DetailComponent,
     resolve: {
       product : ProductResolver
     }

@@ -8,7 +8,6 @@ import {AuthGuard} from './auth/guard';
 import {HomeComponent} from './public/home/home.component';
 import {SummaryComponent} from './core/order/summary/summary.component';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
-import {AccessDeniedComponent} from './shared/access-denied/access-denied.component';
 import {DeliveryResolver} from './core/order/summary/delivery/delivery.resolver';
 
 const routes: Routes = [
@@ -43,10 +42,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/404'
   },
-  {
-    path: 'access-denied',
-    component: AccessDeniedComponent
-  }
 ];
 
 @NgModule({

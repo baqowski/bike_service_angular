@@ -10,6 +10,7 @@ export class TableComponent implements OnInit {
 
   @Input() data: any[];
   @Input() showActionButtons: boolean;
+  @Input() property: string;
   @Output() onUpdatedEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDeleteEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   columns: string[];

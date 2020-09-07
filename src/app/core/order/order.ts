@@ -1,28 +1,30 @@
-import {Product} from '../../public/product/product';
-import {DeliveryInterface} from './summary/delivery/delivery';
-import {AddressInterface} from './summary/address/address';
+import {ProductInterface} from '../../public/product/product';
+import {DeliveryOrderInterface} from './summary/delivery/delivery';
+import {PaymentInterface} from '../payment/payment';
 
 export class Order implements OrderInterface {
-  constructor() {
-    this.amount = 0;
-    this.products = [];
+
+  constructor(amount: number, products: ProductInterface[], deliveryOrder: DeliveryOrderInterface) {
+    this.amount = amount;
+    this.products = products;
+    this.deliveryOrder = deliveryOrder;
   }
 
   amount: number;
-  products: Product[];
+  products: ProductInterface[];
   id: number;
-  delivery: DeliveryInterface;
-  deliveryAddress: AddressInterface;
-  orderServiceType: OrderServiceType;
+  orderStatus: string;
+  deliveryOrder: DeliveryOrderInterface;
+  payment: PaymentInterface;
 }
 
 export interface OrderInterface {
   id: number;
-  products: Product[];
+  products: ProductInterface[];
   amount: number;
-  delivery: DeliveryInterface;
-  deliveryAddress: AddressInterface;
-  orderServiceType: OrderServiceType;
+  orderStatus: string;
+  deliveryOrder: DeliveryOrderInterface;
+  payment: PaymentInterface;
 }
 
 export enum OrderServiceType {
@@ -30,4 +32,5 @@ export enum OrderServiceType {
   RENT = 'RENT',
   REPAIR = 'REAPIR'
 }
+
 

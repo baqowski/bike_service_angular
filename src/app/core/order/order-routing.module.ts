@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OrderResolver} from './order.resolver';
 import {OrderComponent} from './order.component';
-import {OrderDetailComponent} from './order-detail/order-detail.component';
-import {PaymentDetailComponent} from "./payment/payment-detail/payment-detail.component";
-import {PaymentResolver} from "./payment/payment.resolver";
+import {OrderDetailComponent} from './detail/order.detail.component';
+import {OrderDetailResolver} from './detail/order.detail.resolver';
+import {TypeComponent} from './payment/type/type.component';
 
 const routes: Routes = [
   {
@@ -13,22 +13,26 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: OrderComponent
-  },
-  {
-    path: ':id',
-    component: OrderDetailComponent,
+    component: OrderComponent,
     resolve: {
       order: OrderResolver
     }
   },
   {
-    path: ':id/payment',
-    component: PaymentDetailComponent,
+    path: ':orderId',
+    component: OrderDetailComponent,
     resolve: {
-      payment: PaymentResolver
+      order: OrderDetailResolver
     }
   },
+  {
+    path: ':orderId/payment',
+    component: TypeComponent
+  },
+ /* {
+    path: ':orderId/payment',
+    loadChildren: () => import('./payment/payment.module').then(module => module.PaymentModule)
+  }*/
 ];
 
 @NgModule({

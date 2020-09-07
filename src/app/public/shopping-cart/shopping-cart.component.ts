@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from '../product/product';
+import {ProductInterface} from '../product/product';
 import {ShoppingCartService} from './shopping-cart.service';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {User} from '../../core/user/user';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  products: Product[] = [];
+  products: ProductInterface[] = [];
   total = 0;
   @Input() user: User;
 
@@ -29,7 +29,7 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
 
-  calculateTotalPrice(products: Product[]): number {
+  calculateTotalPrice(products: ProductInterface[]): number {
     let amount = 0;
     products.map(value => {
       amount = amount + value.quantity * value.price;

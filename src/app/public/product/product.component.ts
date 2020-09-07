@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from './product';
+import {ProductInterface} from './product';
 import {map, tap} from 'rxjs/operators';
 import {ProductService} from './product.service';
 import {ShoppingCartService} from '../shopping-cart/shopping-cart.service';
@@ -11,7 +11,7 @@ import {ShoppingCartService} from '../shopping-cart/shopping-cart.service';
 })
 export class ProductComponent implements OnInit {
 
-  products: Product[];
+  products: ProductInterface[];
 
   constructor(private productService: ProductService, private shoppingCartService: ShoppingCartService) {
   }
@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAll().pipe(
       map(value => value.map(
-        (product: Product) => {
+        (product: ProductInterface) => {
           product.quantity = 1;
           return product;
         }
@@ -37,17 +37,17 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onClickIncrement(product: Product): void {
+  onClickIncrement(product: ProductInterface): void {
     product.quantity = product.quantity + 1;
     /*this.shoppingCartService.increaseCount(product);*/
   }
 
-  onClickDecrement(product: Product): void {
+  onClickDecrement(product: ProductInterface): void {
     this.shoppingCartService.decreaseCount(product);
   }
 
 
-  private productExistInShoppingCard(product: Product): boolean {
+  private productExistInShoppingCard(product: ProductInterface): boolean {
     let status = false;
     this.shoppingCartService.getProductsValue.forEach(value => {
       if (value === product) {

@@ -20,45 +20,19 @@ export class OrderResolver implements Resolve<Order> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Order> {
-    return this.userService.findUserOrder(this.userService.getUserValue().uuid, route.params.id).pipe(
+    return this.userService.findUserOrders(this.userService.getUserValue().uuid).pipe(
+      catchError(err => {
+        this.toastrService.error(err.error.status + ' ' + err.error.error, err.error.message);
+        return err;
+      })
+    );
+  /*  return this.userService.findUserOrder(this.userService.getUserValue().uuid, route.params.id).pipe(
       catchError(err => {
         this.toastrService.error(err.message, err.status);
         return err;
       })
-    );
-  /*  return this.orderService.getById(route.params.id).pipe(
-      catchError(err => {
-        this.toastrService.error('Nie znaleziono zamówienia o podanym id: ' + route.params.id, err.status);
-        return err;
-      })
     );*/
 
-    /*let selectedUser;
-    this.userService.findUserByUuid(this.userService.getUserValue().uuid)
-      .subscribe((user: User) => {
-        selectedUser = user;
-      });
-// pobrany user po UUID => selectedUser {}
-
-    if (selectedUser) {
-      debugger
-      if (selectedUser.authorities.find(el => el.name === 'ROLE_USER')) {
-        this.userService.findUserOrder(this.userService.getUserValue().id, route.params.id).subscribe(order => {
-          debugger
-        });
-      } else {
-        return this.orderService.getById(route.params.id).pipe(
-          catchError(err => {
-            this.toastrService.error('Nie znaleziono zamówienia o podanym id: ' + route.params.id, err.status);
-            return err;
-          })
-        );
-      }
-    }*/
   }
-
-  /* private getUserId(): number {
-     this.userService.
-   }*/
 
 }

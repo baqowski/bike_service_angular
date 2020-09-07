@@ -1,7 +1,11 @@
 import {Injectable} from '@angular/core';
+import {UserService} from '../../core/user/user.service';
 
 @Injectable()
 export class SidebarService {
+
+  constructor(private userService: UserService) {
+  }
 
   onGetUserRole(role: any): void {
     switch (role) {
@@ -32,6 +36,9 @@ export class SidebarService {
           {name: 'Akcesoria', routerLink: ''}
         ]
       },
+      {name: 'Moje zamówienia', routerLink: '/orders', href: '', hrefId: '' },
+      {name: 'Wypożyczenia', routerLink: '', href: '', hrefId: '' },
+      {name: 'Naprawy', routerLink: '', href: '', hrefId: ''}
     ];
   }
 
@@ -39,6 +46,7 @@ export class SidebarService {
     return [
       {name: 'Produkty', routerLinK: '/products'},
       {name: 'Użytkownicy', routerLinK: '/test-component'},
+
     ];
   }
 }

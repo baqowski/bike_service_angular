@@ -10,11 +10,11 @@
             Podsumowanie
           </div>
 
-          <app-table *ngIf="order.products && order.products.length"
-                     [data]="order.products"
+          <app-table *ngIf="products && products.length"
+                     [data]="products"
                      [showActionButtons]="false">
           </app-table>
-          <p class="ml-2">Koszt: {{order.amount}}</p>
+          <p class="ml-2">Koszt: {{productSummaryPrice}}</p>
         </div>
         <app-delivery [deliveries]="deliverySelectData"
                       [(deliveryForm)]="orderForm"
@@ -26,7 +26,8 @@
     </div>
     <div class="card-footer">
       <div class="">
-        {{'Całkowity koszt: ' + total}}
+        <ng-container *ngIf="orderSummaryPrice">
+          {{'Całkowity koszt: ' + orderSummaryPrice}}</ng-container>
       </div>
       <div class="dropdown-divider"></div>
         <button class="btn btn-success w-100 mt-2" (click)="create()">

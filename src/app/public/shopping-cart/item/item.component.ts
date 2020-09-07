@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ShoppingCartService} from '../shopping-cart.service';
-import {Product} from '../../product/product';
+import {ProductInterface} from '../../product/product';
 
 @Component({
   selector: 'app-item',
@@ -9,7 +9,7 @@ import {Product} from '../../product/product';
 })
 export class ItemComponent {
 
-  @Input() product: Product;
+  @Input() product: ProductInterface;
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
   @Output() onGoToProduct: EventEmitter<any> = new EventEmitter<any>();
 

@@ -3,16 +3,15 @@ import {CommonModule} from '@angular/common';
 import {ProductResolver} from './product.resolver';
 import {ProductRoutingModule} from './product-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ProductDetailComponent} from './product-detail/product-detail.component';
-
+import {DetailComponent} from './detail/detail.component';
 
 
 @NgModule({
   declarations: [
-    ProductDetailComponent
+    DetailComponent
   ],
   exports: [
-    ProductDetailComponent
+    DetailComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../../core/user/user.service';
 import {SidebarService} from './sidebar.service';
-import {SidebarInterface} from './sidebar.interface';
 import {tap} from 'rxjs/operators';
 
 @Component({

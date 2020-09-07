@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="card mt-3">
+    <div class="card-header">
+      <div>
+        <h5>Szczegóły płatności</h5>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <p>Status płatnośći: {{payment.paymentStatus}}</p>
+      </div>
+      <div class="row">
+        <p>Forma płatności: {{payment.paymentType}}</p>
+      </div>
+      <div class="row">
+        <p>Nr płatności: {{payment.id}}</p>
+      </div>
+      <div class="row">
+        <p>Nr zamówienia:
+          <a [routerLink]="'/orders/'+ orderId">
+            {{orderId}}
+          </a>
+        </p>
+      </div>
+      <ng-container *ngIf="payment.paymentType === 'PAYU'">
+        <div class="row">
+          <p> Nr zamówienia PayU: {{payment.payuOrderId}}
+          </p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="card-footer" *ngIf="payment.paymentStatus !== 'FINISHED'">
+      <button class="btn btn-secondary" (click)="changePaymentForm(payment)"> Zmień formę płatności</button>
+    </div>
+
+    <!--  <ng-container>
+        <app-payment-type>
+
+        </app-payment-type>
+      </ng-container>-->
+  </div>
+</div>
+

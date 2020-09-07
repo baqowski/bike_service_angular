@@ -1,6 +1,6 @@
-import {User} from "../../core/user/user";
+import {User} from '../../core/user/user';
 
-export interface Product {
+export interface ProductInterface {
   id: number;
   name: string;
   price: number;

@@ -1,21 +1,22 @@
+import {OrderInterface} from '../order/order';
 
 export class Payment implements PaymentInterface{
   constructor() {
   }
   id: number;
   paymentType: PaymentType;
-  paymentStatus: number;
+  paymentStatus: string;
   payuOrderId: string;
-  orderId: number;
+  order: OrderInterface;
 
 }
 
 export interface PaymentInterface {
   id: number;
   paymentType: PaymentType;
-  paymentStatus: number;
+  paymentStatus: string;
   payuOrderId: string;
-  orderId: number;
+  order: OrderInterface;
 }
 
 export enum PaymentType {

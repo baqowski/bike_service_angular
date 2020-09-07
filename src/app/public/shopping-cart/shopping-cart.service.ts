@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {Product} from '../product/product';
+import {ProductInterface} from '../product/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
-  behaviorProducts: BehaviorSubject<Product[]>;
+  behaviorProducts: BehaviorSubject<ProductInterface[]>;
 
   constructor() {
     this.initBehaviorSubject();
@@ -41,13 +41,13 @@ export class ShoppingCartService {
         (acc, val) => acc + val);
   }
 
-  public get getProductsValue(): Product[] {
+  public get getProductsValue(): ProductInterface[] {
     if (this.behaviorProducts.value) {
       return this.behaviorProducts.value;
     }
   }
 
-  public get getProductsSubject(): BehaviorSubject<Product[]> {
+  public get getProductsSubject(): BehaviorSubject<ProductInterface[]> {
     if (this.behaviorProducts) {
       return this.behaviorProducts;
     }
@@ -55,10 +55,10 @@ export class ShoppingCartService {
 
   private initBehaviorSubject(): void {
     if (!sessionStorage.getItem('products')) {
-      this.behaviorProducts = new BehaviorSubject<Product[]>([]);
+      this.behaviorProducts = new BehaviorSubject<ProductInterface[]>([]);
       return;
     }
-    this.behaviorProducts = new BehaviorSubject<Product[]>(JSON.parse(sessionStorage.getItem('products')));
+    this.behaviorProducts = new BehaviorSubject<ProductInterface[]>(JSON.parse(sessionStorage.getItem('products')));
   }
 
   private updateSessionStorageProducts(): void {
@@ -74,7 +74,7 @@ export class ShoppingCartService {
     this.updateSessionStorageProducts();
   }
 
-  private updateArrayElement(product: Product): void {
+  private updateArrayElement(product: ProductInterface): void {
     this.getProductsValue[this.getProductsValue.indexOf(product)] = product;
     this.update();
   }
