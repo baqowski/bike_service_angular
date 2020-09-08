@@ -11,7 +11,6 @@ export class ProductDetailResolver implements Resolve<ProductInterface>{
   constructor(private productService: ProductService){
   }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductInterface> {
-    debugger
     return this.productService.getById(route.params.id);
   }
 }

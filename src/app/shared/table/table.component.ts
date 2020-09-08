@@ -21,7 +21,6 @@ export class TableComponent implements OnInit {
   isEditable: boolean[];
 
   ngOnInit(): void {
-    debugger
   }
 
   onClickDeleteButton(row): void {

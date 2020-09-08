@@ -27,7 +27,6 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
     this.categories = this.route.snapshot.data.categories._embedded.productCategories;
     this.products = this.route.snapshot.data.products._embedded.products;
   }
@@ -49,7 +48,6 @@ export class ProductComponent implements OnInit {
   }
 
   onClickDelete(element): void {
-    debugger
     this.productService.delete(element.id).pipe(
       tap((value: any) => {
         this.toastrService.success('Produkt ' + value.name + 'został usunięty');
@@ -58,6 +56,5 @@ export class ProductComponent implements OnInit {
   }
 
   onClickUpdate(element): void {
-    debugger
   }
 }

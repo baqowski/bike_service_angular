@@ -12,7 +12,6 @@ export class AdminGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    debugger
     this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid).pipe(
       tap((value: any) => {
           if (value.role.name === 'ROLE_ADMIN') {

@@ -11,7 +11,6 @@ export class ProductResolver implements Resolve<ProductInterface>{
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    debugger
     return this.productService.getProductsFullProjection();
   }
 }
