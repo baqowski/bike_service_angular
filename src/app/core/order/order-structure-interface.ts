@@ -34,14 +34,14 @@ export const orderTableStructure: Array<TableStructureInterface> = [
     columnDef: 'status',
     header: 'Status płatności',
     cell: (element: any) => {
-      return element.payment.status;
+      return element.payment && element.payment.status;
     },
   },
   {
     columnDef: 'type',
     header: 'Rodzaj płatności',
     cell: (element: any) => {
-      return element.payment.type;
+      return element.payment && element.payment.type;
     },
   },
 ];

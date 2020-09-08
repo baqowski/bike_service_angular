@@ -1,4 +1,4 @@
-<ng-container *ngIf="order">
+<div *ngIf="order">
   <div class="container-fluid">
     <div class="card">
       <div class="card-header">
@@ -31,6 +31,72 @@
             </app-table>
           </div>
         </div>
+        <!-- widok 1 -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5>Adres dostawy i przesyłka</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Ulica</label>
+                  </div>
+                  <input type="text"
+                         class="form-control"
+                         aria-label="Small"
+                         value="{{order.deliveryOrder.deliveryAddress.street}}"
+                         aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Numer domu</label>
+                  </div>
+                  <input type="text"
+                         class="form-control"
+                         aria-label="Small"
+                         value="{{order.deliveryOrder.deliveryAddress.houseNumber}}"
+                         aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Kod pocztowy</label>
+                  </div>
+                  <input type="text"
+                         class="form-control"
+                         aria-label="Small"
+                         value="{{order.deliveryOrder.deliveryAddress.postalCode}}"
+                         aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Miasto</label>
+                  </div>
+                  <input type="text"
+                         class="form-control"
+                         aria-label="Small"
+                         value="{{order.deliveryOrder.deliveryAddress.city}}"
+                         aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Sposób dostawy</span>
+                  </div>
+                  <input type="text" class="form-control" value="{{order.deliveryOrder.delivery.type}}">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- koniec widok 1 -->
+
+        <!-- widok 2 -->
 
         <div class="card mt-4">
           <div class="card-header">
@@ -38,41 +104,57 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-sm-4">
-                {{order.deliveryOrder.deliveryAddress.street}}
+              <div class="col-lg-6">
+                <div class="form-group row">
+                  <label for="street" class="col-sm-4 col-form-label">Ulica</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="street"
+                           value="{{order.deliveryOrder.deliveryAddress.street}}">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="house" class="col-sm-4 col-form-label">Numer domu</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="house"
+                           value="{{order.deliveryOrder.deliveryAddress.houseNumber}}">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="postalCode" class="col-sm-4 col-form-label">Kod pocztowy</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="postalCode"
+                           value="{{order.deliveryOrder.deliveryAddress.postalCode}}">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="city" class="col-sm-4 col-form-label">Miasto</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="city"
+                           value="{{order.deliveryOrder.deliveryAddress.postalCode}}">
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Sposób dostawy</span>
+                  </div>
+                  <input type="text" class="form-control" value="{{order.deliveryOrder.delivery.type}}">
+                </div>
               </div>
-              <div class="col-sm-4">
-                {{order.deliveryOrder.deliveryAddress.houseNumber}}
-              </div>
-              <div class="col-sm-4"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="col-sm-2">
-                {{order.deliveryOrder.deliveryAddress.postalCode}}
-              </div>
-              <div class="col-sm-2">
-                {{order.deliveryOrder.deliveryAddress.city}}
-              </div>
-              <div class="col-sm-8"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              {{order.deliveryOrder.delivery.type}}
             </div>
           </div>
         </div>
       </div>
+      <!-- koniec widok 2 -->
+
       <app-payment-detail [payment]="order.payment">
 
       </app-payment-detail>
     </div>
-
-
-
   </div>
-</ng-container>
+</div>
 
 
