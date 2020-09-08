@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {OrderInterface} from './order';
 import {TableStructureInterface} from '../../shared/table/table-structure.interface';
 import {orderTableStructure} from './order-structure-interface';
-import {Role} from '../role/role';
 import {UserService} from '../user/user.service';
 import {tap} from 'rxjs/operators';
 
@@ -16,20 +15,18 @@ export class OrderComponent implements OnInit {
 
   orders: OrderInterface[];
   orderTableStructureColumns: Array<TableStructureInterface> = orderTableStructure;
-  role: Role;
+  roleName: '';
 
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    debugger
-     this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid).pipe(
-      tap((role: Role) => {
-        debugger
-        this.role = role;
+    this.orders = this.route.snapshot.data.order._embedded.orders;
+    this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid).pipe(
+      tap((role: any) => {
+        this.roleName = role.role.name;
       })
     ).subscribe();
-    this.orders = this.route.snapshot.data.order._embedded.orders;
   }
 }
