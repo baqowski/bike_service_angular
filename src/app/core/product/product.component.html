@@ -6,7 +6,7 @@
     <div class=card-body>
         <app-table
           [isEnabledAction]="true"
-          [columns]="summaryStructureTableColumns"
+          [columns]="productStructureTableColumns"
           (onUpdatedEventEmitter)="onClickUpdate($event)"
           (onDeleteEventEmitter)="onClickDelete($event)"
           [data]="products">

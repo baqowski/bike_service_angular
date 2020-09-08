@@ -1,5 +1,6 @@
 import {User} from '../user/user';
 import {TableStructureInterface} from '../../shared/table/table-structure.interface';
+import {ProductCategoryInterface} from './product-category/product-category';
 
 export interface ProductInterface {
   id: number;
@@ -10,6 +11,7 @@ export interface ProductInterface {
   color: string;
   producer: string;
   isEditable: boolean;
+  category: ProductCategoryInterface;
   user: User;
   active?: boolean;
 }

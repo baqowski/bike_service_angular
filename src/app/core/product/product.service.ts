@@ -35,4 +35,8 @@ export class ProductService {
   create(product: ProductService): any {
     return this.http.post<ProductInterface>(environment.apiUrl + '/api/products', product);
   }
+
+  getProductsFullProjection(): Observable<ProductInterface[]> {
+    return this.http.get<ProductInterface[]>(environment.apiUrl + '/api/products?projection=full');
+  }
 }

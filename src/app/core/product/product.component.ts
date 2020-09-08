@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductInterface} from './product';
-import {map, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {ProductService} from './product.service';
 import {ShoppingCartService} from '../../public/shopping-cart/shopping-cart.service';
 import {TableStructureInterface} from '../../shared/table/table-structure.interface';
-import {summaryTableStructure} from '../order/summary/summary-structure.interface';
 import {ToastrService} from 'ngx-toastr';
+import {productTableStructure} from './product-structure';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -15,25 +16,17 @@ import {ToastrService} from 'ngx-toastr';
 export class ProductComponent implements OnInit {
 
   products: ProductInterface[];
-  summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
+  productStructureTableColumns: Array<TableStructureInterface> = productTableStructure;
 
-  constructor(private productService: ProductService, private shoppingCartService: ShoppingCartService,
-              private toastrService: ToastrService) {
+  constructor(private productService: ProductService,
+              private shoppingCartService: ShoppingCartService,
+              private toastrService: ToastrService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.productService.getAll().pipe(
-      map(value => value.map(
-        (product: ProductInterface) => {
-          product.quantity = 1;
-          return product;
-        }
-      )),
-      tap(data => {
-        this.products = data;
-      })
-    ).subscribe(() => {
-    });
+    debugger
+    this.products = this.route.snapshot.data.products._embedded.products;
   }
 
   addProductToShoppingCart(product): void {

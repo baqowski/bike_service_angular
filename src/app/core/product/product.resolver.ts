@@ -10,7 +10,8 @@ export class ProductResolver implements Resolve<ProductInterface>{
   constructor(private productService: ProductService){
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductInterface> {
-    return this.productService.getById(route.params.id);
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    debugger
+    return this.productService.getProductsFullProjection();
   }
 }

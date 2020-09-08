@@ -2,7 +2,7 @@
   <thead>
   <tr>
     <th class="text-center" *ngFor="let column of columns"> {{column.header}} </th>
-    <th class="text-center" *ngIf="isEnabledAction">Akcje</th>
+    <th class="text-center" *ngIf="isEnabledAction">Akcje {{isEnabledAction}}</th>
   </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
       </td>
     </ng-container>
     <ng-container *ngIf="isEnabledAction" class="col-lg-12">
-      <td class="text-center" >
+      <td class="text-center">
         <app-button icon="fas fa-trash-alt"
                     (onSomeActionEmitter)="onClickDeleteButton(item)">
         </app-button>

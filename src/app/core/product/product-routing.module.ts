@@ -6,12 +6,16 @@ import {ProductComponent} from './product.component';
 import {ProductAddComponent} from './product-add/product-add.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
 import {ProductCategoryResolver} from './product-category/product-category.resolver';
+import {ProductDetailResolver} from './detail/product-detail.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: ProductComponent,
-
+    resolve: {
+      products: ProductResolver,
+    },
+    /*canActivate: [AdminGuard]*/
   },
   {
     path: 'add',
@@ -21,7 +25,7 @@ const routes: Routes = [
     path: ':id',
     component: DetailComponent,
     resolve: {
-      product : ProductResolver
+      product : ProductDetailResolver
     }
   },
   {

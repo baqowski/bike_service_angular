@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TableStructureInterface} from './table-structure.interface';
+import {ProductInterface} from '../../core/product/product';
 
 
 @Component({
@@ -18,15 +19,16 @@ export class TableComponent implements OnInit {
   isEditable: boolean[];
 
   ngOnInit(): void {
+    debugger
   }
 
   onClickDeleteButton(row): void {
     this.onDeleteEventEmitter.next(row);
   }
 
-  onClickUpdateButton(row): void {
+  onClickUpdateButton(row: ProductInterface): void {
     row.active = !row.active;
-    if (row.isEditable === true) {
+    if (row.active === true) {
       this.onUpdatedEventEmitter.next(row);
     }
   }
