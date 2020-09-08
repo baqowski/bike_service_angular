@@ -58,8 +58,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
-  receiveToggle($event): void {
-    this.toggle = $event;
+  receiveToggle(isHidden): void {
+    this.toggle = isHidden;
   }
 
   onGetNotFoundValue($event): void {

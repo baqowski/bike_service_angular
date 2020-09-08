@@ -3,15 +3,11 @@
             [user]="user">
 </app-header>
 <div class="wrapper">
-  <div class="col-lg-12 pl-0">
-    <div class="row">
-      <div class="col-lg-2 ml-0 custom-navigation">
-          <app-sidebar [listOfSidebarData]="sidebarNavigation" [(toggle)]="toggle"></app-sidebar>
-      </div>
-        <div class="container-fluid mt-3 col-lg-10">
-          <router-outlet></router-outlet>
-        </div>
-    </div>
+  <div class="sidebar" [ngClass]="{'active': toggle}">
+    <app-sidebar [listOfSidebarData]="sidebarNavigation"></app-sidebar>
+  </div>
+  <div class="content" [ngClass]="{'active': toggle}">
+    <router-outlet></router-outlet>
   </div>
 </div>
 

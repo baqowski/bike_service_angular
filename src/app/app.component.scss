@@ -6,7 +6,46 @@ html, body {
   background: #fafafa;
   overflow-y: hidden;
 }
-.custom-navigation{
-  height: calc(100vh - 79px);
+
+.wrapper {
+  min-height: calc(100vh - 79px);
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  height: auto;
 }
 
+.content {
+  min-height: 500px;
+  width: 80%;
+  position: relative;
+  height: auto;
+  float: right;
+  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+.sidebar {
+  height: auto;
+  width: 20%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+}
+
+.sidebar.active {
+  margin-left: -250px;
+  width: 0;
+  transform: rotateY(100deg);
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+}
+
+.content.active {
+  width: 100%
+}
