@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Order, OrderInterface} from '../order';
+import {Order, OrderInterface, OrderServiceType} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
 import {tap} from 'rxjs/operators';
@@ -19,7 +19,6 @@ import {summaryTableStructure} from './summary-structure.interface';
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(DeliveryComponent) deliveryRef: DeliveryComponent;
-
   products: ProductInterface[] = [];
   summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
   orderSummaryPrice = 0;
@@ -49,6 +48,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   create(): void {
     this.setOrder();
+    this.order.orderServiceType = OrderServiceType.SHOPPING;
     this.orderService.createOrder(this.order)
       .subscribe(id => {
         this.router.navigate(['/orders/' + id + '/payment']);

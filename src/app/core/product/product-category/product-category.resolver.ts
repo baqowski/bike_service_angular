@@ -10,7 +10,7 @@ export class ProductCategoryResolver implements Resolve<ProductInterface>{
   constructor(private productService: ProductService){
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductInterface> {
-    return this.productService.findAllByProductCategory(route.params.category);
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    return this.productService.findAllCategories();
   }
 }

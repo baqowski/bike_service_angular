@@ -1,6 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {OrderInterface} from './order';
+import {TableStructureInterface} from '../../shared/table/table-structure.interface';
+import {orderTableStructure} from './order-structure-interface';
+import {Role} from '../role/role';
+import {UserService} from '../user/user.service';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -10,28 +15,21 @@ import {OrderInterface} from './order';
 export class OrderComponent implements OnInit {
 
   orders: OrderInterface[];
-    columns: any[] = [
-      {id: '#'},
-      {
-        payments: [
-          {id: 'Numer płatności'},
-          {status: 'Status płatności'}
-        ]
-      },
-      {amount: 'Kwota'},
-      {type: 'Typ usługi'}
-    ];
-  columnName: string[] = [
-    'nr zamówienia', 'kwota', 'status', 'rodzaj usługi', 'numer płatności', 'typ płatności'
-  ];
+  orderTableStructureColumns: Array<TableStructureInterface> = orderTableStructure;
+  role: Role;
 
-  keys: string[] = [ 'id', 'amount', 'orderStatus', 'orderServiceType', 'payment.id' , 'payment.paymentType'];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private userService: UserService) {
   }
 
   ngOnInit(): void {
+    debugger
+     this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid).pipe(
+      tap((role: Role) => {
+        debugger
+        this.role = role;
+      })
+    ).subscribe();
     this.orders = this.route.snapshot.data.order._embedded.orders;
   }
-
 }

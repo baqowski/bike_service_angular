@@ -7,10 +7,10 @@ import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.s
 
 @Component({
   selector: 'app-product-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit {
 
   @Output() productEmitter: EventEmitter<ProductInterface> = new EventEmitter<ProductInterface>();
   product: ProductInterface;

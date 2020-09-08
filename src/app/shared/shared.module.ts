@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ShoppingCartModule} from '../public/shopping-cart/shopping-cart.module';
 import {ButtonComponent} from './button/button.component';
-import {PayuWidgetComponent} from './payu-widget/payu-widget.component';
 import {TableComponent} from './table/table.component';
 import {SelectBoxComponent} from './select-box/select-box.component';
 import {NotFoundService} from './not-found/not-found.service';
@@ -22,7 +21,6 @@ import {NavItemComponent} from './sidebar/nav-item/nav-item.component';
     HeaderComponent,
     SidebarComponent,
     ButtonComponent,
-    PayuWidgetComponent,
     TableComponent,
     SelectBoxComponent,
     AccessDeniedComponent,
@@ -32,7 +30,6 @@ import {NavItemComponent} from './sidebar/nav-item/nav-item.component';
     HeaderComponent,
     SidebarComponent,
     ButtonComponent,
-    PayuWidgetComponent,
     TableComponent,
     SelectBoxComponent,
     AccessDeniedComponent

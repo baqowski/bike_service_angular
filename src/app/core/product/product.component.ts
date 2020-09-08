@@ -7,6 +7,7 @@ import {TableStructureInterface} from '../../shared/table/table-structure.interf
 import {ToastrService} from 'ngx-toastr';
 import {productTableStructure} from './product-structure';
 import {ActivatedRoute} from '@angular/router';
+import {ProductCategoryInterface} from './product-category/product-category';
 
 @Component({
   selector: 'app-product',
@@ -16,6 +17,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ProductComponent implements OnInit {
 
   products: ProductInterface[];
+  categories: ProductCategoryInterface[];
   productStructureTableColumns: Array<TableStructureInterface> = productTableStructure;
 
   constructor(private productService: ProductService,
@@ -26,6 +28,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
+    this.categories = this.route.snapshot.data.categories._embedded.productCategories;
     this.products = this.route.snapshot.data.products._embedded.products;
   }
 

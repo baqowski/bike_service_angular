@@ -11,13 +11,13 @@
     </select>
   </div>
   <div class="card-text m-2">
-    <ng-container *ngIf="payment && payment.paymentType">
+    <ng-container *ngIf="payment && payment.type">
       <div class="container-fluid">
-        <div class="mb-2">Wybrana forma płatności {{payment.paymentType}}</div>
+        <div class="mb-2">Wybrana forma płatności {{payment.type}}</div>
 
-        <button class="btn btn-success w-100 h-25" (click)="createNewPayment(payment.paymentType)">
-          <ng-container *ngIf="payment.paymentType ==='PAYU'"> Zapłąć teraz przez PayU</ng-container>
-          <ng-container *ngIf="payment.paymentType !=='PAYU'"> Zakończ</ng-container>
+        <button class="btn btn-success w-100 h-25" (click)="createNewPayment(payment.type)">
+          <ng-container *ngIf="payment.type ==='PAYU'"> Zapłąć teraz przez PayU</ng-container>
+          <ng-container *ngIf="payment.type !=='PAYU'"> Zakończ</ng-container>
         </button>
        <!-- <ng-container *ngIf="payment.paymentType !== 'PAYU'">
           <button class="btn btn-success w-100" (click)="createNewPayment(payment.paymentType)">Potwierdź</button>

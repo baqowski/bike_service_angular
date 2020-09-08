@@ -4,8 +4,8 @@ export class Payment implements PaymentInterface{
   constructor() {
   }
   id: number;
-  paymentType: PaymentType;
-  paymentStatus: string;
+  type: PaymentType;
+  status: string;
   payuOrderId: string;
   order: OrderInterface;
 
@@ -13,8 +13,8 @@ export class Payment implements PaymentInterface{
 
 export interface PaymentInterface {
   id: number;
-  paymentType: PaymentType;
-  paymentStatus: string;
+  type: PaymentType;
+  status: string;
   payuOrderId: string;
   order: OrderInterface;
 }

@@ -3,42 +3,42 @@ import {TableStructureInterface} from '../../../shared/table/table-structure.int
 export const summaryTableStructure: Array<TableStructureInterface> = [
   {
     columnDef: 'id',
-    header: 'Id',
+    header: 'Identyfikator',
     cell: (element: any) => {
       return element.id;
     }
   },
   {
     columnDef: 'name',
-    header: 'Name',
+    header: 'Nazwa',
     cell: (element: any) => {
       return element.name;
     }
   },
   {
     columnDef: 'price',
-    header: 'Price',
+    header: 'Cena',
     cell: (element: any) => {
       return element.price;
     }
   },
   {
     columnDef: 'color',
-    header: 'Color',
+    header: 'Kolor',
     cell: (element: any) => {
       return element.color;
     }
   },
   {
     columnDef: 'producer',
-    header: 'Procuder',
+    header: 'Producent',
     cell: (element: any) => {
       return element.producer;
     }
   },
   {
     columnDef: 'summary.quantity',
-    header: 'Quantity',
+    header: 'Ilość',
     cell: (element: any) => {
       return element.quantity;
     }

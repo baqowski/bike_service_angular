@@ -8,12 +8,24 @@
   <tbody>
   <tr *ngFor="let item of data; let i = index">
     <ng-container *ngFor="let column of columns">
-      <td class="text-center" *ngIf="!item.active">{{ column.cell(item) }}</td>
-      <td class="text-center" *ngIf="item.active">
-        <div class="form-group">
-          <input class="form-control" [ngModel]="column.cell(item)"/>
-        </div>
+      <td *ngIf="column.action">
+        <app-select-box [selectData]="selectData"
+                        [properties]="'categoryName'">
+
+        </app-select-box>
       </td>
+      <td *ngIf="column.navigateToId">
+        <a [routerLink]="['/orders/' + item.id]"> {{column.cell(item)}}</a>
+      </td>
+      <ng-container *ngIf="!column.navigateToId">
+        <td class="text-center" *ngIf="!item.active">{{ column.cell(item) }}</td>
+        <td class="text-center" *ngIf="item.active">
+          <div class="form-group">
+            <input class="form-control" [ngModel]="column.cell(item)"/>
+          </div>
+        </td>
+      </ng-container>
+
     </ng-container>
     <ng-container *ngIf="isEnabledAction" class="col-lg-12">
       <td class="text-center">

@@ -3,20 +3,21 @@ import {CommonModule} from '@angular/common';
 import {ProductResolver} from './product.resolver';
 import {ProductRoutingModule} from './product-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DetailComponent} from './detail/detail.component';
+import {ProductDetailComponent} from './detail/product-detail.component';
 import {ProductAddComponent} from './product-add/product-add.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
 import {ProductCategoryResolver} from './product-category/product-category.resolver';
+import {ProductDetailResolver} from './detail/product-detail.resolver';
 
 
 @NgModule({
   declarations: [
-    DetailComponent,
+    ProductDetailComponent,
     ProductAddComponent,
     ProductCategoryComponent
   ],
   exports: [
-    DetailComponent
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import {ProductCategoryResolver} from './product-category/product-category.resol
   ],
   providers: [
     ProductResolver,
-    ProductCategoryResolver
+    ProductCategoryResolver,
+    ProductDetailResolver
   ]
 })
 export class ProductModule {

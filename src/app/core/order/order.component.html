@@ -1,26 +1,11 @@
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th class="text-center">#</th>
-    <th class="text-center" *ngFor="let column of columnName">{{column}}</th>
-  </tr>
-  <!--<tr>
-    <th class="text-center" *ngFor="let value of values">{{va}}</th>
-  </tr>-->
-  </thead>
-  <tbody>
-  <tr *ngFor="let item of orders; let i = index">
-    <td class="text-center">{{i + 1}}</td>
-    <td class="text-center" *ngFor="let key of keys ">
-      <ng-container *ngIf="key === 'id'">
-        <a [routerLink]="['/orders/' + item[key]]" >{{item[key]}}</a>
-      </ng-container>
-      <ng-container *ngIf="key === 'payment.id'">
-        <a [routerLink]="['/orders/payments/' + item[key]]" >{{item[key]}}</a>
-      </ng-container>
-      {{item[key]}}
-    </td>
-  </tr>
-  </tbody>
-</table>
+<ng-container>
+  <app-table
+    [navigateToId]="true"
+    [columns]="orderTableStructureColumns"
+    [data]="orders">
+  </app-table>
+</ng-container>
+<!--
+
+*ngIf="role.name === 'ROLE_USER'"-->

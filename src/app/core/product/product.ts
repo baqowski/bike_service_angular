@@ -10,6 +10,10 @@ export interface ProductInterface {
   quantity: number;
   color: string;
   producer: string;
+  loanDayPrice: string;
+  loanStartDate: string;
+  loanEndDate: string;
+  description: string;
   isEditable: boolean;
   category: ProductCategoryInterface;
   user: User;

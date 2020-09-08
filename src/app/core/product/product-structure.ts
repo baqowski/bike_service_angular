@@ -49,7 +49,8 @@ export const productTableStructure: Array<TableStructureInterface> = [
     header: 'Category',
     cell: (element: any) => {
       return element.productCategory.categoryName;
-    }
+    },
+    action: true
   }
 ];
 

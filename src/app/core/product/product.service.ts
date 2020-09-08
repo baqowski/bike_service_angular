@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {ProductInterface} from './product';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {ProductCategoryInterface} from './product-category/product-category';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,11 @@ export class ProductService {
   findAllByProductCategory(categoryName): Observable<ProductInterface> {
     return this.http.get<ProductInterface>(environment.apiUrl + '/ext/products/search/' + categoryName);
   }
+
+  findAllCategories(): Observable<ProductCategoryInterface> {
+    return this.http.get<ProductCategoryInterface>(environment.apiUrl + '/api/productCategories');
+  }
+
 
   getById(id: number): Observable<ProductInterface> {
     return this.http.get<ProductInterface>(environment.apiUrl + '/ext/products/' + id);

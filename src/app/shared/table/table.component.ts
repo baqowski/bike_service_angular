@@ -10,10 +10,12 @@ import {ProductInterface} from '../../core/product/product';
 })
 export class TableComponent implements OnInit {
 
+  @Input() selectData: any[];
   @Input() data: any[];
   @Input() isEnabledAction: boolean;
   @Input() property: string;
   @Input() columns: TableStructureInterface[];
+  @Input() navigateToId: boolean;
   @Output() onUpdatedEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDeleteEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   isEditable: boolean[];

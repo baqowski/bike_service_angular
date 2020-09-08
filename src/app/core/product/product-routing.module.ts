@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {ProductResolver} from './product.resolver';
-import {DetailComponent} from './detail/detail.component';
+import {ProductDetailComponent} from './detail/product-detail.component';
 import {ProductComponent} from './product.component';
 import {ProductAddComponent} from './product-add/product-add.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
@@ -14,8 +14,8 @@ const routes: Routes = [
     component: ProductComponent,
     resolve: {
       products: ProductResolver,
-    },
-    /*canActivate: [AdminGuard]*/
+      categories: ProductCategoryResolver
+    }
   },
   {
     path: 'add',
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: DetailComponent,
+    component: ProductDetailComponent,
     resolve: {
       product : ProductDetailResolver
     }

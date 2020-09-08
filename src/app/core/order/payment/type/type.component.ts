@@ -45,7 +45,7 @@ export class TypeComponent implements OnInit {
   }
 
   onChange(value): void {
-    this.payment.paymentType = value;
+    this.payment.type = value;
     console.log(value);
   }
 }

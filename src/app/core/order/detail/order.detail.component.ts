@@ -22,6 +22,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.order = this.route.snapshot.data.order;
   }
 }

@@ -1,0 +1,46 @@
+<div class="container" *ngIf="product">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"> {{product.name}}</h5>
+        </div>
+        <img class="card-img-top"
+             src="{{product.imageUrl}}"
+             alt="Produkt">
+        <!--          <img class="card-img-top" src="{{product.sourceImage}}" alt="Produkt">-->
+        <div class="card-body">
+
+
+          <!--            <p class="card-text">{{product.description }}</p>-->
+          <p class="card-text">{{ product.description}}</p>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-lg-2 mt-2">
+                <h6 style="color: #7386D5">Cena produktu: {{product.price}}</h6>
+            </div>
+
+            <div class="col-lg-4 mt-2">
+                <h6>Dzienna opłata wypożyczenia: {{product.loanDayPrice}}</h6>
+            </div>
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-2">
+              <button class="btn btn-primary pull-right" (click)="addProductToShoppingCard(product)">
+                Dodaj do koszyka
+              </button>
+            </div>
+
+            <div class="col-lg-2">
+              <button class="btn btn-primary" (click)="onGoToLoan()">
+                Wypożycz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
