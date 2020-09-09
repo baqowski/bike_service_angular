@@ -30,19 +30,10 @@ export class SidebarService {
 
   get OnGetDefaultNavigation(): SidebarInterface[] {
     return [
-      {
-        name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
-          {
-            name: 'Rowery', routerLink: '/products', href: '#bike', hrefId: 'bike', subLinks: [
-              {name: 'Męskie', routerLink: '/products/search/' + name, href: '#bike', hrefId: '#bike'},
-              {name: 'Damskie', routerLink: '', href: '', hrefId: ''},
-              {name: 'Dziecięce', routerLink: '', href: '', hrefId: ''},
-            ]
-          },
-          {name: 'Części', routerLink: '', href: '', hrefId: ''},
-          {name: 'Akcesoria', routerLink: '', href: '', hrefId: ''}
-        ]
-      },
+      {name: 'Rowery', routerLink: ':bikes', href: '#products', hrefId: 'products'},
+      {name: 'Akcesoria', routerLink: ':accessories', href: '#products', hrefId: 'products'},
+      {name: 'Pozostałe', routerLink: ':other', href: '#products', hrefId: 'products'}
+
     ];
   }
 
@@ -58,11 +49,13 @@ export class SidebarService {
 
   get onGetListNavigationAdmin(): any {
     return [
-      {name: 'Administrator', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
+      {
+        name: 'Administrator', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
           {name: 'Produkty', routerLink: '/products', href: '#bike', hrefId: 'bike'},
           {name: 'Użytkownicy', routerLink: '/products', href: '#bike', hrefId: 'bike'},
           {name: 'Zamówienia', routerLink: '/orders', href: '#bike', hrefId: 'bike'},
-        ]},
+        ]
+      },
     ].concat(this.onGetListNavigationWorker);
   }
 

@@ -6,12 +6,14 @@ import {ProductModule} from '../core/product/product.module';
 import {ProductComponent} from '../core/product/product.component';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
+import {ProductsCategoryComponent} from './products-categories/products-category.component';
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsCategoryComponent
   ],
   exports: [
     ProductComponent
