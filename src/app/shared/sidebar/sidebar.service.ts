@@ -61,7 +61,7 @@ export class SidebarService {
       {name: 'Administrator', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
           {name: 'Produkty', routerLink: '/products', href: '#bike', hrefId: 'bike'},
           {name: 'Użytkownicy', routerLink: '/products', href: '#bike', hrefId: 'bike'},
-          {name: 'Zamówienia', routerLink: '/products', href: '#bike', hrefId: 'bike'},
+          {name: 'Zamówienia', routerLink: '/orders', href: '#bike', hrefId: 'bike'},
         ]},
     ].concat(this.onGetListNavigationWorker);
   }

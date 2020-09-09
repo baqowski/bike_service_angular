@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {Order} from './order';
+import {Order, OrderInterface} from './order';
 import {PaymentInterface} from '../payment/payment';
 
 @Injectable({
@@ -11,6 +11,10 @@ import {PaymentInterface} from '../payment/payment';
 export class OrderService {
 
   constructor(private http: HttpClient) {
+  }
+
+  findAll(): Observable<OrderInterface[]> {
+    return this.http.get<OrderInterface[]>(environment.apiUrl + '/api/orders');
   }
 
   findOrderByUserUuidAndOrderId(uuid, orderId): Observable<any> {
