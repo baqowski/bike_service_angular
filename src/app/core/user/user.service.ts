@@ -10,10 +10,9 @@ import {Role} from '../role/role';
 })
 export class UserService {
 
-  userSubject: BehaviorSubject<User>;
+  current: BehaviorSubject<User>;
 
   constructor(private http: HttpClient) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
   }
 
   findUserOrders(uuid): Observable<any> {
@@ -28,10 +27,13 @@ export class UserService {
     return this.http.get<Role>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid + '&projection=role');
   }
 
-  public get getUserSubject(): BehaviorSubject<User> {
-    return this.userSubject;
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(environment.apiUrl + '/api/users/current');
   }
 
+  public get getUserSubject(): BehaviorSubject<User> {
+    return this.current
+  }
 
   public getUserValue(): User {
     return this.getUserSubject.value;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {OrderInterface} from './order';
 import {TableStructureInterface} from '../../shared/table/table-structure.interface';
@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, AfterViewInit {
 
   orders: OrderInterface[];
   orderTableStructureColumns: Array<TableStructureInterface> = orderTableStructure;
@@ -22,18 +22,21 @@ export class OrderComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private userService: UserService,
               private orderService: OrderService) {
+
   }
 
   ngOnInit(): void {
     debugger
-    this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
-      .subscribe((role: any) => {
-        this.roleName = role.role.name;
-      });
+    this.orders = this.route.snapshot.data.order._embedded.orders;
 
-    this.getUserRoleData(this.roleName).subscribe(orders => {
-      this.orders = orders;
-    });
+    this.test()
+    if (this.roleName === 'DUPA') {
+
+    }
+    /*  this.getUserRoleData(this.roleName).subscribe(orders => {
+        debugger
+        this.orders = orders;
+      });*/
     /* this.onGetUserRole();
      this.checkUserRole(this.roleName);
      this.orders = this.route.snapshot.data.order._embedded.orders;*/
@@ -68,4 +71,11 @@ export class OrderComponent implements OnInit {
         })
       ).subscribe();
     }*/
+  private test() {
+    debugger
+  }
+
+  ngAfterViewInit(): void {
+    debugger
+  }
 }

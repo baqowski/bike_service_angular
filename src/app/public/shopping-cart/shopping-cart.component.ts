@@ -53,6 +53,9 @@ export class ShoppingCartComponent implements OnInit {
     return this.total;
   }
 
-  goToPayment() {
+
+  onClickSummary(): void {
+    debugger
+    this.router.navigate(['/orders/summary/'])
   }
 }

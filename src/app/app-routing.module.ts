@@ -11,8 +11,8 @@ import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {DeliveryResolver} from './core/order/summary/delivery/delivery.resolver';
 import {OrderResolver} from './core/order/order.resolver';
 import {LoanComponent} from './core/order/loan/loan.component';
-import {ProductsCategoryComponent} from './public/products-categories/products-category.component';
-import {ProductsCategoryResolver} from './public/products-categories/products-category.resolver';
+import {ProductsCategoryComponent} from "./public/products-categories/products-category.component";
+import {ProductsCategoryResolver} from "./public/products-categories/products-category.resolver";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,13 +31,6 @@ const routes: Routes = [
     }
   },
   {
-    path: ':category',
-    component: ProductsCategoryComponent,
-    resolve: {
-      products: ProductsCategoryResolver
-    }
-  },
-  {
     path: 'loan',
     component: LoanComponent
   },
@@ -53,6 +46,17 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./public/account/account.module').then(module => module.AccountModule),
   },
+  {
+    path: 'categories/:category',
+    component: ProductsCategoryComponent,
+    resolve: {
+      products: ProductsCategoryResolver
+    }
+  },
+ /* {
+    path: 'categories',
+    loadChildren: () => import('./public/public.module').then(module => module.PublicModule),
+  },*/
   {
     path: 'summary',
     component: SummaryComponent,

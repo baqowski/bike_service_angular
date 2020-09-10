@@ -40,6 +40,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    debugger
     this.initShoppingProducts();
   }
 
@@ -73,7 +74,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private setOrder(): void {
     this.deliveryOrder = new DeliveryOrder(this.orderForm.value.deliveryType.delivery, this.orderForm.value.address);
-    this.order = new Order(this.orderSummaryPrice, this.products, this.deliveryOrder);
+    this.order = new Order(this.orderSummaryPrice, this.products, this.deliveryOrder, OrderServiceType.SHOPPING);
   }
 
   ngOnDestroy(): void {

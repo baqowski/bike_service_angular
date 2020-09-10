@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {mergeMap} from 'rxjs/operators';
 import {ProductInterface} from '../../core/product/product';
 import {ProductService} from '../../core/product/product.service';
+import {NotificationService} from "../../shared/service/notification.service";
 
 @Component({
   selector: 'app-products-categories',
@@ -11,9 +12,9 @@ import {ProductService} from '../../core/product/product.service';
 })
 export class ProductsCategoryComponent implements OnInit {
 
-  products: ProductInterface[];
+  products: | ProductInterface[];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {

@@ -2,9 +2,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 import {LoginService} from './login.service';
+import {UserService} from "../../core/user/user.service";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private toasterService: ToastrService,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    debugger
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {

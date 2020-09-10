@@ -27,14 +27,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void {
+    debugger
     this.auth.logout().pipe(
       tap(() => {
-        localStorage.removeItem('user');
-        this.userService.getUserSubject.next(null);
         this.loginService.isLogged.next();
       }),
       tap(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       })
     ).subscribe();
   }

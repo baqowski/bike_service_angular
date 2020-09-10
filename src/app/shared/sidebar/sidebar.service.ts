@@ -30,10 +30,12 @@ export class SidebarService {
 
   get OnGetDefaultNavigation(): SidebarInterface[] {
     return [
-      {name: 'Rowery', routerLink: ':bikes', href: '#products', hrefId: 'products'},
-      {name: 'Akcesoria', routerLink: ':accessories', href: '#products', hrefId: 'products'},
-      {name: 'Pozostałe', routerLink: ':other', href: '#products', hrefId: 'products'}
-
+      {name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
+          {name: 'Rowery', routerLink: 'categories/bicycles', href: '#home', hrefId: 'home'},
+          {name: 'Akcesoria', routerLink: 'categories/accessories', href: '#home', hrefId: 'home'},
+          {name: 'Pozostałe', routerLink: 'categories/others', href: '#home', hrefId: 'products'}
+        ]
+      }
     ];
   }
 

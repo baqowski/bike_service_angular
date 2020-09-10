@@ -17,7 +17,7 @@ export class ProductService {
     return this.http.get<ProductInterface[]>(environment.apiUrl + '/ext/products');
   }
 
-  findAllByProductCategory(categoryName): Observable<ProductInterface[]> {
+  findAllByProductCategory(categoryName): Observable<any> {
     return this.http.get<ProductInterface[]>(environment.apiUrl + '/ext/products/search/' + categoryName);
   }
 

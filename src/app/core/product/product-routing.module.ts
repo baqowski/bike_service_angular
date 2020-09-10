@@ -4,7 +4,6 @@ import {ProductResolver} from './product.resolver';
 import {ProductDetailComponent} from './detail/product-detail.component';
 import {ProductComponent} from './product.component';
 import {ProductAddComponent} from './product-add/product-add.component';
-import {ProductCategoryComponent} from './product-category/product-category.component';
 import {ProductCategoryResolver} from './product-category/product-category.resolver';
 import {ProductDetailResolver} from './detail/product-detail.resolver';
 
@@ -28,13 +27,13 @@ const routes: Routes = [
       product : ProductDetailResolver
     }
   },
-  {
+/*  {
     path: 'search/:category',
     component: ProductCategoryComponent,
     resolve: {
       category: ProductCategoryResolver
     }
-  }
+  }*/
 ];
 
 @NgModule({

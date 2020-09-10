@@ -1,15 +1,6 @@
-<ng-container *ngIf="roleName && roleName === 'ROLE_USER'">
-  <app-table
-    [navigateToId]="true"
-    [columns]="orderTableStructureColumns"
-    [data]="orders">
-  </app-table>
-</ng-container>
+<app-table
+  [navigateToId]="true"
+  [columns]="orderTableStructureColumns"
+  [data]="orders">
+</app-table>
 
-<ng-container *ngIf="roleName && (roleName === 'ROLE_ADMIN' || roleName === 'ROLE_WORKER')">
-  <app-table
-    [navigateToId]="true"
-    [columns]="orderTableStructureColumns"
-    [data]="orders">
-  </app-table>
-</ng-container>

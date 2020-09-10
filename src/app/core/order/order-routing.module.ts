@@ -29,9 +29,12 @@ const routes: Routes = [
     path: ':orderId/payment',
     component: TypeComponent
   },
- /* {
-    path: ':orderId/payment',
-    loadChildren: () => import('./payment/payment.module').then(module => module.PaymentModule)
+/*  {
+    path: 'summary',
+    component: SummaryComponent,
+    resolve: {
+      delivery: DeliveryResolver
+    }
   }*/
 ];
 

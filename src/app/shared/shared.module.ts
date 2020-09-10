@@ -14,6 +14,7 @@ import {NotFoundService} from './not-found/not-found.service';
 import {AccessDeniedComponent} from './access-denied/access-denied.component';
 import {SidebarService} from './sidebar/sidebar.service';
 import {NavItemComponent} from './sidebar/nav-item/nav-item.component';
+import {NotificationService} from "./service/notification.service";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {NavItemComponent} from './sidebar/nav-item/nav-item.component';
   ],
   providers: [
     NotFoundService,
-    SidebarService
+    SidebarService,
+    NotificationService
   ]
 })
 export class SharedModule {

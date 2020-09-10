@@ -16,11 +16,15 @@ import {OrderModule} from './core/order/order.module';
 import {PublicModule} from './public/public.module';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {LoginService} from './auth/login/login.service';
+import {ProductsCategoryResolver} from "./public/products-categories/products-category.resolver";
+import {ProductsCategoryComponent} from "./public/products-categories/products-category.component";
+import {AuthService} from "./auth/auth.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    ProductsCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,8 @@ import {LoginService} from './auth/login/login.service';
   ],
   providers: [
     LoginService,
+    AuthService,
+    ProductsCategoryResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

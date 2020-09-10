@@ -6,14 +6,14 @@ import {ProductModule} from '../core/product/product.module';
 import {ProductComponent} from '../core/product/product.component';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {ProductsCategoryComponent} from './products-categories/products-category.component';
+import {PublicRoutingModule} from "./public-routing.module";
+import {NotificationService} from "../shared/service/notification.service";
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    HomeComponent,
-    ProductsCategoryComponent
+    HomeComponent
   ],
   exports: [
     ProductComponent
@@ -23,7 +23,11 @@ import {ProductsCategoryComponent} from './products-categories/products-category
     SharedModule,
     FormsModule,
     ProductModule,
-    RouterModule
+    RouterModule,
+    PublicRoutingModule,
+  ],
+  providers: [
+    NotificationService
   ]
 })
 export class PublicModule { }

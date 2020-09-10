@@ -4,10 +4,11 @@ import {PaymentInterface} from '../payment/payment';
 
 export class Order implements OrderInterface {
 
-  constructor(amount: number, products: ProductInterface[], deliveryOrder: DeliveryOrderInterface) {
+  constructor(amount: number, products: ProductInterface[], deliveryOrder: DeliveryOrderInterface, orderServiceType: OrderServiceType) {
     this.amount = amount;
     this.products = products;
     this.deliveryOrder = deliveryOrder;
+    this.orderServiceType = orderServiceType;
   }
 
   amount: number;
