@@ -29,10 +29,6 @@ export class OrderComponent implements OnInit, AfterViewInit {
     debugger
     this.orders = this.route.snapshot.data.order._embedded.orders;
 
-    this.test()
-    if (this.roleName === 'DUPA') {
-
-    }
     /*  this.getUserRoleData(this.roleName).subscribe(orders => {
         debugger
         this.orders = orders;
@@ -71,11 +67,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
         })
       ).subscribe();
     }*/
-  private test() {
-    debugger
-  }
 
   ngAfterViewInit(): void {
-    debugger
   }
 }

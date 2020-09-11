@@ -40,7 +40,6 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    debugger
     this.initShoppingProducts();
   }
 
@@ -49,7 +48,6 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   create(): void {
     this.setOrder();
-    debugger
     this.order.orderServiceType = OrderServiceType.SHOPPING;
     this.orderService.createOrder(this.order)
       .subscribe(id => {

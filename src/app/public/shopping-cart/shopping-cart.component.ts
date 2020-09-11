@@ -3,7 +3,7 @@ import {ProductInterface} from '../../core/product/product';
 import {ShoppingCartService} from './shopping-cart.service';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {User} from '../../core/user/user';
+import {UserInterface} from '../../core/user/user';
 
 @Component({
   selector: 'app-shopping-card',
@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
 
   products: ProductInterface[] = [];
   total = 0;
-  @Input() user: User;
+  @Input() user: UserInterface;
 
   constructor(private shoppingCardService: ShoppingCartService, private router: Router) {
   }
@@ -51,11 +51,5 @@ export class ShoppingCartComponent implements OnInit {
       this.total = value.price * value.quantity + this.total;
     });
     return this.total;
-  }
-
-
-  onClickSummary(): void {
-    debugger
-    this.router.navigate(['/orders/summary/'])
   }
 }

@@ -20,7 +20,8 @@ export class OrderResolver implements Resolve<Order> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Order> {
-    return this.userService.findUserOrders(this.userService.getUserValue().uuid).pipe(
+    debugger
+    return this.userService.findUserOrders(this.authService.getUserSubject.value.uuid).pipe(
       catchError(err => {
         this.toastrService.error(err.error.status + ' ' + err.error.error, err.error.message);
         return err;

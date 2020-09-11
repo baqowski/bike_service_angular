@@ -5,6 +5,7 @@ import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './detail/order.detail.component';
 import {OrderDetailResolver} from './detail/order.detail.resolver';
 import {TypeComponent} from './payment/type/type.component';
+import {LoanComponent} from './loan/loan.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     path: ':orderId/payment',
     component: TypeComponent
   },
+  {
+    path: 'loan',
+    component: LoanComponent
+  }
 /*  {
     path: 'summary',
     component: SummaryComponent,

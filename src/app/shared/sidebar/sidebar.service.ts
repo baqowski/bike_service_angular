@@ -1,36 +1,26 @@
 import {Injectable} from '@angular/core';
-import {UserService} from '../../core/user/user.service';
 import {SidebarInterface} from './sidebar.interface';
+import {UserInterface} from '../../core/user/user';
 
 @Injectable()
 export class SidebarService {
 
-  sidebarInterface: SidebarInterface[];
-
-  constructor(private userService: UserService) {
-  }
-
-  onGetUserRole(role: any): SidebarInterface[] {
-    switch (role.role.name) {
-      case 'ROLE_USER': {
-        this.sidebarInterface = this.onGetUerSidebar;
-        break;
-      }
-      case 'ROLE_WORKER': {
-        this.sidebarInterface = this.onGetWorkerSidebar;
-        break;
-      }
-      case 'ROLE_ADMIN': {
-        this.sidebarInterface = this.onGetAdminSidebar;
-        break;
-      }
+  onGetUserRole(user: UserInterface): SidebarInterface[] {
+    debugger
+    switch (user.role.name) {
+      case 'ROLE_USER':
+        return this.onGetUerSidebar;
+      case 'ROLE_WORKER':
+        return this.onGetWorkerSidebar;
+      case 'ROLE_ADMIN':
+        return this.onGetAdminSidebar;
     }
-    return this.sidebarInterface;
   }
 
   get OnGetDefaultNavigation(): SidebarInterface[] {
     return [
-      {name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
+      {
+        name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
           {name: 'Rowery', routerLink: 'categories/bicycles', href: '#home', hrefId: 'home'},
           {name: 'Akcesoria', routerLink: 'categories/accessories', href: '#home', hrefId: 'home'},
           {name: 'Pozostałe', routerLink: 'categories/others', href: '#home', hrefId: 'products'}

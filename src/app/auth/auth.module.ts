@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
-import {AuthService} from "./auth.service";
+import {AuthService} from './auth.service';
 
 
 @NgModule({

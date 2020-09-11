@@ -3,8 +3,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {UserService} from '../core/user/user.service';
-import {User} from "../core/user/user";
+import {UserInterface} from '../core/user/user';
 
 
 const httpOptions = {
@@ -16,11 +15,10 @@ const httpOptions = {
 })
 export class AuthService {
 
-  userSubject: BehaviorSubject<User>;
+  userSubject: BehaviorSubject<UserInterface>;
 
-  constructor(private http: HttpClient, private userService: UserService) {
-    debugger
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+  constructor(private http: HttpClient) {
+    this.userSubject = new BehaviorSubject<UserInterface>(JSON.parse(localStorage.getItem('user')));
   }
 
   login(username: string, password: string): Observable<any> {
@@ -29,8 +27,7 @@ export class AuthService {
       .pipe(
         tap(user => localStorage.setItem('user', JSON.stringify(user))),
         tap(user => this.userSubject.next(user))
-  )
-    ;
+      );
   }
 
   register(user): Observable<any> {
@@ -47,21 +44,10 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    localStorage.removeItem('user');
-    this.getUserSubject.next(null);
     return this.http.post(environment.apiUrl + '/api/users/logout', null);
-
   }
 
-  public get getUserSubject(): BehaviorSubject<User> {
+  public get getUserSubject(): BehaviorSubject<UserInterface> {
     return this.userSubject;
-  }
-
-  getCurrentUser(uuid): void {
-    this.userService.getCurrentUser().pipe(
-      tap(user => {
-        this.userService.current.next(user);
-      })
-    ).subscribe()
   }
 }

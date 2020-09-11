@@ -1,9 +1,11 @@
-export interface User {
+import {Role} from '../role/role';
+
+export interface UserInterface {
   id: number;
-  uuid: string,
+  uuid: string;
   username: string;
   password: string;
-  token: string;
-  roleName: string;
-  authorities: [];
+  token?: string;
+  role: Role;
+  authorities?: [];
 }

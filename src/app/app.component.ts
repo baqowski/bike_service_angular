@@ -2,11 +2,11 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {UserService} from './core/user/user.service';
-import {User} from './core/user/user';
+import {UserInterface} from './core/user/user';
 import {SidebarService} from './shared/sidebar/sidebar.service';
 import {SidebarInterface} from './shared/sidebar/sidebar.interface';
-import {Role} from './core/role/role';
 import {LoginService} from './auth/login/login.service';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,25 +15,30 @@ import {LoginService} from './auth/login/login.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  notFoundValue = false;
-  toggle = false;
-  sidebarNavigation: SidebarInterface[];
-  user: User;
-
   constructor(private route: ActivatedRoute,
               private userService: UserService,
               private sidebarService: SidebarService,
+              private auth: AuthService,
               private loginService: LoginService) {
-
   }
+  notFoundValue = false;
+  toggle = false;
+  sidebarNavigation: SidebarInterface[];
+  user: UserInterface;
 
   ngOnInit(): void {
-    this.loginService.isLogged.subscribe(() => this.onSetSidebarForUser());
+    this.loginService.isLogged.subscribe((value) => {
+      debugger
+      this.onGetSidebar(value);
+      this.user = value;
+    });
 
-    this.userService.getUserSubject.asObservable().pipe(
+    this.auth.getUserSubject.asObservable().pipe(
       tap(data => this.user = data),
-      tap(console.log)
-    ).subscribe();
+      tap(console.log),
+    ).subscribe(value => {
+      this.user = value;
+    });
 
     this.route.data.subscribe(data => {
       this.notFoundValue = data.status;
@@ -41,31 +46,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.route.paramMap.pipe().subscribe(value => {
       console.log(value);
     });
-    this.onSetSidebarForUser();
   }
 
-  onSetSidebarForUser(): void {
-    const user = this.userService.getUserValue();
-    if (user) {
-      this.userService.onGetUserRoleByUuid(this.userService.getUserValue().uuid)
-        .pipe(
-          tap((role: Role) => {
-            this.sidebarNavigation = this.sidebarService.onGetUserRole(role);
-          })
-        ).subscribe();
-    } else {
-      this.sidebarNavigation = this.sidebarService.OnGetDefaultNavigation;
-    }
+  onGetSidebar(user: UserInterface): SidebarInterface[] {
+    return (user) ? this.sidebarService.onGetUserRole(user) : this.sidebarService.OnGetDefaultNavigation;
   }
 
   receiveToggle(isHidden): void {
     this.toggle = isHidden;
   }
 
-  onGetNotFoundValue($event): void {
-    this.notFoundValue = $event;
+  ngAfterViewInit(): void {
+
   }
 
-  ngAfterViewInit(): void {
+  setData(user: UserInterface): void {
+    debugger;
+    this.user = user;
+    this.sidebarNavigation = this.onGetSidebar(user);
   }
 }

@@ -1,4 +1,4 @@
-import {User} from '../user/user';
+import {UserInterface} from '../user/user';
 import {TableStructureInterface} from '../../shared/table/table-structure.interface';
 import {ProductCategoryInterface} from './product-category/product-category';
 
@@ -16,7 +16,7 @@ export interface ProductInterface {
   description: string;
   isEditable: boolean;
   category: ProductCategoryInterface;
-  user: User;
+  user: UserInterface;
   active?: boolean;
 }
 

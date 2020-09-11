@@ -2,17 +2,20 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {User} from './user';
+import {UserInterface} from './user';
 import {Role} from '../role/role';
+import {AuthService} from '../../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  current: BehaviorSubject<User>;
+  current: BehaviorSubject<UserInterface>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private auth: AuthService) {
+    debugger
   }
 
   findUserOrders(uuid): Observable<any> {
@@ -27,15 +30,19 @@ export class UserService {
     return this.http.get<Role>(environment.apiUrl + '/api/users/search/findByUuid?uuid=' + uuid + '&projection=role');
   }
 
-  getCurrentUser(): Observable<User> {
-    return this.http.get<User>(environment.apiUrl + '/api/users/current');
+  getCurrentUser(): Observable<UserInterface> {
+    return this.http.get<UserInterface>(environment.apiUrl + '/api/users/current');
   }
 
-  public get getUserSubject(): BehaviorSubject<User> {
-    return this.current
+  public get getUserSubject(): BehaviorSubject<UserInterface> {
+    debugger
+    return this.current;
   }
 
-  public getUserValue(): User {
+  onSet(): void {
+  }
+
+  public getUserValue(): UserInterface {
     return this.getUserSubject.value;
   }
 }

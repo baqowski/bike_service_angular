@@ -36,6 +36,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onGoToLoan(): void {
-    this.router.navigate(['/loan']);
+    this.router.navigate(['orders/loan']);
   }
 }
