@@ -13,6 +13,5 @@ export class SidebarComponent implements AfterViewInit{
   @Input() listOfSidebarData: SidebarInterface[];
 
   ngAfterViewInit(): void {
-    debugger;
   }
 }

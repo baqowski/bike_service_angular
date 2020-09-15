@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   user: UserInterface;
 
   ngOnInit(): void {
-    debugger;
    /* this.loginService.isLogged.subscribe(() => this.onSetSidebarForUser());*/
    /* const user = this.auth.getUserSubject.value;
     if (user) {
@@ -48,7 +47,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       });*!/
     }*/
     this.auth.user$.subscribe(value => {
-      debugger;
       this.onSetSidebarForUser();
       this.user = value;
     });
@@ -70,7 +68,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onGetSidebar(user: UserInterface): SidebarInterface[] {
-    debugger;
     return (user) ? this.sidebarService.onGetUserRole(user) : this.sidebarService.OnGetDefaultNavigation;
   }
 
@@ -80,7 +77,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     /*this.setData(this.user);*/
-    debugger;
     this.auth.getUserSubject.asObservable().subscribe(value => {
       this.setLoggedUserData(value);
     });
@@ -99,22 +95,18 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setCurrentLoggedUser(): void {
     this.userService.getCurrentUser().subscribe(user => {
-      debugger;
       this.user = user;
     });
   }
 
   check(): void {
     this.auth.getUserSubject.asObservable().subscribe(value => {
-      debugger;
     });
   }
 
   setLoggedUserData(logged): void {
-    debugger;
     if (logged) {
       this.userService.getCurrentUser().subscribe(user => {
-        debugger;
         this.setData(user);
       });
     }
@@ -122,11 +114,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    debugger;
   }
 
   onSetSidebarForUser(): void {
-    debugger
     const user = this.auth.userSubject.value;
     if (user) {
       this.userService.onGetUserRoleByUuid(user.uuid)

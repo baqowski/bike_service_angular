@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {ProductInterface} from '../../core/product/product';
+import {OrderServiceType} from "../../core/order/order";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import {ProductInterface} from '../../core/product/product';
 export class ShoppingCartService {
 
   behaviorProducts: BehaviorSubject<ProductInterface[]>;
+  @Output() orderTypEmitter: EventEmitter<OrderServiceType> = new EventEmitter<OrderServiceType>();
 
   constructor() {
     this.initBehaviorSubject();

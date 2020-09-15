@@ -4,6 +4,7 @@ import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
 import {ProductInterface} from '../product';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
+import {LoanService} from "../../order/loan/loan.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -18,7 +19,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private shoppingCartService: ShoppingCartService,
               private router: Router,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private loanService: LoanService) {
   }
 
   ngOnInit(): void {
@@ -35,7 +37,8 @@ export class ProductDetailComponent implements OnInit {
     this.shoppingCartService.behaviorProducts.next(this.shoppingCartService.getProductsValue);
   }
 
-  onGoToLoan(): void {
-    this.router.navigate(['orders/loan']);
+  onGoToLoan(product: ProductInterface): void {
+    this.loanService.productLoan.next(product);
+    this.router.navigate(['loan']);
   }
 }

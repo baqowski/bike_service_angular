@@ -53,6 +53,13 @@ const routes: Routes = [
       products: ProductsCategoryResolver
     }
   },
+  {
+    path: 'loan',
+    component: LoanComponent,
+    resolve: {
+      delivery: DeliveryResolver
+    }
+  },
  /* {
     path: 'categories',
     loadChildren: () => import('./public/public.module').then(module => module.PublicModule),

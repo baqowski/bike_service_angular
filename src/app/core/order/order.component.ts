@@ -26,7 +26,6 @@ export class OrderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    debugger
     this.orders = this.route.snapshot.data.order._embedded.orders;
 
     /*  this.getUserRoleData(this.roleName).subscribe(orders => {

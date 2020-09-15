@@ -1,15 +1,20 @@
 <ng-container *ngIf="products">
-  <div class="card" style="width: 18rem;" *ngFor="let product of products">
-    <div class="card-header">
-      <h5>{{product.name}}</h5>
-    </div>
-    <img class="card-img-top w-75 h-75" src="{{product.imageUrl}}" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text"></p>
-      <a href="#" class="btn btn-primary " routerLink="/products/{{product.id}}">Szczegóły</a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of products">
+        <div class="card">
+          <div class="card-header">
+            <h5>{{product.name}}</h5>
+          </div>
+          <img class="card-img-top w-25 h-25" src="{{product.imageUrl}}" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary " routerLink="/products/{{product.id}}">Szczegóły</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </ng-container>
 
 <ng-container *ngIf="!products">

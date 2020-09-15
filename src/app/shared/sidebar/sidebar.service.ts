@@ -20,7 +20,6 @@ export class SidebarService {
   }
 
   get OnGetDefaultNavigation(): SidebarInterface[] {
-    debugger
     return [
       {
         name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [

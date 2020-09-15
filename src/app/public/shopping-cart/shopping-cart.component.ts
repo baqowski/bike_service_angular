@@ -15,6 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   products: ProductInterface[] = [];
   total = 0;
   @Input() user: UserInterface;
+  /*@Output() orderTypEmitter: EventEmitter<OrderServiceType> = new EventEmitter<OrderServiceType>();*/
 
   constructor(private shoppingCardService: ShoppingCartService, private router: Router) {
   }

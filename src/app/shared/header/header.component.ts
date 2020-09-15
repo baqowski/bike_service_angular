@@ -26,19 +26,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    debugger;
   }
 
   onLogout(): void {
-    debugger;
     this.auth.logout().pipe(
       tap(() => {
-        debugger
         this.auth.getUserSubject.next(null);
         this.loginService.isLogged.next();
       }),
       tap(x => {
-        debugger
         localStorage.removeItem('user');
       }),
       tap(x => this.router.navigate(['/home']))
@@ -50,7 +46,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    debugger
   }
 
   /* private initShoppingCard(): void {

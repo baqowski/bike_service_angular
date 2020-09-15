@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Order, OrderInterface, OrderServiceType} from '../order';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
 import {OrderService} from '../order.service';
@@ -18,7 +18,9 @@ import {summaryTableStructure} from './summary-structure.interface';
 })
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  @Input() product: ProductInterface;
   @ViewChild(DeliveryComponent) deliveryRef: DeliveryComponent;
+  orderType: OrderServiceType;
   products: ProductInterface[] = [];
   summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
   orderSummaryPrice = 0;
@@ -26,7 +28,6 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   order: OrderInterface;
   orderForm: FormGroup;
   deliverySelectData: DeliveryInterface[];
-
   deliveryOrder: DeliveryOrderInterface;
 
   constructor(private shoppingCartService: ShoppingCartService,
@@ -34,12 +35,14 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
               private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder) {
+
     this.orderForm = this.formBuilder.group({});
     this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;
     this.products = this.shoppingCartService.getProductsValue;
   }
 
   ngOnInit(): void {
+    this.orderType = OrderServiceType.RENT;
     this.initShoppingProducts();
   }
 
