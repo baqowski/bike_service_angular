@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
 
   getUserRoleData(role): Observable<OrderInterface[]> {
     if (role === 'USER') {
-      return this.userService.findUserOrders(this.userService.findUserOrders(this.userService.getUserValue().uuid));
+      return this.userService.findUserOrders(this.userService.findUserOrders(this.userService.onGetCurrentUser.uuid));
     }
     return this.orderService.findAll();
   }

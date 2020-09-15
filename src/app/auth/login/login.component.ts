@@ -2,7 +2,7 @@ import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/c
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {catchError, mergeMap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {LoginService} from './login.service';
 import {UserService} from '../../core/user/user.service';
 import {NotificationService} from '../../shared/service/notification.service';
@@ -44,14 +44,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     this.auth.login(this.form.username.value, this.form.password.value)
       .pipe(
-        mergeMap(() => this.userService.getCurrentUser()),
         catchError(err => {
           this.notificationService.onGetErrorMessage(err);
           return err;
         })
-      ).subscribe((user) => {
-        this.isLoggedUser.emit();
-        this.loginService.isLogged.next();
+      ).subscribe((value) => {
         this.router.navigate(['/dashboard']);
         },
         error => {

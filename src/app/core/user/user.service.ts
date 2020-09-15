@@ -1,21 +1,23 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {UserInterface} from './user';
 import {Role} from '../role/role';
 import {AuthService} from '../../auth/auth.service';
+import {LoginService} from '../../auth/login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  current: BehaviorSubject<UserInterface>;
+  current: UserInterface;
+  current$: Observable<UserInterface>;
 
   constructor(private http: HttpClient,
-              private auth: AuthService) {
-    debugger
+              private auth: AuthService,
+              private loginService: LoginService) {
   }
 
   findUserOrders(uuid): Observable<any> {
@@ -34,15 +36,7 @@ export class UserService {
     return this.http.get<UserInterface>(environment.apiUrl + '/api/users/current');
   }
 
-  public get getUserSubject(): BehaviorSubject<UserInterface> {
-    debugger
+  get onGetCurrentUser(): UserInterface {
     return this.current;
-  }
-
-  onSet(): void {
-  }
-
-  public getUserValue(): UserInterface {
-    return this.getUserSubject.value;
   }
 }

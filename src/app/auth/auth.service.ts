@@ -16,9 +16,11 @@ const httpOptions = {
 export class AuthService {
 
   userSubject: BehaviorSubject<UserInterface>;
+  user$: Observable<UserInterface>;
 
   constructor(private http: HttpClient) {
     this.userSubject = new BehaviorSubject<UserInterface>(JSON.parse(localStorage.getItem('user')));
+    this.user$ = this.userSubject.asObservable();
   }
 
   login(username: string, password: string): Observable<any> {

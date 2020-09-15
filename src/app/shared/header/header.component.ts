@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {UserInterface} from '../../core/user/user';
 import {Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {NotificationService} from '../service/notification.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   @Input() toggle: boolean;
   @Output() toggleChange: EventEmitter<any> = new EventEmitter();
@@ -26,22 +26,31 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
   }
 
   onLogout(): void {
     debugger;
     this.auth.logout().pipe(
       tap(() => {
-        localStorage.removeItem('user');
+        debugger
         this.auth.getUserSubject.next(null);
         this.loginService.isLogged.next();
       }),
-      tap(x => this.router.navigate(['/']))
+      tap(x => {
+        debugger
+        localStorage.removeItem('user');
+      }),
+      tap(x => this.router.navigate(['/home']))
     ).subscribe();
   }
 
   clickToggle(status: boolean): void {
     this.toggleChange.emit(!status);
+  }
+
+  ngAfterViewInit(): void {
+    debugger
   }
 
   /* private initShoppingCard(): void {

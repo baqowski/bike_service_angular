@@ -6,18 +6,21 @@ import {UserInterface} from '../../core/user/user';
 export class SidebarService {
 
   onGetUserRole(user: UserInterface): SidebarInterface[] {
-    debugger
-    switch (user.role.name) {
-      case 'ROLE_USER':
-        return this.onGetUerSidebar;
-      case 'ROLE_WORKER':
-        return this.onGetWorkerSidebar;
-      case 'ROLE_ADMIN':
-        return this.onGetAdminSidebar;
+    if (user){
+      switch (user.role.name) {
+        case 'ROLE_USER':
+          return this.onGetUerSidebar;
+        case 'ROLE_WORKER':
+          return this.onGetWorkerSidebar;
+        case 'ROLE_ADMIN':
+          return this.onGetAdminSidebar;
+      }
+      return this.OnGetDefaultNavigation;
     }
   }
 
   get OnGetDefaultNavigation(): SidebarInterface[] {
+    debugger
     return [
       {
         name: 'Produkty', routerLink: '', href: '#products', hrefId: 'products', subLinks: [
