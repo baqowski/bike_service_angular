@@ -1,10 +1,10 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {DeliveryInterface} from "../summary/delivery/delivery";
-import {ActivatedRoute} from "@angular/router";
-import {DeliveryComponent} from "../summary/delivery/delivery.component";
-import {ProductInterface} from "../../product/product";
-import {OrderService} from "../order.service";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {DeliveryInterface} from '../summary/delivery/delivery';
+import {ActivatedRoute} from '@angular/router';
+import {DeliveryComponent} from '../summary/delivery/delivery.component';
+import {ProductInterface} from '../../product/product';
+import {LoanService} from './loan.service';
 
 @Component({
   selector: 'app-loan',
@@ -22,16 +22,20 @@ export class LoanComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private orderService: OrderService) {
+              private loanService: LoanService) {
   }
 
   ngOnInit(): void {
     debugger
-    this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;
+   /* this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;*/
     this.loanForm = this.formBuilder.group({});
+    this.loanService.productLoan.subscribe(value => {
+      debugger
+      this.product = value;
+    });
   }
 
-  onGetDeliveryCost() {
+  onGetDeliveryCost(): void {
     this.orderSummaryPrice = this.productSummaryPrice + this.deliveryRef.selectedPrice;
   }
 }

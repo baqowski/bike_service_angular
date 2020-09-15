@@ -4,7 +4,7 @@ import {ProductService} from '../product.service';
 import {mergeMap} from 'rxjs/operators';
 import {ProductInterface} from '../product';
 import {ShoppingCartService} from '../../../public/shopping-cart/shopping-cart.service';
-import {LoanService} from "../../order/loan/loan.service";
+import {LoanService} from '../../order/loan/loan.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -38,6 +38,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onGoToLoan(product: ProductInterface): void {
+    debugger
     this.loanService.productLoan.next(product);
     this.router.navigate(['loan']);
   }

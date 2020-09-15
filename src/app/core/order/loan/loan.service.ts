@@ -1,5 +1,5 @@
-import {Subject} from "rxjs";
-import {ProductInterface} from "../../product/product";
+import {Subject} from 'rxjs';
+import {ProductInterface} from '../../product/product';
 
 export class LoanService {
 
