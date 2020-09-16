@@ -12,7 +12,7 @@ import {ProductResolver} from './product/product.resolver';
 import {ManagementModule} from './management/management.module';
 import {ProductModule} from './product/product.module';
 import {DashboardModule} from './dashboard/dashboard.module';
-import {LoanService} from './order/loan/loan.service';
+import {LoanService} from './order/summary/loan/loan.service';
 
 
 @NgModule({

@@ -9,6 +9,7 @@ export class Order implements OrderInterface {
     this.products = products;
     this.deliveryOrder = deliveryOrder;
     this.orderServiceType = orderServiceType;
+
   }
 
   amount: number;
@@ -18,7 +19,11 @@ export class Order implements OrderInterface {
   deliveryOrder: DeliveryOrderInterface;
   orderServiceType: OrderServiceType;
   payment: PaymentInterface;
+  loanTermination: string;
+  description: string;
+  loanDays: number;
 }
+
 
 export interface OrderInterface {
   id: number;
@@ -28,12 +33,15 @@ export interface OrderInterface {
   deliveryOrder: DeliveryOrderInterface;
   orderServiceType: OrderServiceType;
   payment: PaymentInterface;
+  loanTermination: string;
+  description: string;
+  loanDays: number;
 }
 
 export enum OrderServiceType {
   SHOPPING = 'SHOPPING',
   RENT = 'RENT',
-  REPAIR = 'REAPIR'
+  REPAIR = 'REPAIR'
 }
 
 

@@ -7,21 +7,20 @@ import {DashboardComponent} from './core/dashboard/dashboard.component';
 import {AuthGuard} from './auth/guard';
 import {HomeComponent} from './public/home/home.component';
 import {SummaryComponent} from './core/order/summary/summary.component';
-import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {DeliveryResolver} from './core/order/summary/delivery/delivery.resolver';
 import {OrderResolver} from './core/order/order.resolver';
-import {LoanComponent} from './core/order/loan/loan.component';
-import {ProductsCategoryComponent} from "./public/products-categories/products-category.component";
-import {ProductsCategoryResolver} from "./public/products-categories/products-category.resolver";
+import {ProductsCategoryComponent} from './public/products-categories/products-category.component';
+import {ProductsCategoryResolver} from './public/products-categories/products-category.resolver';
+import {RepairComponent} from './core/order/repair/repair.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {
+ /* {
     path: '404',
     component: NotFoundComponent,
-  },
+  },*/
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -31,8 +30,19 @@ const routes: Routes = [
     }
   },
   {
-    path: 'loan',
-    component: LoanComponent
+    path: 'summary',
+    component: SummaryComponent,
+    resolve: {
+      delivery: DeliveryResolver
+    }
+  },
+/*  {
+    path: '**',
+    redirectTo: '/404'
+  },*/
+  {
+    path: 'repair',
+    component: RepairComponent
   },
   {
     path: 'products',
@@ -52,29 +62,7 @@ const routes: Routes = [
     resolve: {
       products: ProductsCategoryResolver
     }
-  },
-  {
-    path: 'loan',
-    component: LoanComponent,
-    resolve: {
-      delivery: DeliveryResolver
-    }
-  },
- /* {
-    path: 'categories',
-    loadChildren: () => import('./public/public.module').then(module => module.PublicModule),
-  },*/
-  {
-    path: 'summary',
-    component: SummaryComponent,
-    resolve: {
-      delivery: DeliveryResolver
-    }
-  },
-  {
-    path: '**',
-    redirectTo: '/404'
-  },
+  }
 ];
 
 @NgModule({

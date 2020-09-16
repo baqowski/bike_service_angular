@@ -4,49 +4,49 @@ export const productTableStructure: Array<TableStructureInterface> = [
 
   {
     columnDef: 'id',
-    header: 'Id',
+    header: 'Identyfikator',
     cell: (element: any) => {
       return element.id;
     }
   },
   {
     columnDef: 'name',
-    header: 'Name',
+    header: 'Nazwa',
     cell: (element: any) => {
       return element.name;
     }
   },
   {
     columnDef: 'price',
-    header: 'Price',
+    header: 'Cena',
     cell: (element: any) => {
       return element.price;
     }
   },
   {
     columnDef: 'color',
-    header: 'Color',
+    header: 'Kolor',
     cell: (element: any) => {
       return element.color;
     }
   },
   {
     columnDef: 'producer',
-    header: 'Procuder',
+    header: 'Producent',
     cell: (element: any) => {
       return element.producer;
     }
   },
   {
     columnDef: 'imageUrl',
-    header: 'Image',
+    header: 'Zdjęcie',
     cell: (element: any) => {
       return element.imageUrl;
     }
   },
   {
     columnDef: 'category',
-    header: 'Category',
+    header: 'Kategoria',
     cell: (element: any) => {
       return element.productCategory.categoryName;
     },

@@ -18,11 +18,11 @@
         <div class="card-footer">
           <div class="row">
             <div class="col-lg-2 mt-2">
-                <h6 style="color: #7386D5">Cena produktu: {{product.price}}</h6>
+              <h6 style="color: #7386D5">Cena produktu: {{product.price}}</h6>
             </div>
 
             <div class="col-lg-4 mt-2">
-                <h6>Dzienna opłata wypożyczenia: {{product.loanDayPrice}}</h6>
+              <h6>Dzienna opłata wypożyczenia: {{product.loanDayPrice}}</h6>
             </div>
             <div class="col-lg-2"></div>
 
@@ -33,7 +33,9 @@
             </div>
 
             <div class="col-lg-2">
-              <button class="btn btn-primary" (click)="onGoToLoan(product)">
+              <button class="btn btn-primary"
+                      (click)="onGoToLoan(product)"
+                      [routerLink]="['/summary']">
                 Wypożycz
               </button>
             </div>

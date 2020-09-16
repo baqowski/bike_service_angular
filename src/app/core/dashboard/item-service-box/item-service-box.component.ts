@@ -9,6 +9,7 @@ import {OrderInterface} from '../../order/order';
 export class ItemServiceBoxComponent implements OnInit {
 
   @Input() orders: OrderInterface[];
+  @Input() isLoan: boolean
   constructor() { }
 
   ngOnInit(): void {

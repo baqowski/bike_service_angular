@@ -10,6 +10,7 @@ import {DeliveryComponent} from './delivery/delivery.component';
 import {ProductInterface} from '../../product/product';
 import {TableStructureInterface} from '../../../shared/table/table-structure.interface';
 import {summaryTableStructure} from './summary-structure.interface';
+import {LoanService} from './loan/loan.service';
 
 @Component({
   selector: 'app-summary',
@@ -18,9 +19,8 @@ import {summaryTableStructure} from './summary-structure.interface';
 })
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() product: ProductInterface;
+  @Input() orderType: OrderServiceType;
   @ViewChild(DeliveryComponent) deliveryRef: DeliveryComponent;
-  orderType: OrderServiceType;
   products: ProductInterface[] = [];
   summaryStructureTableColumns: Array<TableStructureInterface> = summaryTableStructure;
   orderSummaryPrice = 0;
@@ -34,7 +34,8 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
               private orderService: OrderService,
               private router: Router,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private loanService: LoanService) {
 
     this.orderForm = this.formBuilder.group({});
     this.deliverySelectData = this.route.snapshot.data.delivery._embedded.deliveries;
@@ -42,16 +43,32 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.orderType = OrderServiceType.RENT;
-    this.initShoppingProducts();
+    this.initOrder();
+    /*this.shoppingCartService.behaviorProducts.pipe(
+      tap(() => this.productSummaryPrice = this.shoppingCartService.getTotalAmount),
+    ).subscribe();*/
+
+    this.orderService.orderSubject.asObservable().pipe(
+      tap(type => {
+        this.orderType = type;
+      })
+    ).subscribe();
+
+
+    this.loanService.loanAmount.subscribe((value) => {
+      this.productSummaryPrice = value;
+    });
+    console.log(this.orderType);
   }
 
   ngAfterViewInit(): void {
   }
 
   create(): void {
+    console.log(this.orderType);
     this.setOrder();
-    this.order.orderServiceType = OrderServiceType.SHOPPING;
+    /*this.order.orderServiceType = OrderServiceType.SHOPPING;*/
+    debugger
     this.orderService.createOrder(this.order)
       .subscribe(id => {
         this.router.navigate(['/orders/' + id + '/payment']);
@@ -63,7 +80,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.orderSummaryPrice = this.productSummaryPrice + this.deliveryRef.selectedPrice;
   }
 
-  initShoppingProducts(): void {
+  initOrder(): void {
     this.shoppingCartService.behaviorProducts.pipe(
       tap(value => {
         this.productSummaryPrice = this.shoppingCartService.getTotalAmount;
@@ -73,12 +90,36 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
       })).subscribe();
   }
 
+
   private setOrder(): void {
     this.deliveryOrder = new DeliveryOrder(this.orderForm.value.deliveryType.delivery, this.orderForm.value.address);
-    this.order = new Order(this.orderSummaryPrice, this.products, this.deliveryOrder, OrderServiceType.SHOPPING);
+    this.order = new Order(this.orderSummaryPrice, this.products, this.deliveryOrder, this.orderType);
+    this.setLoanData(this.order);
   }
 
   ngOnDestroy(): void {
   }
+
+  private calculateTotalPrice(): void {
+    switch (this.orderType) {
+      case OrderServiceType.SHOPPING: {
+        this.orderSummaryPrice = this.shoppingCartService.getTotalAmount + this.orderForm.value.deliveryType.delivery.cost;
+        break;
+      }
+      case OrderServiceType.RENT: {
+        this.orderSummaryPrice = this.loanService.total + this.orderForm.value.deliveryType.delivery.cost;
+      }
+      case OrderServiceType.REPAIR: {
+      }
+    }
+  }
+
+  private setLoanData(order: Order): void {
+    if (this.orderType === 'RENT') {
+      this.order.loanDays = this.orderForm.value.loan.days;
+    }
+  }
+
+
 }
 

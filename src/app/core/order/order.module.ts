@@ -10,10 +10,12 @@ import {OrderDetailComponent} from './detail/order.detail.component';
 import {PaymentModule} from './payment/payment.module';
 import {DeliveryComponent} from './summary/delivery/delivery.component';
 import {AddressService} from './summary/address/address.service';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DeliveryResolver} from './summary/delivery/delivery.resolver';
 import {OrderDetailResolver} from './detail/order.detail.resolver';
-import {LoanComponent} from './loan/loan.component';
+import {LoanComponent} from './summary/loan/loan.component';
+import {RepairComponent} from './repair/repair.component';
+import {CurrentUserResolver} from '../user/current-user.resolver';
 
 
 @NgModule({
@@ -23,22 +25,25 @@ import {LoanComponent} from './loan/loan.component';
     OrderComponent,
     OrderDetailComponent,
     DeliveryComponent,
-    LoanComponent
+    LoanComponent,
+    RepairComponent
   ],
   exports: [
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    OrderRoutingModule,
-    ReactiveFormsModule,
-    PaymentModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        OrderRoutingModule,
+        ReactiveFormsModule,
+        PaymentModule,
+        FormsModule
+    ],
   providers: [
     OrderResolver,
     OrderDetailResolver,
     AddressService,
-    DeliveryResolver
+    DeliveryResolver,
+    CurrentUserResolver
   ]
 })
 export class OrderModule {

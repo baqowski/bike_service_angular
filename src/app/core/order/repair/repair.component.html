@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Formularz naprawy</h4>
+  </div>
+  <div class="card-body h-50">
+    <form [formGroup]="repairForm">
+      <div class="form-group">
+        <label for="description">Opis usterki</label>
+        <textarea id="description"
+               type="text"
+               class="form-control"
+               formControlName="description">
+        </textarea>
+      </div>
+    </form>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-success w-100" (click)="onSubmit(this.repairForm.controls.description)">Potwierdź</button>
+  </div>
+</div>

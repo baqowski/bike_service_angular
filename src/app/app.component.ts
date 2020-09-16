@@ -108,6 +108,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     if (logged) {
       this.userService.getCurrentUser().subscribe(user => {
         this.setData(user);
+        this.userService.current = user;
       });
     }
     this.setData(this.auth.getUserSubject.value);
@@ -123,7 +124,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         .pipe(
           tap((role: any) => {
             this.sidebarNavigation = this.sidebarService.onGetUserRole(role);
-          })
+          }),
         ).subscribe();
     } else {
       this.sidebarNavigation = this.sidebarService.OnGetDefaultNavigation;

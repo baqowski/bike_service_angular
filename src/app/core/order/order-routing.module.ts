@@ -5,6 +5,7 @@ import {OrderComponent} from './order.component';
 import {OrderDetailComponent} from './detail/order.detail.component';
 import {OrderDetailResolver} from './detail/order.detail.resolver';
 import {TypeComponent} from './payment/type/type.component';
+import {CurrentUserResolver} from '../user/current-user.resolver';
 
 const routes: Routes = [
   {
@@ -15,27 +16,22 @@ const routes: Routes = [
     path: '',
     component: OrderComponent,
     resolve: {
-      order: OrderResolver
+      order: OrderResolver,
+      user: CurrentUserResolver
     }
   },
   {
     path: ':orderId',
     component: OrderDetailComponent,
     resolve: {
-      order: OrderDetailResolver
+      order: OrderDetailResolver,
+      user: CurrentUserResolver
     }
   },
   {
     path: ':orderId/payment',
     component: TypeComponent
   }
-/*  {
-    path: 'summary',
-    component: SummaryComponent,
-    resolve: {
-      delivery: DeliveryResolver
-    }
-  }*/
 ];
 
 @NgModule({

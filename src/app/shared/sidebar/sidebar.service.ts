@@ -38,7 +38,9 @@ export class SidebarService {
   }
 
   get onGetListNavigationWorker(): any {
-    return [].concat(this.onGetListNavigationUser);
+    return [
+
+    ].concat(this.onGetListNavigationUser);
   }
 
   get onGetListNavigationAdmin(): any {
@@ -46,7 +48,7 @@ export class SidebarService {
       {
         name: 'Administrator', routerLinK: '', href: '#settings', hrefId: 'settings', subLinks: [
           {name: 'Produkty', routerLink: '/products', href: '#bike', hrefId: 'bike'},
-          {name: 'Użytkownicy', routerLink: '/products', href: '#bike', hrefId: 'bike'},
+          {name: 'Użytkownicy', routerLink: '/users', href: '#bike', hrefId: 'bike'},
           {name: 'Zamówienia', routerLink: '/orders', href: '#bike', hrefId: 'bike'},
         ]
       },

@@ -1,21 +1,31 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-header">
-      <p>Realizacja zamówienia </p>
+      <p>Realizacja zamówienia </p> {{orderType}}
     </div>
     <div class="card-body">
 
       <div class="card">
         <div class="card-header">
-          <p>Podsumowanie</p>
+          <p>Produkt (y) </p>
         </div>
         <div class="card-body">
-          <app-table *ngIf="products && products.length "
-                     [data]="products"
-                     [columns]="summaryStructureTableColumns"
-                     [isEnabledAction]="false">
-          </app-table>
-          <p class="ml-2">Koszt: {{productSummaryPrice}}</p>
+          <ng-container *ngIf="orderType === 'SHOPPING'">
+            <app-table *ngIf="products && products.length"
+                       [data]="products"
+                       [columns]="summaryStructureTableColumns"
+                       [isEnabledAction]="false">
+            </app-table>
+            <p class="ml-2 font-weight-bold">Koszt: {{productSummaryPrice}}</p>
+          </ng-container>
+          <ng-container *ngIf="orderType === 'RENT'">
+            <app-loan [(loanForm)]="orderForm"
+                      [product]="products[0]">
+            </app-loan>
+          </ng-container>
+          <!-- <ng-container *ngIf="orderType === 'RENT'">
+             <p>REnt</p>
+           </ng-container>-->
         </div>
       </div>
       <app-delivery [deliveries]="deliverySelectData"
@@ -29,7 +39,7 @@
     <div class="card-footer">
       <div class="">
         <ng-container *ngIf="orderSummaryPrice">
-          {{'Całkowity koszt: ' + orderSummaryPrice}}
+          <p class="ml-2 font-weight-bold">Całkowity koszt zamówienia: {{orderSummaryPrice | number }}</p>
         </ng-container>
       </div>
       <div class="dropdown-divider"></div>

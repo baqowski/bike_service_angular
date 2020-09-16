@@ -20,6 +20,7 @@
       <h5>Kwota {{this.total | number: '00.00' }} PLN</h5>
       <div class="dropdown-divider"></div>
       <button class="btn btn-sm btn-success"
+              (click)="goToSummary()"
               [routerLink]="['/summary']"
               [disabled]="products.length === 0">
         Zamawiam

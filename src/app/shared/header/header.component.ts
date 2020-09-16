@@ -36,9 +36,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       }),
       tap(x => {
         localStorage.removeItem('user');
-      }),
-      tap(x => this.router.navigate(['/home']))
-    ).subscribe();
+      })
+    ).subscribe(() => this.router.navigate(['/']));
   }
 
   clickToggle(status: boolean): void {

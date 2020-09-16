@@ -4,6 +4,8 @@ import {ShoppingCartService} from './shopping-cart.service';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {UserInterface} from '../../core/user/user';
+import {OrderService} from '../../core/order/order.service';
+import {OrderServiceType} from '../../core/order/order';
 
 @Component({
   selector: 'app-shopping-card',
@@ -17,7 +19,9 @@ export class ShoppingCartComponent implements OnInit {
   @Input() user: UserInterface;
   /*@Output() orderTypEmitter: EventEmitter<OrderServiceType> = new EventEmitter<OrderServiceType>();*/
 
-  constructor(private shoppingCardService: ShoppingCartService, private router: Router) {
+  constructor(private shoppingCardService: ShoppingCartService,
+              private router: Router,
+              private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -52,5 +56,9 @@ export class ShoppingCartComponent implements OnInit {
       this.total = value.price * value.quantity + this.total;
     });
     return this.total;
+  }
+
+  goToSummary(): void {
+    this.orderService.orderSubject.next(OrderServiceType.SHOPPING);
   }
 }

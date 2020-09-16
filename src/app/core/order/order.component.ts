@@ -6,6 +6,8 @@ import {orderTableStructure} from './order-structure-interface';
 import {UserService} from '../user/user.service';
 import {OrderService} from './order.service';
 import {Observable} from 'rxjs';
+import {UserInterface} from '../user/user';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order',
@@ -17,7 +19,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
   orders: OrderInterface[];
   orderTableStructureColumns: Array<TableStructureInterface> = orderTableStructure;
   roleName: string;
-
+  user: UserInterface;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
@@ -26,6 +28,7 @@ export class OrderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.orders = this.route.snapshot.data.order._embedded.orders;
 
     /*  this.getUserRoleData(this.roleName).subscribe(orders => {
@@ -46,26 +49,13 @@ export class OrderComponent implements OnInit, AfterViewInit {
   }
 
   onGetUserRole(): void {
-
+    this.userService.getCurrentUser().pipe(
+      tap(user => {
+        this.user = user;
+      })
+    ).subscribe();
   }
 
-  /*  getUserOrders(): void {
-      this.userService.findUserOrders(this.userService.findUserOrders(this.userService.getUserValue().uuid)).pipe(
-        tap(orders => {
-          debugger;
-          this.orders = orders;
-        })
-      ).subscribe();
-    }*/
-
-  /*  setAll(): void {
-      this.orderService.findAll().pipe(
-        tap(orders => {
-          debugger;
-          this.orders = orders;
-        })
-      ).subscribe();
-    }*/
 
   ngAfterViewInit(): void {
   }

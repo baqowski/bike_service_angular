@@ -27,7 +27,7 @@ import {ProductDetailResolver} from './detail/product-detail.resolver';
   providers: [
     ProductResolver,
     ProductCategoryResolver,
-    ProductDetailResolver
+    ProductDetailResolver,
   ]
 })
 export class ProductModule {

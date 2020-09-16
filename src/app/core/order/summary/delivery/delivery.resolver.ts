@@ -11,7 +11,6 @@ export class DeliveryResolver implements Resolve<DeliveryInterface>{
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    debugger
     return this.deliveryService.getDeliveryData();
   }
 }
