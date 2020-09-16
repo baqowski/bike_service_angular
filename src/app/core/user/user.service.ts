@@ -20,9 +20,6 @@ export class UserService {
               private loginService: LoginService) {
   }
 
-  findUserOrders(uuid): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + '/api/orders/search/findAllByUser_Uuid?uuid=' + uuid + '&projection=full');
-  }
 
   getUserOrderById(uuid, orderId): Observable<any> {
     return this.http.get<any>(environment.apiUrl + '/api/users/' + uuid + '/orders/' + orderId);

@@ -5,7 +5,6 @@ import {TableStructureInterface} from '../../shared/table/table-structure.interf
 import {orderTableStructure} from './order-structure-interface';
 import {UserService} from '../user/user.service';
 import {OrderService} from './order.service';
-import {Observable} from 'rxjs';
 import {UserInterface} from '../user/user';
 import {tap} from 'rxjs/operators';
 
@@ -18,7 +17,6 @@ export class OrderComponent implements OnInit, AfterViewInit {
 
   orders: OrderInterface[];
   orderTableStructureColumns: Array<TableStructureInterface> = orderTableStructure;
-  roleName: string;
   user: UserInterface;
 
   constructor(private route: ActivatedRoute,
@@ -29,34 +27,28 @@ export class OrderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     debugger
-    this.orders = this.route.snapshot.data.order._embedded.orders;
-
-    /*  this.getUserRoleData(this.roleName).subscribe(orders => {
-        debugger
-        this.orders = orders;
-      });*/
-    /* this.onGetUserRole();
-     this.checkUserRole(this.roleName);
-     this.orders = this.route.snapshot.data.order._embedded.orders;*/
+    this.user = this.route.snapshot.data.user;
+    this.setOrderByUserRole();
 
   }
-
-  getUserRoleData(role): Observable<OrderInterface[]> {
-    if (role === 'USER') {
-      return this.userService.findUserOrders(this.userService.findUserOrders(this.userService.onGetCurrentUser.uuid));
-    }
-    return this.orderService.findAll();
-  }
-
-  onGetUserRole(): void {
-    this.userService.getCurrentUser().pipe(
-      tap(user => {
-        this.user = user;
-      })
-    ).subscribe();
-  }
-
 
   ngAfterViewInit(): void {
+
+
+  }
+
+  private setOrderByUserRole(): void {
+    debugger
+    if (this.userService.current.role.name === "ROLE_USER") {
+      this.orders = this.route.snapshot.data.order._embedded.orders;
+    } else {
+      this.orderService.findAll().pipe(
+        tap(orders => {
+          debugger
+          this.orders = orders
+        })
+      ).subscribe()
+    }
+
   }
 }

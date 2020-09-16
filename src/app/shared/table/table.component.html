@@ -14,7 +14,7 @@
 
         </app-select-box>
       </td>
-      <td *ngIf="column.navigateToId">
+      <td id="id" *ngIf="column.navigateToId">
         <a [routerLink]="['/orders/' + item.id]"> {{column.cell(item)}}</a>
       </td>
       <ng-container *ngIf="!column.navigateToId">

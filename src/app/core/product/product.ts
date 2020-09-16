@@ -26,21 +26,21 @@ export const productDetailTableStructure: Array<TableStructureInterface> = [
     columnDef: 'id',
     header: 'Id',
     cell: (element: any) => {
-      return element.product.id;
+      return element.id;
     }
   },
   {
     columnDef: 'product.name',
     header: 'Product name',
     cell: (element: any) => {
-      return element.product.name;
+      return element.name;
     }
   },
   {
     columnDef: 'product.price',
     header: 'Product price',
     cell: (element: any) => {
-      return element.product.price;
+      return element.price;
     }
   }
 ];

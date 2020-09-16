@@ -28,8 +28,8 @@ export class OrderService {
     return this.http.get<OrderInterface>(environment.apiUrl + '/api/orders/' + id + '?projection=full');
   }
 
-  findOrderByUserUuidAndOrderId(uuid, orderId): Observable<any> {
-    return this.http.get<any>(environment.apiUrl + '/api/orders/search/getByUser_uuidAndId?uuid=' + uuid + '&orderId=' + orderId + '&projection=full');
+  findAllByUserUuid(uuid): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + '/api/orders/search/findAllByUser_Uuid?uuid=' + uuid + '&projection=full');
   }
 
   createOrder(order: Order): Observable<any> {

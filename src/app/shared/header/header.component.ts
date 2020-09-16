@@ -3,7 +3,6 @@ import {AuthService} from '../../auth/auth.service';
 import {UserInterface} from '../../core/user/user';
 import {Router} from '@angular/router';
 import {UserService} from '../../core/user/user.service';
-import {tap} from 'rxjs/operators';
 import {LoginService} from '../../auth/login/login.service';
 import {NotificationService} from '../service/notification.service';
 
@@ -30,14 +29,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   onLogout(): void {
     this.auth.logout().pipe(
-      tap(() => {
-        this.auth.getUserSubject.next(null);
-        this.loginService.isLogged.next();
-      }),
-      tap(x => {
-        localStorage.removeItem('user');
-      })
-    ).subscribe(() => this.router.navigate(['/']));
+    ).subscribe(() => {
+      this.router.navigate(['/'])
+    }, error => {
+
+    }, () => {
+      localStorage.removeItem('user');
+    });
   }
 
   clickToggle(status: boolean): void {

@@ -27,7 +27,10 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/authorization/login', {username, password})
       .pipe(
         tap(user => localStorage.setItem('user', JSON.stringify(user))),
-        tap(user => this.userSubject.next(user))
+        tap(user => {
+          debugger
+          this.userSubject.next(user)
+        })
       );
   }
 
@@ -45,7 +48,12 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/users/logout', null);
+    return this.http.post(environment.apiUrl + '/api/users/logout', null).pipe(
+      tap((value) => {
+        this.getUserSubject.next(<UserInterface>value)
+        localStorage.removeItem('user')
+      })
+    );
   }
 
   public get getUserSubject(): BehaviorSubject<UserInterface> {

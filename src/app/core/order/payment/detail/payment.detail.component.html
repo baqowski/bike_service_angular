@@ -1,36 +1,63 @@
-<div class="container-fluid">
-  <div class="card mt-2">
-    <div class="card-header">
-      <div>
-        <h5>Szczegóły płatności</h5>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <p>Status płatnośći: {{payment.status}}</p>
-      </div>
-      <div class="row">
-        <p>Forma płatności: {{payment.type}}</p>
-      </div>
-      <div class="row">
-        <p>Nr płatności: {{payment.id}}</p>
-      </div>
-      <ng-container *ngIf="payment.type === 'PAYU'">
-        <div class="row">
-          <p> Nr zamówienia PayU: {{payment.payuOrderId}}
-          </p>
-        </div>
-      </ng-container>
-    </div>
-    <div class="card-footer" *ngIf="payment.status !== 'FINISHED'">
-      <button class="btn btn-secondary" (click)="changePaymentForm(payment)"> Zmień formę płatności</button>
-    </div>
-
-    <!--  <ng-container>
-        <app-payment-type>
-
-        </app-payment-type>
-      </ng-container>-->
+<div class="card mt-4">
+  <div class="card-header">
+    <h5>Szczegóły płatności</h5>
   </div>
-</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6 pl-0">
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Status płatnośći</label>
+          </div>
+          <input type="text"
+                 class="form-control"
+                 aria-label="Small"
+                 value="{{payment.status}}"
+                 aria-describedby="inputGoup-sizing-sm">
+        </div>
 
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Forma płatnośći</label>
+          </div>
+          <input type="text"
+                 class="form-control"
+                 aria-label="Small"
+                 value="{{payment.type}}"
+                 aria-describedby="inputGoup-sizing-sm">
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Nr płatności</label>
+          </div>
+          <input type="text"
+                 class="form-control"
+                 aria-label="Small"
+                 value="{{payment.id}}"
+                 aria-describedby="inputGoup-sizing-sm">
+        </div>
+
+        <div class="input-group input-group-sm mb-3" *ngIf="payment.type === 'PAYU'">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Nr zamówienia PayU</label>
+          </div>
+          <input type="text"
+                 class="form-control"
+                 aria-label="Small"
+                 value="{{payment.payuOrderId}}"
+                 aria-describedby="inputGoup-sizing-sm">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="payment.status !== 'FINISHED'">
+    <button class="btn btn-secondary" (click)="changePaymentForm(payment)"> Zmień formę płatności</button>
+  </div>
+
+  <!--  <ng-container>
+      <app-payment-type>
+
+      </app-payment-type>
+    </ng-container>-->
+</div>
